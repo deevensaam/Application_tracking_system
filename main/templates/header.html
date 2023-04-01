@@ -1,0 +1,187 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <body>
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+      ></script>
+
+      <link
+        href="https://unpkg.com/@webpixels/css/dist/index.css"
+        rel="stylesheet"
+      />
+    </body>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter";
+      }
+
+      .header {
+        overflow: hidden;
+        background-color: white;
+        padding: 10px 10px;
+        border-bottom-color: red;
+      }
+
+      .header a {
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 25px;
+        border-radius: 4px;
+      }
+
+      .header a.logo {
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      .header a.active {
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+      }
+
+      .outerbox {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+
+      .neww {
+        height: 17px;
+        right: 50px;
+        top: 15px;
+        font-family: "Inter";
+        font-style: normal;
+        line-height: 17px;
+        /* identical to box height */
+        color: #222222;
+      }
+
+      .neww p {
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 13px;
+        padding-left: 5px;
+        color: #666666;
+      }
+
+      .neww h6 {
+        margin-top: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        padding-left: 5px;
+      }
+      .logo {
+        width: 100px;
+        height: 40px;
+        padding-top: 10px;
+      }
+
+      .sup {
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .active,
+      .butn:hover {
+        background-color: white;
+        color: black;
+        border-bottom: 2px solid red;
+        border-radius: 1px;
+      }
+
+      @media only screen and (max-width: 800px) {
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div style="border-bottom: 1px solid #ddd">
+        <div class="header outerbox">
+          <img src="{%static 'images/page_3.png'%}" class="logo" />
+
+          <div
+            class="header-middle-right"
+            id="myDIV"
+            style="font-weight: 400; font-size: 14px"
+          >
+            <a class="butn" href="{% url 'Dashboard' %}">Dashboard</a>
+            <a class="butn" href="{% url 'jobs' %}">Jobs</a>
+            <a class="butn" href="{% url 'candidates_list' %}">Candidates</a>
+            <a class="butn" href="{% url 'job_templete' %}">Templates</a>
+          </div>
+          <div
+            class="header-right"
+            style="display: inline-flex; padding-right: 30px"
+          >
+            <a href="#"
+              ><i
+                style="font-size: 24px"
+                class="fa fa-envelope-o"
+                aria-hidden="true"
+              ></i
+            ></a>
+            <a href="#"
+              ><i style="font-size: 24px" class="fa fa-fw fa-bell-o"></i
+            ></a>
+            <img src="{%static 'images/h_1.svg'%}" />
+            <div class="neww">
+              <h6 style="font-size: 17px ;">Satish V</h6>
+              <p>Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("myDIV");
+      var btns = header.getElementsByClassName("butn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("active");
+          if (current.length > 0) {
+            current[0].className = current[0].className.replace(" active", "");
+          }
+          this.className += " active";
+        });
+      }
+    </script>
+  </body>
+</html>

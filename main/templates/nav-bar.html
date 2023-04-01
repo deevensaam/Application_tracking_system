@@ -1,0 +1,131 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <style>
+    a.hover,
+    .nav-link:hover {
+      border-bottom: 2px solid #de2c4c;
+      color: white;
+    }
+  </style>
+  <body>
+    <!-- NAVBAR-->
+    <div id="myDIV">
+      <nav class="navbar navbar-expand-lg py-3 navbar-light shadow-sm">
+        <img
+          src="{%static 'images/Page_3.png'%}"
+          width="130px"
+          height="55"
+          alt=""
+          class="d-inline-block align-middle mr-2"
+        />
+        <!-- Logo Text -->
+
+        <button
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          class="navbar-toggler"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ml-2 active">
+              <a href="{% url 'Dashboard' %}" class="nav-link"
+                >Dashboard
+                <span class="sr-only">(current)</span> 
+              </a>
+            </li>
+            <li class="nav-item ml-2">
+              <a href="{% url 'jobs' %}" class="nav-link">Jobs</a>
+            </li>
+            <li class="nav-item ml-2">
+              <a href="{% url 'candidates_list' %}" class="nav-link"
+                >Candidates</a
+              >
+            </li>
+            <li class="nav-item ml-2">
+              <a href="{% url 'job_templete' %}" class="nav-link">Templates</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item my-auto">
+              <a
+                href="#"
+                class="nav-link fa fa-envelope-o big"
+                style="font-size: 22px"
+              ></a>
+            </li>
+            <li class="nav-item my-auto">
+              <a
+                href="#"
+                class="nav-link fa fa-fw fa-bell-o"
+                style="font-size: 22px"
+              ></a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item my-auto">
+              <a href="#" class="nav-link"
+                ><img src="{%static 'images/h_1.svg'%}"
+              /></a>
+            </li>
+            <li class="nav-item my-auto">
+              <p>
+                <strong>{{user.username}} </strong><br />
+                Super admin
+              </p>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <script>
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("myDIV");
+      var btns = header.getElementsByClassName("nav-link");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    </script>
+  </body>
+</html>

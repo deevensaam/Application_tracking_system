@@ -1,0 +1,448 @@
+{% load static %} {% block content %}    {% include 'nav-bar.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    
+    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
+    <title>candidates_list</title>
+  </head>
+  <style>
+    button {
+      position: absolute;
+      font-family: "Inter";
+      background-color: #de2c4c;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px;
+      cursor: pointer;
+      height: 52px;
+      width: 191px;
+      left: 75%;
+      top: 18%;
+    }
+
+    button a {
+      color: white;
+    }
+
+    .hh3 {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      color: 222222;
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+    }
+
+    .new {
+      width: 50px;
+      height: 60px;
+      margin-top: 30px;
+      background-color: black;
+      opacity: 0.8;
+      padding: 2.5px;
+    }
+    #candidates {
+      font-family: "Inter";
+      font-style: "normal";
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #candidates td {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 18px;
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+    }
+
+    #candidates th {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 18px;
+    }
+
+    #candidates th {
+      padding-top: 18px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: white;
+      color: black;
+      border: none;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    #candidates tr {
+      border: none;
+    }
+    .newww {
+      height: 17px;
+      right: 50px;
+      top: 15px;
+      font-family: "Inter";
+      font-style: normal;
+      line-height: 17px;
+      /* identical to box height */
+      color: #222222;
+    }
+
+    .newww p {
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-size: 13px;
+      padding-left: 5px;
+      padding-bottom: 10px;
+      color: #666666;
+    }
+
+    .newww h6 {
+      margin-top: 5px;
+      font-weight: 500;
+      font-size: 14px;
+      padding-left: 5px;
+    }
+
+    .newww img {
+      width: 56px;
+      height: 56px;
+    }
+
+    .box {
+      background-color: white;
+      width: 80px;
+      border: 1px solid black;
+      font-family: 'Inter';
+    }
+
+    .box1 {
+      background-color: white;
+      width: 100px;
+      border: 1px solid black;
+      font-family: 'Inter';
+    }
+
+    .box p {
+      margin: 0px 0px 0px;
+      padding-left: 12px;
+      padding-top: 2px;
+      font-weight: 500;
+      font-size: 14px;
+      font-family: 'Inter';
+      color:black;
+    }
+
+    .box1 p {
+      margin: 0px 0px 0px;
+      padding-left: 8px;
+      padding-top: 2px;
+      font-weight: 500;
+      font-size: 14px;
+      font-family: 'Inter';
+      color:black;
+    }
+    .boxx{
+      background-color: white;
+      width: 150px;
+      border: 1px solid black;
+      font-family: 'Inter';
+      border-left: none;
+    }
+
+    ::placeholder {
+      font-family: "Inter";
+      color: black;
+      font-size: 14px;
+    }
+
+
+  </style>
+  <body>
+
+    <div class="container">
+      <h1 style="font-weight: 700; padding-top: 3rem; padding-bottom: 3rem">
+        Candidates List
+      </h1>
+
+      <div class="outer-div" style="display: flex; flex-wrap: wrap">
+        <div style="display: flex; width: 20%">
+          <img
+            style="width: 56px; height: 56px"
+            src="{%static 'images/usser.svg'%}"
+          />
+          <div class="newww" style="display: flex; flex-direction: column">
+            <p
+              style="
+                font-weight: 500;
+                font-size: 30px;
+                padding-top: 5px;
+                color: black;
+              "
+            >
+              {{Candidates_count}}
+            </p>
+            <p>All</p>
+          </div>
+        </div>
+        <div style="display: flex; width: 20%">
+          <img
+            style="width: 56px; height: 56px"
+            src="{%static 'images/all.svg'%}"
+          />
+          <div class="newww" style="display: flex; flex-direction: column">
+            <p
+              style="
+                font-weight: 500;
+                font-size: 30px;
+                padding-top: 5px;
+                color: #666666;
+              "
+            >
+              25
+            </p>
+            <p>New</p>
+          </div>
+        </div>
+        <div style="display: flex; width: 20%">
+          <img
+            style="width: 56px; height: 56px"
+            src="{%static 'images/reject.svg'%}"
+          />
+          <div class="newww" style="display: flex; flex-direction: column">
+            <p
+              style="
+                font-weight: 500;
+                font-size: 30px;
+                padding-top: 5px;
+                color: #666666;
+              "
+            >
+              25
+            </p>
+            <p>Rejected</p>
+          </div>
+        </div>
+        <div style="display: flex; width: 20%">
+          <img
+            style="width: 56px; height: 56px"
+            src="{%static 'images/01.png'%}"
+          />
+          <div class="newww" style="display: flex; flex-direction: column">
+            <p
+              style="
+                font-weight: 500;
+                font-size: 30px;
+                padding-top: 5px;
+                color: #666666;
+              "
+            >
+              25
+            </p>
+            <p>Favourite</p>
+          </div>
+        </div>
+        <div style="display: flex; width: 20%">
+          <img
+            style="width: 56px; height: 56px"
+            src="{%static 'images/01.png'%}"
+          />
+          <div class="newww" style="display: flex; flex-direction: column">
+            <p
+              style="
+                font-weight: 500;
+                font-size: 30px;
+                padding-top: 5px;
+                color: #666666;
+              "
+            >
+              25
+            </p>
+            <p>Archived</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="hh3">All candidates</h3>
+
+      
+      <div
+      class="outer-div"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 2rem;
+      ">
+      <div style="display: flex; width: 24%">
+        <form action="/form/submit" method="GET">
+          <input style="border: 1px solid black"
+            type="text"
+            name="text"
+            class="search"
+            placeholder="Search by Name, Location ...     "=
+          />
+          <i style="margin-left: -10%;"class="fa fa-search" aria-hidden="true"></i>
+        </form>
+      </div>
+
+      <div style="display: flex; width: 5%">
+        <div class="box"><p>Stage</p></div>
+      </div>
+      <div style="display: flex; width: 18%">
+        <select class='boxx' name="stage" Selected id="stage">
+          <option selected value="All">All</option>
+          <option value="Telephonic">Telephonic</option>
+          <option value="Coding">Coding</option>
+          <option value="F2F">F2F</option>
+          <option value="Selected">Selected</option>
+          <option value="Make offer">Make offer</option>
+        </select>
+      </div>
+
+      <div style="display: flex; width: 5%">
+        <div class="box1"><p>Source</p></div>
+      </div>
+      <div style="display: flex; width: 22%">
+        <select class='boxx' name="stage" Selected id="stage">
+          <option selected value="All">All</option>
+          <option value="Linkedin">Linkedin</option>
+          <option value="Angellist">Angellist</option>
+          <option value="Globe">Globe</option>
+        </select>
+      </div>
+
+      <!-- {% if user.is_superuser == frue %} -->
+      <!-- <table id="candidates" , style="width: 100%">
+        <tr>
+          <th><a href="{% url 'jobs_list' %}">Job Title</a></th>
+          <th>Experience</th>
+          <th>Posted on</th>
+          <th>Candidates</th>
+          <th>Assigned</th>
+        </tr>
+        <tr>
+          {% for CANDIDATES in Candidate_list %}
+          <td>{{CANDIDATES.jobname}}</td>
+          <td>{{CANDIDATES.Min}}-{{CANDIDATES.Max}} Years</td>
+          <td>{{CANDIDATES.Event_time}}</td>
+          <td>40</td>
+          <td>
+            <img src="{%static 'images/image_2.png'%}" width="50px" />
+          </td>
+          <td><img src="{%static 'images/edit.svg'%}" /></td>
+          <td><img src="{%static 'images/archive.svg'%}" /></td>
+        </tr>
+        {% endfor %}
+      </table> -->
+      <!-- {% else %}
+      <table id="candidates" , style="width: 100%;margin-top:2rem;">
+        <tr>
+          <th>Candidate Name</th>
+          <th>Position</th>
+          <th>Exp(Years)</th>
+          <th>Candidates</th>
+          <th>Applied on</th>
+          <th>Assigned</th>
+        </tr>
+      </table>
+      {% endif %} -->
+
+      <!-- <table id="candidates" , style="width: 100%; margin-top:3rem;">
+        <tr>
+          <th style="border-bottom: 1px solid black;">Candidates Name</th>
+          <th style="border-bottom: 1px solid black;">Position</th>
+          <th style="border-bottom: 1px solid black;">Exp(Years)</th>
+          <th style="border-bottom: 1px solid black;">Applied on</th>
+          <th style="border-bottom: 1px solid black;">Source</th>
+          <th style="border-bottom: 1px solid black;">Stage</th>
+          <th style="border-bottom: 1px solid black;">Assigned</th>
+        </tr>
+        <tr>
+          <td>Sagar<br>Mumbai, Maharashtra</td>
+          <td>Sr. Python Django Developer</td>
+          <td>5</td>
+          <td>01st Mar, 2020</td>
+          <td>
+            <img src="{%static 'images/linkedin.svg'%}" width="20px" />
+          </td>
+          <td>
+            <select name="stage" id="stage">
+              <option value="Screening" style="background-color: #fff2c9">
+                Screening
+              </option>
+              <option value="Telephonic" style="background: #cbd4eb">
+                Telephonic
+              </option>
+              <option value="Coding" selected style="background: #efcdfe">
+                Coding
+              </option>
+              <option value="F2F" style="background: #fbd4c3">F2F</option>
+              <option value="Selected" style="background: #cdfed0">
+                Selected
+              </option>
+              <option value="Make offer" style="background: #ffd7e4">
+                Make offer
+              </option>
+            </select>
+          </td>
+          <td>
+            <img src="{%static 'images/image_2.png'%}" width="50px" />
+          </td>
+        </tr>
+        
+      </table> -->
+      <table id="candidates"  style=" margin-top:3rem;">
+        <tr >
+          <th>Candidate Name</th>
+          <th>Position</th>
+          <th>Exp (Years)</th>
+          <th>Applied on</th>
+          <th>Source</th>
+          <th>Stage</th>
+          <th>Assigned</th>
+
+        </tr>
+        <tr>
+          {% for Candidate in Candidate_list %}
+          <td><a href="{% url 'candidate_profile' id=Candidate.pk %}">{{Candidate.firstname}} {{Candidate.lastname}}</a><br><small>{{Candidate.state}}, {{Candidate.city}}</small></td>
+          <td>None</td>
+          <td>{{Candidate.exp}}</td>
+          <td>{{Candidate.event_time}}</td>
+          <td></td>
+          <td>{{Candidate.stage}}</td>
+          <td>
+              <img src="{%static 'images/image_2.png'%}" width="50px">
+            </td>
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+
+
+
+    <button type="submit">
+      <a href="{% url 'job_details' %}">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>Add Candidates</a></button>
+      <br /><br />
+
+  </body>
+</html>
+{%endblock%}

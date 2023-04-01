@@ -1,0 +1,186 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Signup Page</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: white;
+      }
+      .background {
+        width: 430px;
+        height: 520px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+      }
+
+      form {
+        height: 600px;
+        width: 450px;
+        background-color: rgba(255, 255, 255, 0.13);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 52%;
+        left: 29%;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        padding: 50px 35px;
+      }
+
+      form * {
+        font-family: "Inter";
+        color: black;
+        letter-spacing: 0.5px;
+        outline: none;
+        border: none;
+      }
+
+      form h1 {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 36px;
+      }
+
+      label {
+        display: block;
+        margin-top: 30px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      input {
+        display: block;
+        height: 40px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 2px;
+        font-size: 15px;
+        font-weight: 400;
+        border: 1px solid #222222;
+      }
+      ::placeholder {
+        color: #222222;
+      }
+      button {
+        margin-top: 14px;
+        width: 100%;
+        background-color: #de2c4c;
+        color: white;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .social {
+        margin-top: 30px;
+        display: flex;
+      }
+      .social div {
+        background: red;
+        width: 150px;
+        border-radius: 3px;
+        padding: 5px 10px 10px 5px;
+        background-color: rgba(255, 255, 255, 0.27);
+        color: #eaf0fb;
+        text-align: center;
+      }
+      .social div:hover {
+        background-color: rgba(255, 255, 255, 0.47);
+      }
+      .social .fb {
+        margin-left: 25px;
+      }
+      .social i {
+        margin-right: 4px;
+      }
+
+      .image1 {
+        position: absolute;
+        left: 48%;
+        top: 22%;
+        bottom: 25.22%;
+      }
+
+      .image {
+        position: absolute;
+        left: 16%;
+        right: 19.01%;
+        top: 12%;
+        bottom: 25.22%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="image1"><img src="{%static 'images/Group_3.svg'%}" /></div>
+    <div class="image"><img src="{%static 'images/page_3.png'%}" /></div>
+
+    <form action="" method="post">
+      {% csrf_token %}
+      <h1>Lets get started</h1>
+      <h5>Create an account to access all the features</h5>
+
+      <label for="username">Username</label>
+      <input
+        type="text"
+        placeholder="User name"
+        name="username"
+        id="username"
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        placeholder="Email or Phone"
+        name="email"
+        id="email"
+      />
+
+      <label for="password1">Password</label>
+      <input
+        type="password"
+        placeholder="Password"
+        id="password1"
+        name="password1"
+      />
+
+      <label for="password2">Conform Password</label>
+      <input
+        type="password"
+        placeholder="Conform Password"
+        id="password2"
+        name="password2"
+      /><br />
+      <button type="submit">Create Account</button><br /><br />
+
+      <p>Already have an account? <a href="{% url 'login'%}">log in</a></p>
+    </form>
+  </body>
+</html>

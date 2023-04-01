@@ -1,0 +1,221 @@
+{% load static %}
+{% block content %}
+{% include 'nav-bar.html'%}
+{%endblock%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Inter"
+  />
+
+  <link
+    href="https://unpkg.com/@webpixels/css/dist/index.css"
+    rel="stylesheet"
+  />
+    <title>Dashboard</title> 
+  </head>
+  <style>
+
+    button {
+      font-family: "Inter";
+      background-color: #de2c4c;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px;
+      cursor: pointer;
+      height: 52px;
+      width: 191px;
+    }
+
+    button a{
+      color: white;
+    }
+
+    .h3{
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      color: 222222;
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+    }
+
+    .new {
+      width: 50px;
+      height: 60px;
+      margin-top: 30px;
+      background-color: black;
+      opacity: 0.8;
+      padding: 2.5px;
+    }
+    #customers {
+      font-family: "Inter";
+      font-style: "normal";
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #customers td {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 18px;
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+    }
+
+    #customers th {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 18px;
+    }
+
+    #customers th {
+      padding-top: 18px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: white;
+      color: black;
+      border: none;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    #customers tr {
+      border: none;
+    }
+    .newww{
+      height: 17px;
+      right: 50px;
+      top: 15px;
+      font-family: 'Inter';
+      font-style: normal;
+      line-height: 17px;
+      /* identical to box height */
+      color: #222222;
+            }
+
+      .newww p{
+        margin-bottom: 10px;
+        font-weight: 400;
+        font-size: 13px;
+        padding-left: 5px;
+        padding-bottom: 10px;
+        color: #666666;
+      }
+
+      .newww h6{
+        margin-top:5px;
+        font-weight: 500;
+        font-size: 14px;
+        padding-left:5px;
+        
+      }
+
+      .newww img{
+        width: 56px;
+        height: 56px;
+      }
+
+  </style>
+  <body>
+    {% include 'base.html'%}
+    <div class="container">
+
+    <div class="row justify-content-between">
+      <div class="col-6">
+        <h1 style = "font-weight:700; padding-top:3rem">Hi {{user.username}},</h1>
+        <p style="padding-bottom: 2rem;">Welcome to the Dashboard!</p>
+      </div>
+      {% if Count_jobs == 0 %}
+      <div style="padding-top:3rem"class="col-3">
+        <button type="submit" style="width:200px"><a href="#">
+          <i class="fa fa-plus-circle " aria-hidden="true"></i>Add Candidates</a></button>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if Count_jobs > 0 %}
+      <div class="outer-div" style="display: flex; flex-wrap:wrap;">
+        <div style="display: flex; width:25%">
+          <img style="width:56px; height:56px;" src="{%static 'images/Image_1.png'%}">
+          <div class="newww" style="display: flex; flex-direction:column">
+            <p style="font-weight: 500;font-size: 30px;padding-top:5px; color:black"> {{Count_jobs}}</p>
+            <p>Active Jobs</p>
+          </div>
+        </div><div style="display: flex; width:25%;">
+          <img style="width:56px; height:56px;" src="{%static 'images/01.png'%}">
+          <div class="newww" style="display: flex; flex-direction:column">
+            <p style="font-weight: 500;font-size: 30px;padding-top:5px;color:#666666;">{{Count_cand}}</p>
+            <p>New Candidate</p>
+          </div>
+          
+        </div><div style="display: flex; width:25%">
+          <img style="width:56px; height:56px;" src="{%static 'images/Untitled.png'%}">
+          <div class="newww" style="display: flex; flex-direction:column">
+            <p style="font-weight: 500;font-size: 30px;padding-top:5px;color:#666666;">03</p>
+            <p>Interview Today</p>
+          </div>
+        </div>
+        <div style="display: flex; width:25%">
+          <img style="width:56px; height:56px;" src="{%static 'images/01.png'%}">
+          <div class="newww" style="display: flex; flex-direction:column">
+            <p style="font-weight: 500;font-size: 30px;padding-top:5px; color:#666666;">{{Count_cand}}</p>
+            <p>All Candidates</p>
+          </div>
+        </div>
+      </div>
+      <h3 style="font-weight: 400;font-size: 22px; padding-top:3rem; padding-bottom:1rem;">Active Jobs</h3>
+      <table id="customers" , style="width: 100%">
+        <tr>
+          <th>Job Title</th>
+          <th>Experience</th>
+          <th>Posted on</th>
+          <th>Candidates</th>
+          <th>Assigned</th>
+        </tr>
+        <tr>
+          {% for Job in Job_list %}
+          <td>{{Job.role}}</td>
+          <td>{{Job.experience_min}}-{{Job.experience_max}} Years</td>
+          <td>{{Job.event_time}}</td>
+          <td>{{Job.count}}</td>
+          <td>
+              <img src="{%static 'images/image_2.png'%}" width="50px">
+            </td>
+          <td><img src="{%static 'images/edit.svg'%}"></td>
+          <td><img src="{%static 'images/archive.svg'%}"></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    {%else%}
+    <div class="image1 text-center"><img src="{%static 'images/image_6.svg'%}" />
+      <p>Create a job and add candiates</p>
+      <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit">
+          <a href="{% url 'create_jobs' %}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create a new job</a></button>
+      </form>
+    
+    </div>
+    
+    {% endif %}
+    </div>
+  </body>
+</html>
+
+

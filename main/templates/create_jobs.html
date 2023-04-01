@@ -1,0 +1,215 @@
+{% load static %}
+{% block content %}
+{% include 'nav-bar.html'%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Inter"
+      />
+      
+      <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
+        
+        <title>create_jobs</title>
+      </head>
+      
+      <style>
+        #create {
+            font-family: "Inter";
+        }
+
+        #create h1{
+            font-weight: 700;
+            font-size: 24px;
+            font-family: "inter";
+            padding-top: 3rem;
+        }
+        #create label{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        #create h3{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            padding-bottom: 1rem;
+        }
+
+        #create ::placeholder{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            color: #222222
+        }
+
+        #create option{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            color: #222222
+        }
+
+        #create hr{
+            border: 1px solid #666666;
+        }
+
+        #create legend{
+            font-weight: 600;
+            font-size: 13px;
+
+        }
+
+        #create a{
+            font-weight: 700;
+            font-size: 15px;
+            color:white;
+        }
+
+        #create button{
+
+            font-size: 15px;
+            border-radius: 0%;
+        }
+
+      </style>
+
+<body>
+
+    <div class="container">
+        <div id="create">
+            <h1>Create New Job</h1>
+            <div class="outer-div" style="display: flex; width:100%;padding-top:1rem;">
+                <div class="left-box" style="display: flex; flex-direction : column ; width:15%;padding-top:1rem;">
+                    <a href="{% url 'create_jobs' %}"><img src = "{%static 'images/Group163.svg'%}"></a>
+                    <a href="{% url 'create_application_form' %}"><img src = "{%static 'images/Group164.svg'%}"></a>
+                    <a href="{% url 'create_publish' %}"><img src = "{%static 'images/Group165.svg'%}"></a>
+                </div>
+                    <div class="form-box" style="width : 80%; padding-top:2rem; padding-left:3rem;padding-right:1rem; display:block; overflow-y:scroll; overflow-x:hidden;height:80vh;">
+                        <h3>Job Details</h3>
+                        <form method="POST" action="" class="row g-3">
+                            {% csrf_token %}
+
+                            <div class="col-md-6">
+                            <label for="role" class="form-label">Job Name</label>
+                            <input type="text" class="form-control" placeholder="Sr. Python Django Developer"  id="role" name="role" style="border-radius:1px;">
+                            </div>
+
+                            <!-- <fieldset class="col-md-3">
+                                <legend class="col-form-label col-sm-6 pt-0">Job Type</legend>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Part time" id="id_Part time" value="option1" checked>
+                                        <label class="form-check-label" for="id_Part time">
+                                        Part TIme
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Full time" id="id_Full time" value="option2">
+                                        <label class="form-check-label" for="id_Full time">
+                                        Full time
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset> -->
+                            <div class="col-md-3">
+                                <label for="jobtype" class="form-label">Select Templete</label>
+                                <select id="jobtype" class="form-select"  name="jobtype" style="border-radius:1px;">
+                                <option Selected >Part time</option>
+                                <option>Full time</option>
+                                <option>Intern</option>
+                                <option>Remote</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="salary" class="form-label">Salary(LPA)</label>
+                                <input type="number" name="salary" class="form-control" id="salary" placeholder="Rs. 10,00,000" style="border-radius:1px;">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="select_template" class="form-label">Select Templete</label>
+                                <select id="select_template" class="form-select"  name="select_template" style="border-radius:1px;">
+                                <option Selected >Select Templete ...</option>
+                                <option>01</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="experience_min" class="form-label">Experience(Years)</label> 
+                                <div class="row" style="flex-wrap: nowrap; margin-left : 10px" >
+                                    <button class="col-md-6" style="width : 60px;background-color:white; border:1px solid #e7eaf0">Min</button>
+                                    <select id="experience_min" name="experience_min" class="form-select col-md-6" style="width: 60px;;border-radius:1px;">
+                                        <option Selected >0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                                <div class="col-md-3 mt-auto">
+                                    <div class="row" style="flex-wrap: nowrap; margin-left : 10px" >
+                                        <button class="col-md-4" style="width : 60px;background-color:white; border:1px solid #e7eaf0;;border-radius:1px;">Max</button>
+                                        <select id="experience_max" name="experience_max" class="form-select col-md-6" style="width: 60px;border-radius:1px;">
+                                            <option Selected >0</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <hr>
+                            <h3> Job Description</h3>
+                            <div class="col-12">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Describe about the job"  style="border-radius:1px;"></textarea>
+                            </div>
+                            <div class="col-12">
+                            <label for="requirements" class="form-label">Requirements</label>
+                            <textarea class="form-control" id="requirements" name="requirements" rows="3" placeholder="Please specify the job requirements"  style="border-radius:1px;"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="about_company" class="form-label">About the company and benefits/perks of working in this company</label>
+                                <textarea class="form-control" id="about_company" name="about_company" rows="3" placeholder="Describe about the company, work culture, etc"  style="border-radius:1px;"></textarea>
+                            </div>
+                            
+                            <div class="row justify-content-end" style="padding-top:3rem;padding-bottom:3rem">
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary" style="color:white;background: white;color: #999999; border: 1px solid #999999; font-weight:600;">Cancel</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-primary" style="font-family:inter; font-weight:500;color:white; background-color:#DE2C4C;">Save & Continue</button>
+                                </div>
+                            </div> 
+                            {%endblock%}
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,460 @@
+{% load static %} {% block content %} {% include 'nav-bar.html'%} {%endblock%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+
+    <link
+      href="https://unpkg.com/@webpixels/css/dist/index.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .card-text {
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      ::placeholder {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        color: #222222;
+      }
+
+      h1 {
+        font-weight: 700;
+        font-size: 30px;
+      }
+
+      #saam .outer-div {
+        display: flex;
+        width: 100%;
+        padding-top: 1rem;
+      }
+
+      #saam .left-box {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        padding-top: 1rem;
+      }
+
+      .soo {
+        color: black;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #saam .form-label {
+        font-weight: 600;
+        font-size: 13px;
+        color: black;
+      }
+
+      .form-box p {
+        font-weight: 400;
+        font-size: 15px;
+        color: black;
+      }
+
+      .card-text {
+        font-weight: 400;
+        font-size: 14px;
+        color: black;
+      }
+
+      .outer p {
+        background: #f6f6f6;
+        margin-left: 10px;
+      }
+
+      .urll {
+        color: #de2c4c;
+      }
+    </style>
+
+    <title>Candidate Profile Edit</title>
+  </head>
+  <body>
+    <div class="container" style="padding-top: 2rem">
+      <a class="soo" href="javascript:history.back()"><-</a>
+      <h1 style="padding-top: 2rem">Candidate Details</h1>
+      <button
+        type="submit"
+        class="btn"
+        style="
+          color: white;
+          background-color: #de2c4c;
+          float: right;
+          border-radius: 1px;
+        "
+      >
+        <a
+          style="color: white; font-weight: 700; font-size: 15px"
+          href="{% url 'create_application_form' %}"
+          ><img src="{%static 'images/calendar.svg'%}" /> Schedule Interview</a
+        >
+      </button>
+
+      <div id="saam">
+        <div class="outer-div">
+          <div class="left-box">
+            <div style="display: flex">
+              <img
+                style="width: 10%"
+                src="{%static 'images/Rectangle29.svg'%}"
+              />
+              <div style="padding-top: 15px; margin-left: 10px">
+                <h5>{{Candidate.firstname}}</h5>
+
+                <p>Mumbai Maharashtra</p>
+                <select style="background: #fff2c9">
+                  <option selected value="1">Screening</option>
+                  <option value="2">Telephonic</option>
+                  <option value="3">coding</option>
+                  <option value="4">F2F</option>
+                  <option value="5">Selected</option>
+                  <option value="6">Make Offer</option>
+                </select>
+              </div>
+            </div>
+
+            <div
+              class="form-box"
+              style="width: 100%; padding-top: 2rem; display: block"
+            >
+              <form class="row g-3">
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Job Position</label
+                  >
+                  <p>Sr. Python Django Developer</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <p>Sagar.shah@gmail.com</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Phone Number</label
+                  >
+                  <p>+91 9898989898</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Experience(Years)</label
+                  >
+                  <p>5</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Notice Period</label
+                  >
+                  <p>2 Months</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Portfolio Link</label
+                  >
+                  <p>NA</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Current CTC</label
+                  >
+                  <p>Rs. 4 Lakhs</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Expected CTC</label
+                  >
+                  <p>Rs. 6 Lakhs</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label">Skype id</label>
+                  <p>sagar.shah</p>
+                </div>
+
+                <div class="col-md-8">
+                  <label for="inputEmail4" class="form-label"
+                    >Linkedin URL</label
+                  >
+                  <p>https://www.linkedin.com/in/sagarshah-8b7a03125</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label">Github URL</label>
+                  <p class="urll">http://sagarshah.github.com</p>
+                </div>
+
+                <div class="col-md-12">
+                  <label for="inputEmail4" class="form-label">Skills</label>
+
+                  <div
+                    class="outer"
+                    style="
+                      flex-wrap: wrap;
+                      display: flex;
+                      align-items: flex-start;
+                      padding: 5px 10px;
+                      gap: 5px;
+                    "
+                  >
+                    <p>
+                      Python 2.7 or Higher
+                      <img src="{%static 'images/x.svg'%}" />
+                    </p>
+                    <p>JWT <img src="{%static 'images/x.svg'%}" /></p>
+                    <p>Pandas <img src="{%static 'images/x.svg'%}" /></p>
+                    <p>NUmPy <img src="{%static 'images/x.svg'%}" /></p>
+                    <p>HTML5 <img src="{%static 'images/x.svg'%}" /></p>
+                    <p>CSS3 <img src="{%static 'images/x.svg'%}" /></p>
+                    <p>
+                      Django 1.8 or higher or flask<img
+                        src="{%static 'images/x.svg'%}"
+                      />
+                    </p>
+                    <p>
+                      object oriented javascript
+                      <img src="{%static 'images/x.svg'%}" />
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="right-box"
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 25%;
+              padding-left: 2rem;
+            "
+          >
+            <div
+              class="card"
+              style="
+                background: rgba(242, 242, 242, 0.5);
+                border: none;
+                border-radius: 1px;
+              "
+            >
+              <div class="card-body">
+                <div class="card-title" style="display: block">
+                  <h5 style="float: left">Notes</h5>
+                  <h5 style="float: right">
+                    <i
+                      style="color: #de2c4c"
+                      class="fa fa-plus"
+                      aria-hidden="true"
+                    ></i
+                    ><a style="color: #de2c4c" href="#"> Add link</a>
+                  </h5>
+                </div>
+                <p class="card-text" style="padding-top: 1rem">
+                  Good Communication skills, Portfolio link is also good. Salary
+                  expectation is way too high.
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p style="float: left; font-weight: 700">
+                    <small class="text-muted">Yamini Murthy </small>
+                  </p>
+                  <p style="float: right">
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    text-align: right;
+                    padding-top: 2rem;
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: #666666;
+                  "
+                  ><u>View all</u></a
+                >
+              </div>
+            </div>
+
+            <div
+              class="card mt-5"
+              style="
+                background: rgba(242, 242, 242, 0.5);
+                border: none;
+                border-radius: 1px;
+              "
+            >
+              <div class="card-body">
+                <div class="card-title" style="display: block">
+                  <h5 style="float: left">Feedback</h5>
+                  <h5 style="float: right">
+                    <i
+                      style="color: #de2c4c"
+                      class="fa fa-plus"
+                      aria-hidden="true"
+                    ></i
+                    ><a style="color: #de2c4c" href="#"> Add link</a>
+                  </h5>
+                </div>
+
+                <div
+                  class="card-text"
+                  style="display: block; padding-top: 1rem"
+                >
+                  <h6 style="float: left; font-weight: 13px; margin-top: 5px">
+                    Communication Skils
+                  </h6>
+                  <div style="float: right">
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                  </div>
+                </div>
+
+                <div
+                  class="card-text"
+                  style="display: block; padding-top: 2rem"
+                >
+                  <h6 style="float: left; font-weight: 13px; margin-top: 5px">
+                    Logical Skils
+                  </h6>
+                  <div style="float: right">
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                  </div>
+                </div>
+
+                <div
+                  class="card-text"
+                  style="display: block; padding-top: 2rem"
+                >
+                  <h6 style="float: left; font-weight: 13px; margin-top: 5px">
+                    Techinical Skils
+                  </h6>
+                  <div style="float: right">
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                  </div>
+                </div>
+
+                <p class="card-text" style="padding-top: 3rem">
+                  Good Communication skills, Portfolio link is also good. Salary
+                  expectation is way too high.
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p style="float: left; font-weight: 700">
+                    <small class="text-muted">Yamini Murthy </small>
+                  </p>
+                  <p style="float: right">
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+                <a href="#"
+                  ><u
+                    style="
+                      display: block;
+                      text-align: right;
+                      padding-top: 2rem;
+                      font-weight: 500;
+                      font-size: 12px;
+                      color: #666666;
+                    "
+                    >View all</u
+                  ></a
+                >
+              </div>
+            </div>
+
+            <div
+              class="card mt-5"
+              style="
+                background: rgba(242, 242, 242, 0.5);
+                border: none;
+                border-radius: 1px;
+              "
+            >
+              <div class="card-body">
+                <div class="card-title" style="display: block">
+                  <h5 style="float: left">History</h5>
+                </div>
+                <p class="card-text">
+                  <img src="{%static 'images/greater.svg'%}" /> Applied on
+                  career page
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p>
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+
+                <p class="card-text" style="padding-top: 1rem">
+                  <img src="{%static 'images/greater.svg'%}" />Resume viewed by
+                  Yamini Murthy
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p>
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+                <a href="#"
+                  ><u
+                    style="
+                      display: block;
+                      text-align: right;
+                      padding-top: 2rem;
+                      font-weight: 500;
+                      font-size: 12px;
+                      color: #666666;
+                    "
+                    >View all</u
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

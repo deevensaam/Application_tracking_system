@@ -1,0 +1,416 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+
+    <link
+      href="https://unpkg.com/@webpixels/css/dist/index.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <title>Candidate Application form</title>
+  </head>
+
+  <style>
+    #creat {
+      font-family: "Inter";
+    }
+
+    #creat h1 {
+      font-weight: 700;
+      font-size: 24px;
+      font-family: "inter";
+    }
+    #creat label {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    #creat h3 {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      padding-bottom: 1rem;
+    }
+
+    #creat ::placeholder {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      color: #de2c4c;
+    }
+
+    #creat option {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      color: #222222;
+    }
+
+    #creat hr {
+      border: 1px solid #666666;
+    }
+
+    #creat legend {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    #creat a {
+      font-weight: 700;
+      font-size: 15px;
+      color: white;
+    }
+
+    #creat button {
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 0%;
+    }
+
+    #creat p {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .logo {
+      width: 50x;
+      height: 40px;
+      padding-top: 10px;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div style="display: block">
+        <div class="header outerbox">
+          <img src="{%static 'images/page_3.png'%}" class="logo" />
+          <div style="float: right; padding-top: 1rem">
+            <label for="inputPassword4" class="form-label"
+              >Share on social media</label
+            >
+            <img src="{%static 'images/Angellist.svg'%}" style="width: 8%" />
+            <img src="{%static 'images/linkedin.svg'%}" style="width: 8%" />
+            <img src="{%static 'images/globe.svg'%}" style="width: 8%" />
+            <img src="{%static 'images/facebook.svg'%}" style="width: 8%" />
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div id="creat">
+        <form method="POST" action="" class = "row g-3">
+          {% csrf_token %}
+          <div class = "col-md-6">
+            <div><h1 style="padding-top: 1rem">Candidate - Job Application Form</h1></div>
+          </div>
+
+        </form>
+        <div
+          class="form-box"
+          style="
+            background-color: #fbf8e6;
+            width: 100%;
+            padding-top: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+          "
+        >
+          <form method="POST" action="" class="row g-3">
+            {% csrf_token %}
+            <h3>Basic Details</h3>
+            <div class="col-md-6">
+              <label for="firstname" class="form-label">First name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="firstname"
+                id="firstname"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="lastname" class="form-label">last name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="lastname"
+                id="lastname"
+                placeholder="Enter your last name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Id</label>
+              <input
+                type="text"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="Enter your Email"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="phonenumber" class="form-label">phone number</label>
+              <input
+                type="text"
+                class="form-control"
+                name="inputEmail4"
+                id="inputEmail4"
+                placeholder="phonenumber"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="designation" class="form-label">Designation</label>
+              <input
+                type="text"
+                class="form-control"
+                name="designation"
+                id="designation"
+                placeholder="Designation"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="currentctc" class="form-label">Current CTC</label>
+              <input
+                type="text"
+                class="form-control"
+                name="currentctc"
+                id="currentctc"
+                placeholder="CTC- present"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="expectedctc" class="form-label">Expected CTC</label>
+              <input
+                type="text"
+                class="form-control"
+                name="expectedctc"
+                id="expectedctc"
+                placeholder="ECTC - Expected"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="exp" class="form-label">Experience Years</label>
+              <input
+                type="text"
+                class="form-control"
+                name="exp"
+                id="exp"
+                placeholder="CTC - Expected"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="skypeid" class="form-label">Skype id</label>
+              <input
+                type="text"
+                class="form-control"
+                name="skypeid"
+                id="skypeid"
+                placeholder="id"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="linkedin_url" class="form-label">Linkedin URL</label>
+              <input
+                type="text"
+                class="form-control"
+                name="linkedin_url"
+                id="linkedin_url"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="Github_url" class="form-label">Github URL</label>
+              <input
+                type="text"
+                class="form-control"
+                name="Github_url"
+                id="Github_url"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="portfolio_url" class="form-label"
+                >Portfolio Link</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                name="portfolio_url"
+                id="portfolio_url"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="resume" class="form-label">Upload Resume / CV </label>
+              <input
+                class="form-control"
+                type="file"
+                name="resume"
+                id="resume"
+              />
+            </div>
+            <hr />
+
+            <h3>Address</h3>
+            <div class="col-md-6">
+              <label for="street" class="form-label">Street address</label>
+              <input
+                type="text"
+                class="form-control"
+                name="street"
+                id="street"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="landmark" class="form-label">Landmark</label>
+              <input
+                type="text"
+                class="form-control"
+                name="landmark"
+                id="landmark"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="pincode" class="form-label">Pin code</label>
+              <input
+                type="text"
+                class="form-control"
+                name="pincode"
+                id="pincode"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="city" class="form-label">Town/City</label>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                id="city"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="state" class="form-label">State</label>
+              <input
+                type="text"
+                class="form-control"
+                name="state"
+                id="state"
+                placeholder="Enter your first name"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="row" style="display: block; padding-bottom: 2rem">
+              <div
+                style="padding-top: 2rem; float: right"
+                class="col-md-2 my-auto"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    color: white;
+                    border: 1px solid #de2c4c;
+                    background-color: #de2c4c;
+                    margin-top: 1rem;
+                  "
+                >
+                  <i class="fa fa-close"></i> Cancel
+                </button>
+              </div>
+
+              <div
+                style="padding-top: 2rem; float: right"
+                class="col-md-2 my-auto"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    color: white;
+                    border: 1px solid #de2c4c;
+                    background-color: #de2c4c;
+                    margin-top: 1rem;
+                  "
+                ></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

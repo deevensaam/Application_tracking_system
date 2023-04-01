@@ -1,0 +1,189 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Page</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: white;
+      }
+      .background {
+        width: 430px;
+        height: 520px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+      }
+
+      form {
+        height: 600px;
+        width: 450px;
+        background-color: rgba(255, 255, 255, 0.13);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 62%;
+        left: 29%;
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        padding: 50px 35px;
+      }
+      form * {
+        font-family: "Inter";
+        color: black;
+        letter-spacing: 0.5px;
+        outline: none;
+        border: none;
+      }
+      form h1 {
+        position: relative;
+        width: 239px;
+        height: 36px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 36px;
+        color: #222222;
+      }
+
+      label {
+        display: block;
+        margin-top: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      input {
+        display: block;
+        height: 40px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 2px;
+        font-size: 15px;
+        font-weight: 400;
+        border: 1px solid #222222;
+      }
+      ::placeholder {
+        color: #222222;
+      }
+      button {
+        margin-top: 14px;
+        width: 100%;
+        background-color: #de2c4c;
+        color: black;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .social {
+        margin-top: 30px;
+        display: flex;
+      }
+      .social div {
+        background: red;
+        width: 150px;
+        border-radius: 3px;
+        padding: 5px 10px 10px 5px;
+        background-color: rgba(255, 255, 255, 0.27);
+        color: #eaf0fb;
+        text-align: center;
+      }
+      .social div:hover {
+        background-color: rgba(255, 255, 255, 0.47);
+      }
+      .social .fb {
+        margin-left: 25px;
+      }
+      .social i {
+        margin-right: 4px;
+      }
+
+      .image {
+        position: absolute;
+        left: 48.1%;
+        right: 19.01%;
+        top: 23.56%;
+        bottom: 25.22%;
+      }
+
+      .image1 {
+        position: absolute;
+        left: 16.1%;
+        top: 20.56%;
+        bottom: 25.22%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image"><img src="{%static 'images/Group_3.svg'%}" /></div>
+    <div class="image1"><img src="{%static 'images/page_3.png'%}" /></div>
+
+    <form method="post">
+      <div class="form h1">
+        <h1>Welcome back!</h1>
+        <h5>Login and enjoy the features</h5>
+      </div>
+
+      {% csrf_token %}
+      <label for="username">Email id</label>
+      <input
+        type="text"
+        placeholder="Enter Email"
+        id="username"
+        name="username"
+      />
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        placeholder="Enter your Password"
+        id="password"
+        name="pass"
+      /><br />
+
+      <span style="display: flex; justify-content: space-between">
+        <div style="display: flex">
+          <input
+            type="checkbox"
+            name="Remember me"
+            style="width: 20px; height: 20px"
+          /><label
+            for="checkbox"
+            style="margin-top: 5px; font-size: 13px; font-weight: 400"
+          >
+            Remember me
+          </label>
+        </div>
+        <a style="text-align: last" href="{% url 'signup' %}">
+          Forgot Password?</a
+        >
+      </span>
+
+      <button type="submit">Log In</button><br /><br />
+      <p>Don't have an account? <a href="{% url 'signup' %}">Register</a></p>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,487 @@
+{% load static %} {% block content %} {% include 'nav-bar.html'%} {%endblock%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+
+    <link
+      href="https://unpkg.com/@webpixels/css/dist/index.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .card-text {
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      ::placeholder {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        color: #222222;
+      }
+
+      h1 {
+        font-weight: 700;
+        font-size: 30px;
+      }
+
+      #saam .outer-div {
+        display: flex;
+        width: 100%;
+        padding-top: 1rem;
+      }
+
+      #saam .left-box {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        padding-top: 1rem;
+      }
+
+      .soo {
+        color: black;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #saam .form-label {
+        font-weight: 600;
+        font-size: 13px;
+      }
+    </style>
+
+    <title>Candidate Profile Edit</title>
+  </head>
+  <body>
+    <div class="container" style="padding-top: 2rem">
+      <a class="soo" href="javascript:history.back()"><-</a>
+      <h1 style="padding-top: 2rem">Candidate Details</h1>
+      <button
+        type="submit"
+        class="btn"
+        style="
+          color: white;
+          background-color: #de2c4c;
+          float: right;
+          border-radius: 1px;
+        "
+      >
+        <a
+          style="color: white; font-weight: 700; font-size: 15px"
+          href="{% url 'create_application_form' %}"
+          ><img src="{%static 'images/calendar.svg'%}" /> Schedule Interview</a
+        >
+      </button>
+      <div id="saam">
+        <div class="outer-div">
+          <div class="left-box">
+            <div style="display: flex">
+              <img
+                style="width: 10%"
+                src="{%static 'images/Rectangle29.svg'%}"
+              />
+              <div style="padding-top: 15px; margin-left: 10px">
+                <h5>Sagar Shah</h5>
+                <p>Mumbai Maharashtra</p>
+                <select style="background: #fff2c9">
+                  <option selected value="1">Screening</option>
+                  <option value="2">Telephonic</option>
+                  <option value="3">coding</option>
+                  <option value="4">F2F</option>
+                  <option value="5">Selected</option>
+                  <option value="6">Make Offer</option>
+                </select>
+              </div>
+            </div>
+
+            <div
+              class="form-box"
+              style="width: 100%; padding-top: 2rem; display: block"
+            >
+              <form class="row g-3">
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Job Position</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label">Email</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sagar.shah@gmail.com"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="+91 9898989889"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-2">
+                  <label for="inputEmail4" class="form-label"
+                    >Experience(Years)</label
+                  >
+                  <select
+                    id="inputState"
+                    class="form-select"
+                    style="border-radius: 1px"
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option selected>6</option>
+                  </select>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="inputEmail4" class="form-label"
+                    >Notice Period</label
+                  >
+                  <select
+                    id="inputState"
+                    class="form-select"
+                    style="border-radius: 1px"
+                  >
+                    <option>15 days</option>
+                    <option>30 days</option>
+                    <option selected>1 month</option>
+                    <option>2 months</option>
+                    <option>3 months</option>
+                    <option>15 days</option>
+                  </select>
+                </div>
+
+                <div class="col-md-8">
+                  <label for="inputEmail4" class="form-label"
+                    >Portfolio Link</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Current CTC</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label"
+                    >Expected CTC</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="inputEmail4" class="form-label">Skype id</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label"
+                    >Linkedin URL</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="inputEmail4" class="form-label">Github URL</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+
+                <div class="col-md-12">
+                  <label for="inputEmail4" class="form-label">Skills</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Sr. Python Django Developer"
+                    style="border-radius: 1px"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="right-box"
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 25%;
+              padding-left: 2rem;
+            "
+          >
+            <div
+              class="card"
+              style="
+                background: rgba(242, 242, 242, 0.5);
+                border: none;
+                border-radius: 1px;
+              "
+            >
+              <div class="card-body">
+                <div class="card-title" style="display: block">
+                  <h5 style="float: left">Notes</h5>
+                  <h5 style="float: right">
+                    <i
+                      style="color: #de2c4c"
+                      class="fa fa-plus"
+                      aria-hidden="true"
+                    ></i
+                    ><a style="color: #de2c4c" href="#"> Add link</a>
+                  </h5>
+                </div>
+                <p class="card-text" style="padding-top: 1rem">
+                  Good Communication skills, Portfolio link is also good. Salary
+                  expectation is way too high.
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p style="float: left; font-weight: 700">
+                    <small class="text-muted">Yamini Murthy </small>
+                  </p>
+                  <p style="float: right">
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  style="
+                    display: block;
+                    text-align: right;
+                    padding-top: 2rem;
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: #666666;
+                  "
+                  ><u>View all</u></a
+                >
+              </div>
+            </div>
+
+            <div
+              class="card mt-5"
+              style="
+                background: rgba(242, 242, 242, 0.5);
+                border: none;
+                border-radius: 1px;
+              "
+            >
+              <div class="card-body">
+                <div class="card-title" style="display: block">
+                  <h5 style="float: left">Feedback</h5>
+                  <h5 style="float: right">
+                    <i
+                      style="color: #de2c4c"
+                      class="fa fa-plus"
+                      aria-hidden="true"
+                    ></i
+                    ><a style="color: #de2c4c" href="#"> Add link</a>
+                  </h5>
+                </div>
+
+                <div
+                  class="card-text"
+                  style="display: block; padding-top: 1rem"
+                >
+                  <h6 style="float: left; font-weight: 13px; margin-top: 5px">
+                    Communication Skils
+                  </h6>
+                  <div style="float: right">
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                  </div>
+                </div>
+
+                <div
+                  class="card-text"
+                  style="display: block; padding-top: 2rem"
+                >
+                  <h6 style="float: left; font-weight: 13px; margin-top: 5px">
+                    Logical Skils
+                  </h6>
+                  <div style="float: right">
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                  </div>
+                </div>
+
+                <div
+                  class="card-text"
+                  style="display: block; padding-top: 2rem"
+                >
+                  <h6 style="float: left; font-weight: 13px; margin-top: 5px">
+                    Techinical Skils
+                  </h6>
+                  <div style="float: right">
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                    <img src="{%static 'images/starA.svg'%}" width="15px" />
+                  </div>
+                </div>
+
+                <p class="card-text" style="padding-top: 3rem">
+                  Good Communication skills, Portfolio link is also good. Salary
+                  expectation is way too high.
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p style="float: left; font-weight: 700">
+                    <small class="text-muted">Yamini Murthy </small>
+                  </p>
+                  <p style="float: right">
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+                <a href="#"
+                  ><u
+                    style="
+                      display: block;
+                      text-align: right;
+                      padding-top: 2rem;
+                      font-weight: 500;
+                      font-size: 12px;
+                      color: #666666;
+                    "
+                    >View all</u
+                  ></a
+                >
+              </div>
+            </div>
+
+            <div
+              class="card mt-5"
+              style="
+                background: rgba(242, 242, 242, 0.5);
+                border: none;
+                border-radius: 1px;
+              "
+            >
+              <div class="card-body">
+                <div class="card-title" style="display: block">
+                  <h5 style="float: left">History</h5>
+                </div>
+                <p class="card-text">
+                  <strong>> Applied on career page</strong>
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p>
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+
+                <p class="card-text" style="padding-top: 1rem">
+                  <strong>> Applied on career page</strong>
+                </p>
+
+                <div class="card-text" style="display: block">
+                  <p>
+                    <small class="text-muted">01st Mar, 2020 </small>
+                  </p>
+                </div>
+                <a href="#"
+                  ><u
+                    style="
+                      display: block;
+                      text-align: right;
+                      padding-top: 2rem;
+                      font-weight: 500;
+                      font-size: 12px;
+                      color: #666666;
+                    "
+                    >View all</u
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

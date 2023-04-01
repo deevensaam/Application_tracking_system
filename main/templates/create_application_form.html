@@ -1,0 +1,342 @@
+{%load static%}{% block content %} {%include 'nav-bar.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter"
+    />
+
+    <link
+      href="https://unpkg.com/@webpixels/css/dist/index.css"
+      rel="stylesheet"
+    />
+
+    <title>create_application_form</title>
+  </head>
+
+  <style>
+    #creat {
+      font-family: "Inter";
+    }
+
+    #creat h1 {
+      font-weight: 700;
+      font-size: 24px;
+      font-family: "inter";
+      padding-top: 3rem;
+    }
+    #createe label {
+      font-weight: 400;
+      font-size: 15px;
+      color: #222222;
+    }
+
+    #createe h3 {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      padding-bottom: 1rem;
+    }
+
+    #createe ::placeholder {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      color: #222222;
+    }
+
+    #createe option {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      color: #222222;
+    }
+
+    #createe hr {
+      border: 1px solid #666666;
+    }
+
+    #createe legend {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    #createe a {
+      font-weight: 700;
+      font-size: 15px;
+      color: white;
+    }
+
+    #createe button {
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 0%;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div id="createe">
+        <h1>Create New Job</h1>
+        <div
+          class="outer-div"
+          style="display: flex; width: 100%; padding-top: 1rem"
+        >
+          <div
+            class="left-box"
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 15%;
+              padding-top: 1rem;
+            "
+          >
+            <a href="{% url 'create_jobs' %}"
+              ><img src="{%static 'images/Group163.svg'%}"
+            /></a>
+            <a href="{% url 'create_application_form' %}"
+              ><img src="{%static 'images/Group166.svg'%}"
+            /></a>
+            <a href="{% url 'create_publish' %}"
+              ><img src="{%static 'images/Group165.svg'%}"
+            /></a>
+          </div>
+          <div
+            class="form-box"
+            style="width: 60%; padding-top: 2rem; padding-left: 8rem"
+          >
+            <h3>Application Form</h3>
+            <p>Please select the mandatory field</p>
+            <br />
+
+            <form class="row g-3">
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="fullname"
+                  />
+                  <label class="form-check-label" for="fullname">
+                    Full Name
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="skypeid"
+                  />
+                  <label class="form-check-label" for="skypeid">
+                    Skype id
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="emailid"
+                  />
+                  <label class="form-check-label" for="emailid">
+                    Email id
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Notice Period
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Phone Number
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Resume/CV
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Designation
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Linkedin URL
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Current Location
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Github URL
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Current CTC
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Portfolio Link
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                  />
+                  <label class="form-check-label" for="defaultCheck1">
+                    Expected CTC
+                  </label>
+                </div>
+              </div>
+
+              <div
+                class="row justify-content-end"
+                style="margin-top: 3rem; margin-bottom: 3rem"
+              >
+                <div class="col-md-2">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="
+                      color: white;
+                      background: white;
+                      color: #999999;
+                      border: 1px solid #999999;
+                    "
+                  >
+                    Cancel
+                  </button>
+                </div>
+                <div class="col-md-5">
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="color: white; background-color: #de2c4c"
+                  >
+                    <a href="{% url 'create_publish' %}">Submit</a>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{%endblock%}
