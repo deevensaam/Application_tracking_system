@@ -129,7 +129,7 @@
         <div>
           <button type="submit" style="width: 200px">
             <a href="{% url 'create_jobs' %}">
-              <i class="fa fa-plus-circle" aria-hidden="true"></i>  Create New
+              <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
               Job</a
             >
           </button>
@@ -151,12 +151,13 @@
                 color: black;
               "
             >
-            {{job.count}}
+            {{Count_jobs}}
             </p>
+
             <p>Active Jobs</p>
           </div>
         </div>
-        <div style="display: flex; width: 25%">
+        <!-- <div style="display: flex; width: 25%">
           <img
             style="width: 56px; height: 56px"
             src="{%static 'images/01.png'%}"
@@ -174,7 +175,7 @@
             </p>
             <p>Archeived Jobs</p>
           </div>
-        </div>
+        </div> -->
       </div>
       <h3
         style="
@@ -195,8 +196,10 @@
           <th>Assigned</th>
         </tr>
         <tr>
-          {% for job in jobs  %}
-          <td><a href="{% url 'jobs_list' id=job.job.pk %}">{{job.job.role}}</a></td>
+          {% for job in jobs %}
+          <td>
+            <a href="{% url 'jobs_list' id=job.job.pk %}">{{job.job.role}}</a>
+          </td>
           <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
           <td>{{job.job.event_time}}</td>
           <td>{{job.count}}</td>

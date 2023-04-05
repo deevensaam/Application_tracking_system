@@ -32,10 +32,8 @@
       font-weight: 700;
       border: 1px;
       cursor: pointer;
-      height: 52px;
-      width: 191px;
-      left: 75%;
-      top: 18%;
+      width: 161px;
+      height: 46px;
     }
 
     button a {
@@ -128,7 +126,7 @@
         </div>
       </div>
 
-      <div class="outer-div" style="display: flex; flex-wrap: wrap">
+      <!-- <div class="outer-div" style="display: flex; flex-wrap: wrap">
         <div style="display: flex; width: 25%">
           <img
             style="width: 56px; height: 56px"
@@ -143,14 +141,13 @@
                 color: black;
               "
             >
-            {{Count_jobs}}
+              1
             </p>
             <p>Active Jobs</p>
           </div>
         </div>
-
-      </div>
-      <h3
+      </div> -->
+      <!-- <h3
         style="
           font-weight: 400;
           font-size: 22px;
@@ -159,8 +156,8 @@
         "
       >
         Active Jobs
-      </h3>
-      <table id="customer" , style="width: 100%">
+      </h3> -->
+      <!-- <table id="customer" , style="width: 100%">
         <tr>
           <th>Job Title</th>
           <th>Experience</th>
@@ -168,14 +165,55 @@
           <th>Candidates</th>
         </tr>
         <tr>
-          {% for i in jobs_lists %}
-          <td><a href = "{% url 'candidate_application' id=i.pk %}">{{i.role}}</a></td>
-          <td>{{i.experience_min}}-{{i.experience_max}} Years</td>
-          <td>{{i.event_time}}</td>
-          <td>40</td>
+          {% for job in jobs %}
+          <td><a href = "{% url 'candidate_application' id=job.job.pk %}">{{job.job.role}}</a></td>
+          <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
+          <td>{{job.job.event_time}}</td>
+          <td>{{job.count}}</td>
         </tr>
         {% endfor %}
-      </table>
+      </table> -->
+
+      <div class="row g-3">
+      {% for job in jobs %}
+        <div class="col-sm-4">
+          <div class="card">
+            <div style="background: #EFCDFE;" class="card-header">
+              <strong>{{job.job.role}}</strong>-
+              <a href="{% url 'candidate_application' id=job.job.pk %}"
+                >Apply here</a
+              ><br /><small
+                >{{job.count}}
+                <i class="fa fa-user-o" aria-hidden="true"></i></small
+              >,
+              <small
+                ><i class="fa fa-tasks" aria-hidden="true"></i>
+                {{job.job.jobtype}} </small
+              >,
+              <small
+                >{{job.job.experience_min}}-{{job.job.experience_max}}
+                Years</small
+              >
+            </div>
+            <div style="background: rgba(242, 242, 242, 0.5);"class="card-body">
+              <p class="card-text">
+                Description: <small>{{job.job.description}}</small>
+              </p>
+              <p class="card-text">
+                Requirement: <small>{{job.job.requirements}}</small>
+              </p>
+              <p class="card-text">
+                About Company: <small>{{job.job.about_company}}</small>
+              </p>
+              <br />
+              <small class="card-text">Posted on: {{job.job.event_time}}</small>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+
     </div>
   </body>
 </html>

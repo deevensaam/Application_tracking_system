@@ -90,7 +90,7 @@
       }
     </style>
 
-    <title>Candidate Profile Edit</title>
+    <title>Candidate Profile</title>
   </head>
   <body>
     <div class="container" style="padding-top: 2rem">
@@ -121,18 +121,30 @@
                 style="width: 10%"
                 src="{%static 'images/Rectangle29.svg'%}"
               />
-              <div style="padding-top: 15px; margin-left: 10px">
-                <h5>{{Candidate.firstname}}</h5>
 
-                <p>Mumbai Maharashtra</p>
-                <select style="background: #fff2c9">
+              <div style="padding-top: 15px; margin-left: 10px">
+                <h5>
+                  {% for application in applications %}
+                  {{application.applied_by.firstname}}
+                  {{application.applied_by.lastname}} {% endfor %}
+                </h5>
+
+                <p>
+                  {% for application in applications %}
+                  {{application.applied_by.city}} {% endfor %}
+                </p>
+                <!-- <select style="background: #fff2c9">
                   <option selected value="1">Screening</option>
                   <option value="2">Telephonic</option>
                   <option value="3">coding</option>
                   <option value="4">F2F</option>
                   <option value="5">Selected</option>
                   <option value="6">Make Offer</option>
-                </select>
+                </select> -->
+                <p>
+                  {% for application in applications %}
+                  {{application.applied_by.status}} {% endfor %}
+                </p>
               </div>
             </div>
 
@@ -145,26 +157,38 @@
                   <label for="inputEmail4" class="form-label"
                     >Job Position</label
                   >
-                  <p>Sr. Python Django Developer</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.role}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <p>Sagar.shah@gmail.com</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.email}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label"
                     >Phone Number</label
                   >
-                  <p>+91 9898989898</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.phonenumber}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label"
                     >Experience(Years)</label
                   >
-                  <p>5</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.experience}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
@@ -178,44 +202,75 @@
                   <label for="inputEmail4" class="form-label"
                     >Portfolio Link</label
                   >
-                  <p>NA</p>
+                  <p>
+                    {% for application in applications %}
+                    <a href="{{application.applied_by.portfolio_url}}">
+                      {{application.applied_by.portfolio_url}}
+                    </a>
+                    {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label"
                     >Current CTC</label
                   >
-                  <p>Rs. 4 Lakhs</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.currentctc}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label"
                     >Expected CTC</label
                   >
-                  <p>Rs. 6 Lakhs</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.expectedctc}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label">Skype id</label>
-                  <p>sagar.shah</p>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.skypeid}} {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-8">
                   <label for="inputEmail4" class="form-label"
                     >Linkedin URL</label
                   >
-                  <p>https://www.linkedin.com/in/sagarshah-8b7a03125</p>
+                  <p>
+                    {% for application in applications %}
+                    <a href="{{application.applied_by.linkedin_url}}">
+                      {{application.applied_by.linkedin_url}}
+                    </a>
+                    {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label">Github URL</label>
-                  <p class="urll">http://sagarshah.github.com</p>
+
+                  <p class="urll">
+                    {% for application in applications %}
+                    <a href="{{application.applied_by.Github_url}}">
+                      {{application.applied_by.Github_url}}
+                    </a>
+                    {% endfor %}
+                  </p>
                 </div>
 
                 <div class="col-md-12">
-                  <label for="inputEmail4" class="form-label">Skills</label>
-
-                  <div
+                  <label for="skills" class="form-label">Skills</label>
+                  <p>
+                    {% for application in applications %}
+                    {{application.applied_by.skills}} {% endfor %}
+                  </p>
+                  <!-- <div
                     class="outer"
                     style="
                       flex-wrap: wrap;
@@ -225,25 +280,15 @@
                       gap: 5px;
                     "
                   >
-                    <p>
-                      Python 2.7 or Higher
-                      <img src="{%static 'images/x.svg'%}" />
-                    </p>
-                    <p>JWT <img src="{%static 'images/x.svg'%}" /></p>
-                    <p>Pandas <img src="{%static 'images/x.svg'%}" /></p>
-                    <p>NUmPy <img src="{%static 'images/x.svg'%}" /></p>
-                    <p>HTML5 <img src="{%static 'images/x.svg'%}" /></p>
-                    <p>CSS3 <img src="{%static 'images/x.svg'%}" /></p>
-                    <p>
-                      Django 1.8 or higher or flask<img
-                        src="{%static 'images/x.svg'%}"
-                      />
-                    </p>
-                    <p>
-                      object oriented javascript
-                      <img src="{%static 'images/x.svg'%}" />
-                    </p>
-                  </div>
+                  </div> -->
+                </div>
+
+                <div class="col-md-4">
+                  <label for="resume" class="form-label">Resume</label>
+                  <p class="urll">
+                    {% for application in applications %}
+                    {{application.applied_by.resume}} {% endfor %}<link />
+                  </p>
                 </div>
               </form>
             </div>
@@ -269,18 +314,82 @@
               <div class="card-body">
                 <div class="card-title" style="display: block">
                   <h5 style="float: left">Notes</h5>
-                  <h5 style="float: right">
+                  <!-- <h5 style="float: right">
                     <i
                       style="color: #de2c4c"
                       class="fa fa-plus"
                       aria-hidden="true"
                     ></i
-                    ><a style="color: #de2c4c" href="#"> Add link</a>
-                  </h5>
+                    ><a style="color: #de2c4c" href="#"> Add</a>
+                  </h5> -->
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                    data-whatever="@mdo"
+                  >
+                    Add
+                  </button>
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                           Add Notes<br>
+                           <small>Add a descriptive evaluation for the interview you took</small>
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="POST" action="">
+                            {%csrf_token%}
+                            <div class="form-group">
+                              <label for="user_note" class="col-form-label"
+                                >Notes:</label
+                              >
+                              <textarea 
+                                name=" user_note" 
+                                class="form-control"
+                                id=" user_note"
+                                placeholder="Please add your feedback"
+                              ></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                              Add
+                            </button>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <p class="card-text" style="padding-top: 1rem">
-                  Good Communication skills, Portfolio link is also good. Salary
-                  expectation is way too high.
+                  <p>matter</p>
                 </p>
 
                 <div class="card-text" style="display: block">
@@ -418,25 +527,27 @@
                 </div>
                 <p class="card-text">
                   <img src="{%static 'images/greater.svg'%}" /> Applied on
-                  career page
                 </p>
 
                 <div class="card-text" style="display: block">
                   <p>
-                    <small class="text-muted">01st Mar, 2020 </small>
+                    <small class="text-muted"
+                      >{% for application in applications %}
+                      {{application.applied_by.event_time}} {% endfor %}</small
+                    >
                   </p>
                 </div>
 
-                <p class="card-text" style="padding-top: 1rem">
+                <!-- <p class="card-text" style="padding-top: 1rem">
                   <img src="{%static 'images/greater.svg'%}" />Resume viewed by
                   Yamini Murthy
-                </p>
+                </p> -->
 
-                <div class="card-text" style="display: block">
+                <!-- <div class="card-text" style="display: block">
                   <p>
                     <small class="text-muted">01st Mar, 2020 </small>
                   </p>
-                </div>
+                </div> -->
                 <a href="#"
                   ><u
                     style="

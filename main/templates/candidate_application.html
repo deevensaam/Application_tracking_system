@@ -135,12 +135,15 @@
         <hr />
       </div>
       <div id="creat">
-        <form method="POST" action="" class = "row g-3">
+        <form method="POST" action="" class="row g-3">
           {% csrf_token %}
-          <div class = "col-md-6">
-            <div><h1 style="padding-top: 1rem">Candidate - Job Application Form</h1></div>
+          <div class="col-md-6">
+            <div>
+              <h1 style="padding-top: 1rem">
+                Candidate - Job Application Form
+              </h1>
+            </div>
           </div>
-
         </form>
         <div
           class="form-box"
@@ -196,8 +199,8 @@
               <input
                 type="text"
                 class="form-control"
-                name="inputEmail4"
-                id="inputEmail4"
+                name="phonenumber"
+                id="phonenumber"
                 placeholder="phonenumber"
                 style="border-radius: 1px"
               />
@@ -240,16 +243,38 @@
             </div>
 
             <div class="col-md-3">
-              <label for="exp" class="form-label">Experience Years</label>
+              <label for="experience" class="form-label">Experience Years</label>
               <input
                 type="text"
                 class="form-control"
-                name="exp"
-                id="exp"
+                name="experience"
+                id="experience"
                 placeholder="CTC - Expected"
                 style="border-radius: 1px"
               />
             </div>
+
+            <!-- <div class="col-md-3">
+              <label for="exp" class="form-label">Experience Years</label><br>
+                <select style="width:100%; padding-bottom:1rem" name="exp" id="exp">
+                <option value="1" style="background-color: #fff2c9">
+                  1
+                </option>
+                <option value="2" style="background: #cbd4eb">
+                  2
+                </option>
+                <option value="3" selected style="background: #efcdfe">
+                  3
+                </option>
+                <option value="4" style="background: #fbd4c3">4</option>
+                <option value="5" style="background: #cdfed0">
+                 5
+                </option>
+                <option value="6" style="background: #ffd7e4">
+                  6
+                </option>
+              </select>
+            </div> -->
 
             <div class="col-md-6">
               <label for="skypeid" class="form-label">Skype id</label>
@@ -310,6 +335,30 @@
                 id="resume"
               />
             </div>
+
+            <div class="col-md-9">
+              <label for="skills" class="form-label">Add your Skills</label>
+              <input
+                type="text"
+                class="form-control"
+                name="skills"
+                id="skills"
+                placeholder="Add your respective skils"
+                style="border-radius: 1px"
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="source" class="form-label">Source</label>
+              <select id="source" class="form-select"  name="source" style="border-radius:1px;">
+              <option>Linkedin</option>
+              <option>Dribble</option>
+              <option>Self</option>
+              <option>Angellist</option>
+              <option>Career Page</option>
+              </select>
+          </div>
+
             <hr />
 
             <h3>Address</h3>
@@ -320,7 +369,7 @@
                 class="form-control"
                 name="street"
                 id="street"
-                placeholder="Enter your first name"
+                placeholder="Enter your street address"
                 style="border-radius: 1px"
               />
             </div>
@@ -332,7 +381,7 @@
                 class="form-control"
                 name="landmark"
                 id="landmark"
-                placeholder="Enter your first name"
+                placeholder="Enter your land mark"
                 style="border-radius: 1px"
               />
             </div>
@@ -344,7 +393,7 @@
                 class="form-control"
                 name="pincode"
                 id="pincode"
-                placeholder="Enter your first name"
+                placeholder="Enter your Pin code"
                 style="border-radius: 1px"
               />
             </div>
@@ -356,7 +405,7 @@
                 class="form-control"
                 name="city"
                 id="city"
-                placeholder="Enter your first name"
+                placeholder="Enter your town"
                 style="border-radius: 1px"
               />
             </div>
@@ -368,7 +417,7 @@
                 class="form-control"
                 name="state"
                 id="state"
-                placeholder="Enter your first name"
+                placeholder="Enter your state"
                 style="border-radius: 1px"
               />
             </div>

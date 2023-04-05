@@ -17,15 +17,6 @@ TEMPLATE_CHOICES=(
     ('04', '04'),
 )
 
-STAGE_CHOICE =(
-    ('screening', 'screening'),
-    ('telephone', 'telephone'),
-    ('coding', 'coding'),
-    ('F2F', 'F2F'),
-    ('Make offer', 'Make offer'),
-    ('selected', 'selected'),
-)
-
 MIN_CHOICE=(
     ('0','0'),
     ('1','1'),
@@ -45,12 +36,20 @@ MAX_CHOICE=(
     ('6','6'),
 )
 
+SOURCE_CHOICES=(
+    ('Linkedin','Linkedin'),
+    ('Dribble','Dribble'),
+    ('Self','Self'),
+    ('Angellist','Angellist'),
+    ('Career Page','Career Page'),
+)
+
 class Candidate(models.Model):
     firstname=models.CharField('First name', max_length=50)
     lastname=models.CharField('Last name', max_length=50, blank=True)
     email=models.EmailField('Email id')
     phonenumber=models.IntegerField('Phone number', null=True)
-    designation=models.CharField('Designation', max_length=15, null=True)
+    designation=models.CharField('Designation', max_length=50, null=True)
     currentctc=models.IntegerField('Current ctc', null=True)
     expectedctc=models.IntegerField('Expected ctc', null=True)
     skypeid=models.URLField('Skype id', null=True)
@@ -63,9 +62,10 @@ class Candidate(models.Model):
     pincode=models.IntegerField('Pincode', null=True)
     city=models.CharField('City', max_length=20, null=True)
     state=models.CharField('State', max_length=20, null=True)
-    exp=models.IntegerField('Years Exp', null=True)
+    experience=models.IntegerField('Years Exp', null=True)
     event_time=models.DateTimeField(default=timezone.now)
-    stage= models.CharField('Stage', max_length=25,choices=STAGE_CHOICE,default='screening', null=True)
+    skills=models.CharField('Skills', max_length=225, null=True)
+    source = models.CharField(max_length=15, choices=SOURCE_CHOICES,default='Full time',blank=True)
 
     def __str__(self) -> str:
         return f"Candidate - id : {self.pk} email : {self.email}"
@@ -93,10 +93,29 @@ class Job(models.Model):
 class JobApplication(models.Model):
 
     class ApplicationStatus(models.TextChoices):
-        ACCEPTED = ('ACCEPTED', 'accepted')
+        ACCEPTED = ('SELECTED', 'selected')
         REJECTED = ('REJECTED', 'rejected')
+        SCREENING = ('SCREENING', 'screening')
+        TELEPHONE =('TELEPHONE', 'telephone') 
+        CODING = ('CODING', 'coding')
+        F2F = ('F2F', 'f2f')
+        MAKEOFFER = ('MAKEOFFER', 'makeoffer')
+
     jobId = models.ForeignKey(on_delete=models.CASCADE, to=Job)
     applied_by = models.ForeignKey(on_delete=models.CASCADE, to=Candidate)
-    feedback_note = models.CharField(max_length=200)
-    user_note = models.CharField(max_length=200)
-    status = models.CharField(max_length=20,choices=ApplicationStatus.choices)
+    # feedback_note = models.CharField(max_length=200)
+    # user_note = models.CharField(max_length=200)
+    status = models.CharField(max_length=20,choices=ApplicationStatus.choices,default='SELECTED')
+
+class Notes(models.Model):
+    user_note = models.CharField(max_length = 250)
+    application_ref = models.ForeignKey(on_delete=models.CASCADE, to=JobApplication)
+    added_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)
+
+class FeedbackNotes(models.Model):
+    user_feedback = models.CharField(max_length = 250)
+    communication_rating = models.IntegerField(max_length = 10)
+    logicalskills_rating = models.IntegerField(max_length = 10)
+    techinicalskills_rating = models.IntegerField(max_length = 10)
+    application_ref = models.ForeignKey(on_delete=models.CASCADE, to=JobApplication)
+    given_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)

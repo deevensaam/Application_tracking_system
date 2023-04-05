@@ -290,14 +290,14 @@
         padding-top: 2rem;
       ">
       <div style="display: flex; width: 24%">
-        <form action="/form/submit" method="GET">
+        <form action="/candidates_list/" method="GET">
           <input style="border: 1px solid black"
             type="text"
             name="text"
             class="search"
-            placeholder="Search by Name, Location ...     "=
+            placeholder="Search by Name, Location ...     "
           />
-          <i style="margin-left: -10%;"class="fa fa-search" aria-hidden="true"></i>
+          <i type="submit" style="margin-left: -10%;"class="fa fa-search" aria-hidden="true"></i>
         </form>
       </div>
 
@@ -315,16 +315,18 @@
         </select>
       </div>
 
-      <div style="display: flex; width: 5%">
-        <div class="box1"><p>Source</p></div>
-      </div>
-      <div style="display: flex; width: 22%">
-        <select class='boxx' name="stage" Selected id="stage">
-          <option selected value="All">All</option>
-          <option value="Linkedin">Linkedin</option>
-          <option value="Angellist">Angellist</option>
-          <option value="Globe">Globe</option>
-        </select>
+      <div class="dropdown"></div>
+        <div style="display: flex; width: 5%">
+          <div class="box1"><p>Source</p></div>
+        </div>
+        <div style="display: flex; width: 22%">
+          <select class='boxx' name="stage" Selected id="stage">
+            <option selected value="All">All</option>
+            <option value="Linkedin">Linkedin</option>
+            <option value="Angellist">Angellist</option>
+            <option value="Globe">Globe</option>
+          </select>
+        </div>
       </div>
 
       <!-- {% if user.is_superuser == frue %} -->
@@ -421,11 +423,11 @@
         <tr>
           {% for Candidate in Candidate_list %}
           <td><a href="{% url 'candidate_profile' id=Candidate.pk %}">{{Candidate.firstname}} {{Candidate.lastname}}</a><br><small>{{Candidate.state}}, {{Candidate.city}}</small></td>
-          <td>None</td>
-          <td>{{Candidate.exp}}</td>
+          <td>{{Candidate.role}}</td>
+          <td>{{Candidate.experience}}</td>
           <td>{{Candidate.event_time}}</td>
-          <td></td>
-          <td>{{Candidate.stage}}</td>
+          <td>{{Candidate.source}}</td>
+          <td>{{Candidate.status}}</td>
           <td>
               <img src="{%static 'images/image_2.png'%}" width="50px">
             </td>
@@ -435,11 +437,8 @@
       </table>
     </div>
 
-
-
-
     <button type="submit">
-      <a href="{% url 'job_details' %}">
+      <a href="{% url 'jobss' %}">
         <i class="fa fa-plus-circle" aria-hidden="true"></i>Add Candidates</a></button>
       <br /><br />
 

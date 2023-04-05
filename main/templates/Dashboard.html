@@ -139,7 +139,8 @@
         <h1 style = "font-weight:700; padding-top:3rem">Hi {{user.username}},</h1>
         <p style="padding-bottom: 2rem;">Welcome to the Dashboard!</p>
       </div>
-      {% if Count_jobs == 0 %}
+
+      {% if Count_jobs > 0 %}
       <div style="padding-top:3rem"class="col-3">
         <button type="submit" style="width:200px"><a href="#">
           <i class="fa fa-plus-circle " aria-hidden="true"></i>Add Candidates</a></button>
@@ -162,13 +163,14 @@
             <p>New Candidate</p>
           </div>
           
-        </div><div style="display: flex; width:25%">
+        </div>
+        <!-- <div style="display: flex; width:25%">
           <img style="width:56px; height:56px;" src="{%static 'images/Untitled.png'%}">
           <div class="newww" style="display: flex; flex-direction:column">
             <p style="font-weight: 500;font-size: 30px;padding-top:5px;color:#666666;">03</p>
             <p>Interview Today</p>
           </div>
-        </div>
+        </div> -->
         <div style="display: flex; width:25%">
           <img style="width:56px; height:56px;" src="{%static 'images/01.png'%}">
           <div class="newww" style="display: flex; flex-direction:column">
@@ -187,11 +189,11 @@
           <th>Assigned</th>
         </tr>
         <tr>
-          {% for Job in Job_list %}
-          <td>{{Job.role}}</td>
-          <td>{{Job.experience_min}}-{{Job.experience_max}} Years</td>
-          <td>{{Job.event_time}}</td>
-          <td>{{Job.count}}</td>
+          {% for job in jobs  %}
+          <td>{{job.job.role}}</td>
+          <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
+          <td>{{job.job.event_time}}</td>
+          <td>{{job.count}}</td>
           <td>
               <img src="{%static 'images/image_2.png'%}" width="50px">
             </td>

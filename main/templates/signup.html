@@ -15,6 +15,13 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
     <!--Stylesheet-->
     <style media="screen">
       *,
@@ -41,9 +48,6 @@
         width: 450px;
         background-color: rgba(255, 255, 255, 0.13);
         position: absolute;
-        transform: translate(-50%, -50%);
-        top: 52%;
-        left: 29%;
         border-radius: 10px;
         border: 2px solid rgba(255, 255, 255, 0.1);
         padding: 50px 35px;
@@ -121,66 +125,66 @@
         margin-right: 4px;
       }
 
-      .image1 {
-        position: absolute;
-        left: 48%;
-        top: 22%;
-        bottom: 25.22%;
-      }
-
-      .image {
-        position: absolute;
-        left: 16%;
-        right: 19.01%;
-        top: 12%;
-        bottom: 25.22%;
-      }
     </style>
   </head>
 
   <body>
-    <div class="image1"><img src="{%static 'images/Group_3.svg'%}" /></div>
-    <div class="image"><img src="{%static 'images/page_3.png'%}" /></div>
 
-    <form action="" method="post">
-      {% csrf_token %}
-      <h1>Lets get started</h1>
-      <h5>Create an account to access all the features</h5>
+    <div class = "container">
+      <div class = "outer-div" style="padding-top:6rem">
+        <img src="{%static 'images/page_3.png'%}" />
+      </div>
 
-      <label for="username">Username</label>
-      <input
-        type="text"
-        placeholder="User name"
-        name="username"
-        id="username"
-      />
 
-      <label for="email">Email</label>
-      <input
-        type="email"
-        placeholder="Email or Phone"
-        name="email"
-        id="email"
-      />
+      <div class = "row g-3">
 
-      <label for="password1">Password</label>
-      <input
-        type="password"
-        placeholder="Password"
-        id="password1"
-        name="password1"
-      />
+        <div class = "col-md-6" style = "padding-bottom:2rem">
+          <form action="" method="post">
+            {% csrf_token %}
+            <h1>Lets get started</h1>
+            <h6>Create an account to access all the features</h6>
 
-      <label for="password2">Conform Password</label>
-      <input
-        type="password"
-        placeholder="Conform Password"
-        id="password2"
-        name="password2"
-      /><br />
-      <button type="submit">Create Account</button><br /><br />
+            <label for="username">Username</label>
+            <input
+              type="text"
+              placeholder="User name"
+              name="username"
+              id="username"
+            />
 
-      <p>Already have an account? <a href="{% url 'login'%}">log in</a></p>
-    </form>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              placeholder="Email or Phone"
+              name="email"
+              id="email"
+            />
+
+            <label for="password1">Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              id="password1"
+              name="password1"
+            />
+
+            <label for="password2">Conform Password</label>
+            <input
+              type="password"
+              placeholder="Conform Password"
+              id="password2"
+              name="password2"
+            /><br />
+            <button type="submit">Create Account</button><br /><br />
+
+            <p>Already have an account? <a href="{% url 'login'%}"><u>log in</u></a></p>
+          </form>
+        </div>
+
+        <div class = "col-md-6" style="padding-top:8rem">
+          <img src="{%static 'images/Group_3.svg'%}" />
+        </div>
+      </div>
+    </div>
   </body>
 </html>

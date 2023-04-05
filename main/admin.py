@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Recruiter
-from .models import Job, Candidate, JobApplication
+from .models import Job, Candidate, JobApplication, Notes, FeedbackNotes
 
 # Register your models here.
 admin.site.register(Recruiter)
@@ -18,3 +18,7 @@ class CandidateAdmin(admin.ModelAdmin):
     search_fields = ('firstname','email') #To search by name and years
 
 admin.site.register(JobApplication)
+
+admin.site.register(Notes)
+
+admin.site.register(FeedbackNotes)
