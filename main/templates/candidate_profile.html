@@ -131,7 +131,7 @@
 
                 <p>
                   {% for application in applications %}
-                  {{application.applied_by.city}} {% endfor %}
+                  {{application.applied_by.city}}, {{application.applied_by.state}} {% endfor %}
                 </p>
                 <!-- <select style="background: #fff2c9">
                   <option selected value="1">Screening</option>
@@ -143,7 +143,7 @@
                 </select> -->
                 <p>
                   {% for application in applications %}
-                  {{application.applied_by.status}} {% endfor %}
+                  {{application.status}} {% endfor %}
                 </p>
               </div>
             </div>
@@ -159,7 +159,7 @@
                   >
                   <p>
                     {% for application in applications %}
-                    {{application.role}} {% endfor %}
+                    {{application.jobId.role}} {% endfor %}
                   </p>
                 </div>
 
@@ -312,7 +312,7 @@
               "
             >
               <div class="card-body">
-                <div class="card-title" style="display: block">
+                <div class="card-title" style="display: inine-block">
                   <h5 style="float: left">Notes</h5>
                   <!-- <h5 style="float: right">
                     <i
@@ -323,14 +323,15 @@
                     ><a style="color: #de2c4c" href="#"> Add</a>
                   </h5> -->
                   <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                    data-whatever="@mdo"
-                  >
-                    Add
-                  </button>
+                  type="button"
+                  class="btn btn-danger"
+                  style="float:right"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  data-whatever="@mdo"
+                >
+                  Add
+              </button>
                   <div
                     class="modal fade"
                     id="exampleModal"
@@ -369,12 +370,14 @@
                                 placeholder="Please add your feedback"
                               ></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">
-                              Add
-                            </button>
-                          </form>
+\                          </form>
                         </div>
+
                         <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">
+                            Add
+                          </button>
+
                           <button
                             type="button"
                             class="btn btn-secondary"
@@ -391,7 +394,6 @@
                 <p class="card-text" style="padding-top: 1rem">
                   <p>matter</p>
                 </p>
-
                 <div class="card-text" style="display: block">
                   <p style="float: left; font-weight: 700">
                     <small class="text-muted">Yamini Murthy </small>

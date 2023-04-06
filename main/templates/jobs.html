@@ -206,7 +206,7 @@
           <td>
             <img src="{%static 'images/image_2.png'%}" width="50px" />
           </td>
-          <td><img src="{%static 'images/edit.svg'%}" /></td>
+          <td><a href="{% url 'create_jobs' %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
           <td><img src="{%static 'images/archive.svg'%}" /></td>
         </tr>
         {% endfor %}

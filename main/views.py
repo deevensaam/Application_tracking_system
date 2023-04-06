@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponse
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.conf.urls.static import static
 from django.template import loader
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
+
 
 from .models import Recruiter, Job, Candidate, JobApplication, Notes, FeedbackNotes
 from .forms import JobForm
@@ -59,13 +60,6 @@ def Dashboard(request):
 
      return render(request, 'Dashboard.html',{'Job_list':Job_list,'Count_jobs':Count_jobs,'Count_cand':Count_cand,'jobs':job_objects})
 
-# def Dashboard(request):
-#      Jobs_List= JOBS.objects.all()
-#      Count_jobs= JOBS.objects.values_list('Jobname').count()
-#      print(Count_jobs)
-#      Count_cand = CANDIDATES.objects.values_list('firstname').count()
-#      return render(request, 'Dashboard.html',{'Jobs_List':Jobs_List,'Count_jobs':Count_jobs,'Count_cand':Count_cand })
-
 def LogoutPage(request):
      logout(request)
      return redirect('login')
@@ -86,9 +80,12 @@ def Jobs_List(request, id):
 
 def Candidates_list(request):
      Candidate_list = Candidate.objects.all()
-     print(Candidate_list)
+     # applications = JobApplication.objects.filter(jobId=Candidate_list)
+     # print(applications)
+     # job=Candidate.objects.all()
+     # applications= JobApplication.objects.prefetch_related('applied_by')
      Candidates_count = Candidate.objects.values_list('firstname').count()
-     return render(request,'candidates_list.html',{'Candidate_list':Candidate_list,'Candidates_count':Candidates_count })
+     return render(request,'candidates_list.html',{'Candidate_list':Candidate_list  })
 
 def Create_Jobs(request):
      if request.method == 'POST':
@@ -105,8 +102,7 @@ def Create_Jobs(request):
           job= Job(role=role, jobtype=jobtype, salary=salary, select_template=select_template,experience_min=experience_min,experience_max=experience_max, 
                       description=description, requirements=requirements, about_company=about_company,created_by=created_by)
           job.save()
-          return redirect('create_application_form')  
-     
+          return redirect('create_application_form') 
      return render(request,'create_jobs.html')
 
 
@@ -159,7 +155,6 @@ def Candidate_application(request, id):
                pincode = request.POST.get('pincode')
                city = request.POST.get('city')
                state = request.POST.get('state')
-               stage = request.POST.get('stage')
                experience = request.POST.get('experience')
                skills = request.POST.get('skills')
 
@@ -167,13 +162,13 @@ def Candidate_application(request, id):
                candidate= Candidate(firstname=firstname,lastname=lastname, email=email, phonenumber=phonenumber,designation=designation,
                                    currentctc=currentctc, expectedctc=expectedctc, skypeid=skypeid, Github_url=Github_url,
                                    linkedin_url=linkedin_url,portfolio_url=portfolio_url, resume=resume, street=street,
-                                        pincode=pincode,city=city,stage=stage, state=state, experience=experience, skills=skills)
+                                        pincode=pincode,city=city, state=state, experience=experience, skills=skills)
                candidate.save()
                print(candidate)
           else:
                HttpResponse("You have already applied for this job")
 
-          jobApplication = JobApplication(jobId = job, applied_by = candidate, feedback_note='', user_note='', status = 'accepted')
+          jobApplication = JobApplication(jobId = job, applied_by = candidate, status = 'accepted')
           jobApplication.save()
           print(jobApplication)
           return redirect('jobss') 
@@ -201,3 +196,30 @@ def Jobss(request):
      job_objects = [{'count':JobApplication.objects.filter(jobId=job).count(), 'job':job} for job in jobs] 
      return render(request, 'jobss.html',{'jobs':job_objects})
 
+
+# def update_jobs(request, pk):
+#     updatejobs= Job.objects.get(pk=pk)
+#     if request.method == 'POST':
+#           role = request.POST.get('role')
+#           jobtype= request.POST.get('jobtype')
+#           salary = request.POST.get('salary')
+#           select_template = request.POST.get('select_template')
+#           experience_min = request.POST.get('experience_min')
+#           experience_max = request.POST.get('experience_max')
+#           description = request.POST.get('description')
+#           requirements = request.POST.get('requirements')
+#           about_company = request.POST.get('about_company')
+#           created_by = request.user
+
+#           updatejobs.role = role
+#           updatejobs.jobtype = jobtype
+#           updatejobs.salary = salary
+#           updatejobs.select_template = select_template
+#           updatejobs.experience_min = experience_min
+#           updatejobs.experience_max = experience_max
+#           updatejobs.description = description
+#           updatejobs.requirements = requirements
+#           updatejobs.about_company = about_company
+#           updatejobs.created_by = created_by
+#           updatejobs.save()
+#           return JsonResponse({'success': True})

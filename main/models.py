@@ -56,7 +56,7 @@ class Candidate(models.Model):
     linkedin_url=models.URLField('Linkedin_url', null=True)
     Github_url=models.URLField('Github_url', null=True)
     portfolio_url=models.URLField('Portfolio_url', null=True)
-    resume=models.FileField('Resume/CV', upload_to='uploads/')
+    resume=models.FileField('Resume/CV ', upload_to='uploads/')
     street=models.CharField('Street', max_length=15, null=True)
     landmark=models.CharField('Landmark', max_length=50, null=True)
     pincode=models.IntegerField('Pincode', null=True)

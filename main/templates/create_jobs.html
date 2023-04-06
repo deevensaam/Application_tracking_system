@@ -78,7 +78,7 @@
         #create a{
             font-weight: 700;
             font-size: 15px;
-            color:white;
+            color:#999999;
         }
 
         #create button{
@@ -222,10 +222,10 @@
                             
                             <div class="row justify-content-end" style="padding-top:3rem;padding-bottom:3rem">
                                 <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary" style="color:white;background: white;color: #999999; border: 1px solid #999999; font-weight:600;">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" style="color:white;background: white;color: #999999; border: 1px solid #999999; font-weight:600;"><a href={% url 'jobs' %} > Cancel </a></button>
                                 </div>
                                 <div class="col-md-3">
-                                    <button type="submit" class="btn btn-primary" style="font-family:inter; font-weight:500;color:white; background-color:#DE2C4C;">Save & Continue</button>
+                                    <button type="submit" class="button" style="width: 161px; height: 46px;font-family:inter; font-weight:700;color:white; background-color:#DE2C4C;">  Save & Continue  </button>
                                 </div>
                             </div> 
                             {%endblock%}
