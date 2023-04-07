@@ -86,6 +86,8 @@ class Job(models.Model):
     about_company= models.TextField(max_length=300)
     event_time = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)
+    archived = models.BooleanField(default=False, null=True)
+
 
     def __str__(self) -> str:
         return f"id : {self.pk} role : {self.role} salary : {self.salary}"
@@ -103,6 +105,7 @@ class JobApplication(models.Model):
 
     jobId = models.ForeignKey(on_delete=models.CASCADE, to=Job)
     applied_by = models.ForeignKey(on_delete=models.CASCADE, to=Candidate)
+    # candidate = models.OneToOneField(on_delete=models.CASCADE, to=Candidate, default=None)
     # feedback_note = models.CharField(max_length=200)
     # user_note = models.CharField(max_length=200)
     status = models.CharField(max_length=20,choices=ApplicationStatus.choices,default='SELECTED')

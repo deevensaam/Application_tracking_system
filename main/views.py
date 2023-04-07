@@ -7,7 +7,6 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 
-
 from .models import Recruiter, Job, Candidate, JobApplication, Notes, FeedbackNotes
 from .forms import JobForm
 
@@ -68,8 +67,14 @@ def JobDetails(request):
     return render(request,'job_details.html')
 
 def Jobs(request):
-     Count_jobs = Job.objects.values_list('role').count()
-     jobs= Job.objects.all()
+     
+     if request.method == 'POST':
+          id=request.POST.get('archived')
+          job=Job.objects.get(pk=id)
+          job.archived = True
+          job.save()
+     Count_jobs = Job.objects.filter(archived=False).count()
+     jobs= Job.objects.filter(archived=False) 
      job_objects = [{'count':JobApplication.objects.filter(jobId=job).count(), 'job':job} for job in jobs] 
      return render(request,'jobs.html', {'jobs':job_objects,'Count_jobs':Count_jobs})
 
@@ -79,13 +84,19 @@ def Jobs_List(request, id):
      return render(request,'jobs_list.html',{'applications':applications,'job':job})
 
 def Candidates_list(request):
-     Candidate_list = Candidate.objects.all()
-     # applications = JobApplication.objects.filter(jobId=Candidate_list)
-     # print(applications)
-     # job=Candidate.objects.all()
-     # applications= JobApplication.objects.prefetch_related('applied_by')
-     Candidates_count = Candidate.objects.values_list('firstname').count()
-     return render(request,'candidates_list.html',{'Candidate_list':Candidate_list  })
+     # Candidate_list = Candidate.objects.all()
+     # # applications = JobApplication.objects.filter(jobId=Candidate_list)
+     # # print(applications)
+     # # job=Candidate.objects.all()
+     # # applications= JobApplication.objects.prefetch_related('applied_by')
+     # Candidates_count = Candidate.objects.values_list('firstname').count()
+
+     # jobs= Candidate.objects.all()
+     # job_objects = [{JobApplication.objects.filter(applied_by=job)} for job in jobs] 
+
+     applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
+
+     return render(request,'candidates_list.html', {'applications':applications})
 
 def Create_Jobs(request):
      if request.method == 'POST':
@@ -119,17 +130,15 @@ def Candidate_profile_Edit(request):
      return render(request,'candidate_profile_edit.html')
 
 
-def Candidate_profile(request, id):
-     job=Candidate.objects.get(pk=id)
-     applications= JobApplication.objects.filter(applied_by = job).prefetch_related('jobId')
-     print("Test", job,applications)
-
-     # if request.method =='POST':
-     #      note= user_note= request.POST.get(' user_note'), application_id=applications)
-     #      note.save()
-     #      return redirect('candidate_profile') 
-
-     return render(request,'candidate_profile.html',{'applications':applications,'job':job})
+def JobApplicationStatus(request, id):
+     application = JobApplication.objects.filter(pk=id).prefetch_related('applied_by','jobId')
+     notes = Notes.objects.filter(application_ref = application.first()).prefetch_related('added_by')
+     
+     if request.method == 'POST':
+          user_note = request.POST.get('user_note')
+          note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
+          note.save()
+     return render(request,'candidate_profile.html',{'notes':notes, 'application':application.first()})
 
 
 def Candidate_application(request, id):
@@ -157,7 +166,6 @@ def Candidate_application(request, id):
                state = request.POST.get('state')
                experience = request.POST.get('experience')
                skills = request.POST.get('skills')
-
 
                candidate= Candidate(firstname=firstname,lastname=lastname, email=email, phonenumber=phonenumber,designation=designation,
                                    currentctc=currentctc, expectedctc=expectedctc, skypeid=skypeid, Github_url=Github_url,

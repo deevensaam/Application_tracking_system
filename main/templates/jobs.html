@@ -23,20 +23,7 @@
     <title>Jobs</title>
   </head>
   <style>
-    button {
-      position: absolute;
-      font-family: "Inter";
-      background-color: #de2c4c;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      border: 1px;
-      cursor: pointer;
-      height: 52px;
-      width: 191px;
-      left: 75%;
-      top: 18%;
-    }
+
 
     button a {
       color: white;
@@ -117,6 +104,33 @@
       width: 56px;
       height: 56px;
     }
+
+    .jai{
+      position: absolute;
+      font-family: "Inter";
+      background-color: #de2c4c;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px;
+      cursor: pointer;
+      height: 52px;
+      width: 191px;
+    }
+
+    .jai1{
+      position: absolute;
+      font-family: "Inter";
+      background-color: #de2c4c;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      border: 1px;
+      cursor: pointer;
+      height: 52px;
+      width: 191px;
+    }
+
   </style>
   <body>
     <div class="container">
@@ -127,12 +141,12 @@
           </h1>
         </div>
         <div>
-          <button type="submit" style="width: 200px">
+          <!-- <button class="jai" type="submit" style="width: 200px">
             <a href="{% url 'create_jobs' %}">
               <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
               Job</a
             >
-          </button>
+          </button> -->
         </div>
       </div>
 
@@ -194,6 +208,8 @@
           <th>Posted on</th>
           <th>Candidates</th>
           <th>Assigned</th>
+          <th></th>
+          <th>Archeived</th>
         </tr>
         <tr>
           {% for job in jobs %}
@@ -207,7 +223,16 @@
             <img src="{%static 'images/image_2.png'%}" width="50px" />
           </td>
           <td><a href="{% url 'create_jobs' %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
-          <td><img src="{%static 'images/archive.svg'%}" /></td>
+          <td>
+            <form action="" method="post">
+              {%csrf_token%}
+              <input type="hidden" name="archived" value="{{job.job.pk}}">
+              <button style="color:black" type="submit">
+                <!-- <img src="{%static 'images/archive.svg'%}" /> -->
+                archived
+              </button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </table>

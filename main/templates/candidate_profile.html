@@ -124,14 +124,13 @@
 
               <div style="padding-top: 15px; margin-left: 10px">
                 <h5>
-                  {% for application in applications %}
+                  
                   {{application.applied_by.firstname}}
-                  {{application.applied_by.lastname}} {% endfor %}
+                  {{application.applied_by.lastname}} 
                 </h5>
 
                 <p>
-                  {% for application in applications %}
-                  {{application.applied_by.city}}, {{application.applied_by.state}} {% endfor %}
+                  {{application.applied_by.city}}, {{application.applied_by.state}}
                 </p>
                 <!-- <select style="background: #fff2c9">
                   <option selected value="1">Screening</option>
@@ -142,8 +141,7 @@
                   <option value="6">Make Offer</option>
                 </select> -->
                 <p>
-                  {% for application in applications %}
-                  {{application.status}} {% endfor %}
+                  {{application.status}} 
                 </p>
               </div>
             </div>
@@ -158,17 +156,14 @@
                     >Job Position</label
                   >
                   <p>
-                    {% for application in applications %}
-                    {{application.jobId.role}} {% endfor %}
+                    {{application.jobId.role}}
                   </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label">Email</label>
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.email}} {% endfor %}
-                  </p>
+                    {{application.applied_by.email}}
                 </div>
 
                 <div class="col-md-4">
@@ -176,8 +171,7 @@
                     >Phone Number</label
                   >
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.phonenumber}} {% endfor %}
+                    {{application.applied_by.phonenumber}} 
                   </p>
                 </div>
 
@@ -186,8 +180,7 @@
                     >Experience(Years)</label
                   >
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.experience}} {% endfor %}
+                    {{application.applied_by.experience}}
                   </p>
                 </div>
 
@@ -203,11 +196,8 @@
                     >Portfolio Link</label
                   >
                   <p>
-                    {% for application in applications %}
                     <a href="{{application.applied_by.portfolio_url}}">
-                      {{application.applied_by.portfolio_url}}
                     </a>
-                    {% endfor %}
                   </p>
                 </div>
 
@@ -216,8 +206,7 @@
                     >Current CTC</label
                   >
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.currentctc}} {% endfor %}
+                    {{application.applied_by.currentctc}}
                   </p>
                 </div>
 
@@ -226,16 +215,14 @@
                     >Expected CTC</label
                   >
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.expectedctc}} {% endfor %}
+                    {{application.applied_by.expectedctc}}
                   </p>
                 </div>
 
                 <div class="col-md-4">
                   <label for="inputEmail4" class="form-label">Skype id</label>
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.skypeid}} {% endfor %}
+                    {{application.applied_by.skypeid}}
                   </p>
                 </div>
 
@@ -244,11 +231,9 @@
                     >Linkedin URL</label
                   >
                   <p>
-                    {% for application in applications %}
                     <a href="{{application.applied_by.linkedin_url}}">
                       {{application.applied_by.linkedin_url}}
                     </a>
-                    {% endfor %}
                   </p>
                 </div>
 
@@ -256,19 +241,16 @@
                   <label for="inputEmail4" class="form-label">Github URL</label>
 
                   <p class="urll">
-                    {% for application in applications %}
                     <a href="{{application.applied_by.Github_url}}">
                       {{application.applied_by.Github_url}}
                     </a>
-                    {% endfor %}
                   </p>
                 </div>
 
                 <div class="col-md-12">
                   <label for="skills" class="form-label">Skills</label>
                   <p>
-                    {% for application in applications %}
-                    {{application.applied_by.skills}} {% endfor %}
+                    {{application.applied_by.skills}} 
                   </p>
                   <!-- <div
                     class="outer"
@@ -286,8 +268,7 @@
                 <div class="col-md-4">
                   <label for="resume" class="form-label">Resume</label>
                   <p class="urll">
-                    {% for application in applications %}
-                    {{application.applied_by.resume}} {% endfor %}<link />
+                    {{application.applied_by.resume}}<link />
                   </p>
                 </div>
               </form>
@@ -358,26 +339,24 @@
                         </div>
                         <div class="modal-body">
                           <form method="POST" action="">
-                            {%csrf_token%}
+                            {% csrf_token %}
                             <div class="form-group">
                               <label for="user_note" class="col-form-label"
                                 >Notes:</label
                               >
                               <textarea 
-                                name=" user_note" 
+                                name="user_note" 
                                 class="form-control"
-                                id=" user_note"
+                                id="user_note"
                                 placeholder="Please add your feedback"
                               ></textarea>
                             </div>
-\                          </form>
+                              <button type="submit" class="btn btn-primary"> Add </button>
+                          </form>
                         </div>
+                        
 
                         <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">
-                            Add
-                          </button>
-
                           <button
                             type="button"
                             class="btn btn-secondary"
@@ -392,11 +371,12 @@
                   </div>
                 </div>
                 <p class="card-text" style="padding-top: 1rem">
-                  <p>matter</p>
+
+                  <p>{% for note in notes %}{{note.user_note}}{% endfor %} </p>
                 </p>
                 <div class="card-text" style="display: block">
                   <p style="float: left; font-weight: 700">
-                    <small class="text-muted">Yamini Murthy </small>
+                    <small class="text-muted">{% for note_written in notes %}{{note_written.added_by}}{% endfor %}</small>
                   </p>
                   <p style="float: right">
                     <small class="text-muted">01st Mar, 2020 </small>

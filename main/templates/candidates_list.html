@@ -418,21 +418,19 @@
           <th>Source</th>
           <th>Stage</th>
           <th>Assigned</th>
-
         </tr>
         <tr>
-          {% for Candidate in Candidate_list %}
-          <td><a href="{% url 'candidate_profile' id=Candidate.pk %}">{{Candidate.firstname}} {{Candidate.lastname}}</a><br><small>{{Candidate.state}}, {{Candidate.city}}</small></td>
-          <td>{{Candidate.role}}</td>
-          <td>{{Candidate.experience}}</td>
-          <td>{{Candidate.event_time}}</td>
-          <td>{{Candidate.source}}</td>
-          <td>{{Candidate.status}}</td>
-          <td>
-              <img src="{%static 'images/image_2.png'%}" width="50px">
-            </td>
-
-        </tr>
+          {% for application in applications %}
+            <td><a href="{% url 'application' id=application.pk %}">{{application.applied_by.firstname}} {{application.applied_by.lastname}}</a><br><small>{{application.applied_by.state}}, {{application.applied_by.city}}</small></td>
+            <td>{{application.jobId.role}}</td>
+            <td>{{application.applied_by.experience}}</td>
+            <td>{{application.applied_by.event_time}}</td>
+            <td>{{application.applied_by.source}}</td>
+            <td>{{application.status}}</td>
+            <td>
+                <img src="{%static 'images/image_2.png'%}" width="50px">
+              </td>
+          </tr>
         {% endfor %}
       </table>
     </div>
