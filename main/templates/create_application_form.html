@@ -2,354 +2,257 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Inter"
-    />
 
-    <link
-      href="https://unpkg.com/@webpixels/css/dist/index.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
 
-    <title>create_application_form</title>
-  </head>
+  <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet" />
 
-  <style>
-    #creat {
-      font-family: "Inter";
-    }
+  <title>create_application_form</title>
+</head>
 
-    #creat h1 {
-      font-weight: 700;
-      font-size: 24px;
-      font-family: "inter";
-      padding-top: 3rem;
-    }
-    #createe label {
-      font-weight: 400;
-      font-size: 15px;
-      color: #222222;
-    }
+<style>
+  #creat {
+    font-family: "Inter";
+  }
 
-    #createe h3 {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      padding-bottom: 1rem;
-    }
+  #creat h1 {
+    font-weight: 700;
+    font-size: 24px;
+    font-family: "inter";
+    padding-top: 3rem;
+  }
 
-    #createe ::placeholder {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 15px;
-      color: #222222;
-    }
+  #createe label {
+    font-weight: 400;
+    font-size: 15px;
+    color: #222222;
+  }
 
-    #createe option {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 15px;
-      color: #222222;
-    }
+  #createe h3 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    padding-bottom: 1rem;
+  }
 
-    #createe hr {
-      border: 1px solid #666666;
-    }
+  #createe ::placeholder {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: #222222;
+  }
 
-    #createe legend {
-      font-weight: 600;
-      font-size: 13px;
-    }
+  #createe option {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: #222222;
+  }
 
-    #createe a {
-      font-weight: 700;
-      font-size: 15px;
-      color: white;
-    }
+  #createe hr {
+    border: 1px solid #666666;
+  }
 
-    #createe button {
-      font-weight: 700;
-      font-size: 15px;
-      border-radius: 0%;
-    }
-  </style>
+  #createe legend {
+    font-weight: 600;
+    font-size: 13px;
+  }
 
-  <body>
-    <div class="container">
-      <div id="createe">
-        <h1>Create New Job</h1>
-        <div
-          class="outer-div"
-          style="display: flex; width: 100%; padding-top: 1rem"
-        >
-          <div
-            class="left-box"
-            style="
+  #createe a {
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+  }
+
+  #createe button {
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 0%;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div id="createe">
+      <h1>Create New Job</h1>
+      <div class="outer-div" style="display: flex; width: 100%; padding-top: 1rem">
+        <div class="left-box" style="
               display: flex;
               flex-direction: column;
               width: 15%;
               padding-top: 1rem;
-            "
-          >
-            <span 
-              ><img src="{%static 'images/Group163.svg'%}"
-            /></span>
-            <span 
-              ><img src="{%static 'images/Group166.svg'%}"
-            /></span>
-            <span 
-              ><img src="{%static 'images/Group165.svg'%}"
-            /></span>
-          </div>
-          <div
-            class="form-box"
-            style="width: 60%; padding-top: 2rem; padding-left: 8rem"
-          >
-            <h3>Application Form</h3>
-            <p>Please select the mandatory field</p>
-            <br />
+            ">
+          <a href="{% url 'create_jobs' session_id %}"><img src="{%static 'images/Group163.svg'%}"></a>
+          <a href="{% url 'create_application_form' session_id %}"><img src="{%static 'images/Group164.svg'%}"></a>
+          <a href="{% url 'create_publish' session_id %}"><img src="{%static 'images/Group165.svg'%}"></a>
+        </div>
+        <div class="form-box" style="width: 60%; padding-top: 2rem; padding-left: 8rem">
+          <h3>Application Form</h3>
+          <p>Please select the mandatory field</p>
+          <br />
 
-            <form class="row g-3">
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="full_name"
-                    name="full_name"
-                  />
-                  <label class="form-check-label" for="full_name">
-                    Full Name
-                  </label>
-                </div>
+          <form method="POST" class="row g-3">
+            {% csrf_token %}
+            <div class="col-md-6">
+              <div class="form-check">
+                {% if check_list.full_name != None %}
+                <input class="form-check-input" type="checkbox" checked value="True" id="full_name" name="full_name" />
+                {% else %}
+                <input class="form-check-input" type="checkbox" value="True" id="full_name" name="full_name" />
+                {% endif %}
+                <label class="form-check-label" for="full_name">
+                  Full Name
+                </label>
+
+
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="skypeid"
-                    name="skypeid"
-                  />
-                  <label class="form-check-label" for="skypeid">
-                    Skype id
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                {% if check_list.skypeid != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="skypeid" name="skypeid" />
+                {% else %}
+                <input class="form-check-input" type="checkbox" value="True" id="skypeid" name="skypeid" />
+                {% endif %}
+                <label class="form-check-label" for="skypeid">
+                  Skype id
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="emailid"
-                    name="emailid"
-                  />
-                  <label class="form-check-label" for="emailid">
-                    Email id
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="emailid" name="emailid" />
+                <label class="form-check-label" for="emailid">
+                  Email id
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="notice"
-                    name="notice"
-                  />
-                  <label class="form-check-label" for="notice">
-                    Notice Period
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="notice" name="notice" />
+                <label class="form-check-label" for="notice">
+                  Notice Period
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="phonenumber"
-                    name="phonenumber"
-                  />
-                  <label class="form-check-label" for="phonenumber">
-                    Phone Number
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="phonenumber" name="phonenumber" />
+                <label class="form-check-label" for="phonenumber">
+                  Phone Number
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="resume"
-                    name="resume"
-                  />
-                  <label class="form-check-label" for="resume">
-                    Resume/CV
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="resume" name="resume" />
+                <label class="form-check-label" for="resume">
+                  Resume/CV
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="designation"
-                    name="designation"
-                  />
-                  <label class="form-check-label" for="designation">
-                    Designation
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="designation" name="designation" />
+                <label class="form-check-label" for="designation">
+                  Designation
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="linkedin_url"
-                    name="linkedin_url"
-                  />
-                  <label class="form-check-label" for="linkedin_url">
-                    Linkedin URL
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="linkedin_url" name="linkedin_url" />
+                <label class="form-check-label" for="linkedin_url">
+                  Linkedin URL
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="current_location"
-                    name="current_location"
-                  />
-                  <label class="form-check-label" for="current_location">
-                    Current Location
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="current_location"
+                  name="current_location" />
+                <label class="form-check-label" for="current_location">
+                  Current Location
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="Github_url"
-                    name="Github_url"
-                  />
-                  <label class="form-check-label" for="Github_url">
-                    Github URL
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="Github_url" name="Github_url" />
+                <label class="form-check-label" for="Github_url">
+                  Github URL
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="currentctc"
-                    name="currentctc"
-                  />
-                  <label class="form-check-label" for="currentctc">
-                    Current CTC
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="currentctc" name="currentctc" />
+                <label class="form-check-label" for="currentctc">
+                  Current CTC
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="portfolio_url"
-                    name="portfolio_url"
-                  />
-                  <label class="form-check-label" for="portfolio_url">
-                    Portfolio Link
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="portfolio_url" name="portfolio_url" />
+                <label class="form-check-label" for="portfolio_url">
+                  Portfolio Link
+                </label>
               </div>
+            </div>
 
-              <div class="col-md-6">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value="True"
-                    id="expectedctc"
-                    name="expectedctc"
-                  />
-                  <label class="form-check-label" for="expectedctc">
-                    Expected CTC
-                  </label>
-                </div>
+            <div class="col-md-6">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="True" id="expectedctc" name="expectedctc" />
+                <label class="form-check-label" for="expectedctc">
+                  Expected CTC
+                </label>
               </div>
+            </div>
 
-              <div
-                class="row justify-content-end"
-                style="margin-top: 3rem; margin-bottom: 3rem"
-              >
-                <div class="col-md-2">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    style="
+            <div class="row justify-content-end" style="margin-top: 3rem; margin-bottom: 3rem">
+              <div class="col-md-2">
+                <!-- <button type="submit" class="btn btn-primary" style="
                       color: white;
                       background: white;
                       color: #999999;
                       border: 1px solid #999999;
-                    "
-                  >
-                    Cancel
-                  </button>
-                </div>
-                <div class="col-md-5">
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    style="color: white; background-color: #de2c4c"
-                  >
-                    <a href="{% url 'create_publish' %}">Submit</a>
-                  </button>
-                </div>
+                    ">
+                  Cancel
+                </button> -->
               </div>
-            </form>
-          </div>
+              <!-- <div class="col-md-5">
+                <button type="submit" class="btn btn-primary" style="color: white; background-color: #de2c4c">
+                  Submit
+                </button>
+              </div> -->
+              <input type="submit" value="submit">
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 {%endblock%}

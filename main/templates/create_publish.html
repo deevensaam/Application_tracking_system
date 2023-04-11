@@ -116,11 +116,9 @@
               padding-top: 1rem;
             "
           >
-            <span ><img src="{%static 'images/Group163.svg'%}"/></span>
-            <span ><img src="{%static 'images/Group166.svg'%}"
-            /></span>
-            <span><img src="{%static 'images/Group167.svg'%}"
-            /></span>
+          <a href="{% url 'create_jobs' session_id %}"><img src = "{%static 'images/Group163.svg'%}"></a>
+                    <a href="{% url 'create_application_form' session_id %}"><img src = "{%static 'images/Group164.svg'%}"></a>
+                    <a href="{% url 'create_publish' session_id %}"><img src = "{%static 'images/Group165.svg'%}"></a>
           </div>
           <div class="my-custom-scrollbar my-custom-scrollbar-primary"></div>
           <div

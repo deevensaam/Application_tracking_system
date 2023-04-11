@@ -96,18 +96,17 @@
             <h1>Create New Job</h1>
             <div class="outer-div" style="display: flex; width:100%;padding-top:1rem;">
                 <div class="left-box" style="display: flex; flex-direction : column ; width:15%;padding-top:1rem;">
-                    <span><img src = "{%static 'images/Group163.svg'%}"></span>
-                    <span><img src = "{%static 'images/Group164.svg'%}"></span>
-                    <span><img src = "{%static 'images/Group165.svg'%}"></span>
+                    <a href="{% url 'create_jobs' session_id %}"><img src = "{%static 'images/Group163.svg'%}"></a>
+                    <a href="{% url 'create_application_form' session_id %}"><img src = "{%static 'images/Group164.svg'%}"></a>
+                    <a href="{% url 'create_publish' session_id %}"><img src = "{%static 'images/Group165.svg'%}"></a>
                 </div>
                     <div class="form-box" style="width : 80%; padding-top:2rem; padding-left:3rem;padding-right:1rem; display:block; overflow-y:scroll; overflow-x:hidden;height:80vh;">
                         <h3>Job Details</h3>
                         <form method="POST" action="" class="row g-3">
                             {% csrf_token %}
-
                             <div class="col-md-6">
                             <label for="role" class="form-label">Job Name</label>
-                            <input type="text" class="form-control" placeholder="Sr. Python Django Developer"  id="role" name="role" style="border-radius:1px;">
+                            <input value="{{ job.role }}" type="text" class="form-control" placeholder="Sr. Python Django Developer"  id="role" name="role" style="border-radius:1px;">
                             </div>
 
                             <!-- <fieldset class="col-md-3">

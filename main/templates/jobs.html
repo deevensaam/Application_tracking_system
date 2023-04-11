@@ -2,271 +2,254 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Inter"
-    />
 
-    <link
-      href="https://unpkg.com/@webpixels/css/dist/index.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
 
-    <title>Jobs</title>
-  </head>
-  <style>
+  <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet" />
 
+  <title>Jobs</title>
+</head>
+<style>
+  button a {
+    color: white;
+  }
 
-    button a {
-      color: white;
-    }
+  .nw {
+    width: 50px;
+    height: 60px;
+    margin-top: 30px;
+    background-color: black;
+    opacity: 0.8;
+    padding: 2.5px;
+  }
 
-    .nw {
-      width: 50px;
-      height: 60px;
-      margin-top: 30px;
-      background-color: black;
-      opacity: 0.8;
-      padding: 2.5px;
-    }
-    #customer {
-      font-family: "Inter";
-      font-style: "normal";
-      border-collapse: collapse;
-      width: 100%;
-    }
+  #customer {
+    font-family: "Inter";
+    font-style: "normal";
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-    #customer td {
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      padding: 18px;
-      font-weight: 500;
-      font-size: 16px;
-      color: black;
-    }
+  #customer td {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 18px;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+  }
 
-    #customer th {
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      padding: 18px;
-    }
+  #customer th {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 18px;
+  }
 
-    #customer th {
-      padding-top: 18px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: white;
-      color: black;
-      border: none;
-      font-weight: 400;
-      font-size: 14px;
-    }
+  #customer th {
+    padding-top: 18px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+    color: black;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+  }
 
-    #customer tr {
-      border: none;
-    }
-    .nwww {
-      height: 17px;
-      right: 50px;
-      top: 15px;
-      font-family: "Inter";
-      font-style: normal;
-      line-height: 17px;
-      /* identical to box height */
-      color: #222222;
-    }
+  #customer tr {
+    border: none;
+  }
 
-    .nwww p {
-      margin-bottom: 10px;
-      font-weight: 400;
-      font-size: 13px;
-      padding-left: 5px;
-      padding-bottom: 10px;
-      color: #666666;
-    }
+  .nwww {
+    height: 17px;
+    right: 50px;
+    top: 15px;
+    font-family: "Inter";
+    font-style: normal;
+    line-height: 17px;
+    /* identical to box height */
+    color: #222222;
+  }
 
-    .nwww h6 {
-      margin-top: 5px;
-      font-weight: 500;
-      font-size: 14px;
-      padding-left: 5px;
-    }
+  .nwww p {
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 13px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    color: #666666;
+  }
 
-    .nwww img {
-      width: 56px;
-      height: 56px;
-    }
+  .nwww h6 {
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 5px;
+  }
 
-    .jai{
-      position: relative;
-      font-family: "Inter";
-      background-color: #de2c4c;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      border: 1px;
-      cursor: pointer;
-      height: 52px;
-      width: 191px;
-    }
+  .nwww img {
+    width: 56px;
+    height: 56px;
+  }
 
-    .jai1{
-      position: absolute;
-      font-family: "Inter";
-      background-color: #de2c4c;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      border: 1px;
-      cursor: pointer;
-      height: 52px;
-      width: 191px;
-    }
+  .jai {
+    position: relative;
+    font-family: "Inter";
+    background-color: #de2c4c;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px;
+    cursor: pointer;
+    height: 52px;
+    width: 191px;
+  }
 
-  </style>
-  <body>
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-6">
-          <h1 style="font-weight: 700; padding-top: 3rem; padding-bottom: 2rem">
-            All Jobs
-          </h1>
-        </div>
-        <div class="col-6">
-          <button class="jai" type="submit" style="width: 200px;float:right; margin-top:3rem">
-            <a href="{% url 'create_jobs' %}">
-              <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
-              Job</a
-            >
-          </button>
-        </div>
+  .jai1 {
+    position: absolute;
+    font-family: "Inter";
+    background-color: #de2c4c;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px;
+    cursor: pointer;
+    height: 52px;
+    width: 191px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-6">
+        <h1 style="font-weight: 700; padding-top: 3rem; padding-bottom: 2rem">
+          All Jobs
+        </h1>
       </div>
+      <div class="col-6">
+        <button class="jai" type="submit" style="width: 200px;float:right; margin-top:3rem">
+          <a href="{% url 'create_jobs_redirect' %}">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
+            Job</a>
+        </button>
+      </div>
+    </div>
 
-      <div class="outer-div" style="display: flex; flex-wrap: wrap">
-        <div style="display: flex; width: 25%">
-          <img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/Image_1.png'%}"
-          />
+    <div class="outer-div" style="display: flex; flex-wrap: wrap">
+      <div style="display: flex; width: 25%">
+        <img style="width: 56px; height: 56px" src="{%static 'images/Image_1.png'%}" />
 
-          <div class="nwww" style="display: flex; flex-direction: column">
-            <p
-              style="
+        <div class="nwww" style="display: flex; flex-direction: column">
+          <p style="
                 font-weight: 500;
                 font-size: 30px;
                 padding-top: 5px;
                 color: black;
-              "
-            >
+              ">
             {{Count_jobs}}
-            </p>
+          </p>
 
-            <p>Active Jobs</p>
-          </div>
+          <p>Active Jobs</p>
         </div>
-        <div style="display: flex; width: 25%">
-          <a href="{% url 'jobs_archive' %}"><img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/archive_1.svg'%}"
-          /></a>
+      </div>
+      <div style="display: flex; width: 25%">
+        <a href="{% url 'jobs_archive' %}"><img style="width: 56px; height: 56px"
+            src="{%static 'images/archive_1.svg'%}" /></a>
 
-          <div class="nwww" style="display: flex; flex-direction: column">
-            <p
-              style="
+        <div class="nwww" style="display: flex; flex-direction: column">
+          <p style="
                 font-weight: 500;
                 font-size: 30px;
                 padding-top: 5px;
                 color: #666666;
-              "
-            >
+              ">
             {{Count_jobss}}
-            </p>
-            <p>Archeived Jobs</p>
-          </div>
+          </p>
+          <p>Archeived Jobs</p>
         </div>
       </div>
-      <h3
-        style="
+    </div>
+    <h3 style="
           font-weight: 400;
           font-size: 22px;
           padding-top: 3rem;
           padding-bottom: 1rem;
-        "
-      >
-        Active Jobs
-      </h3>
-      <table id="customer" , style="width: 100%">
-        <tr>
-          <th>Job Title</th>
-          <th>Experience</th>
-          <th>Posted on</th>
-          <th>Candidates</th>
-          <th>Assigned</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
-          {% for job in jobs %}
-          <td>
-            <a href="{% url 'jobs_list' id=job.job.pk %}">{{job.job.role}}</a>
-          </td>
-          <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
-          <td>{{job.job.event_time}}</td>
-          <td>{{job.count}}</td>
-          <td>
-            <img src="{%static 'images/image_2.png'%}" width="50px" />
-          </td>
-          <td><a href="{% url 'create_jobs' %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
-          <td>
-            <!-- <form action="" method="post">
+        ">
+      Active Jobs
+    </h3>
+    <table id="customer" , style="width: 100%">
+      <tr>
+        <th>Job Title</th>
+        <th>Experience</th>
+        <th>Posted on</th>
+        <th>Candidates</th>
+        <th>Assigned</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        {% for job in jobs %}
+        <td>
+          <a href="{% url 'jobs_list' id=job.job.pk %}">{{job.job.role}}</a>
+        </td>
+        <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
+        <td>{{job.job.event_time}}</td>
+        <td>{{job.count}}</td>
+        <td>
+          <img src="{%static 'images/image_2.png'%}" width="50px" />
+        </td>
+        <td><a href="{% url 'create_jobs_redirect' %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
+        <td>
+          <!-- <form action="" method="post">
               {%csrf_token%}
               <input type="hidden" name="archived" value="{{job.job.pk}}">
               <button style="color:black; background:white" type="submit">
                 <img src="{%static 'images/archive.svg'%}" />
               </button>
             </form> -->
-            <!-- Button trigger modal -->
-            <form action="" method="post">
-              {%csrf_token%}
-              <input type="hidden" name="archived" value="{{job.job.pk}}">
-              <button style="background:white; border:None" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                <img src="{%static 'images/archive.svg'%}" />
-              </button>
+          <!-- Button trigger modal -->
+          <form action="" method="post">
+            {%csrf_token%}
+            <input type="hidden" name="archived" value="{{job.job.pk}}">
+            <button style="background:white; border:None" type="button" class="btn btn-primary" data-toggle="modal"
+              data-target="#exampleModalCenter">
+              <img src="{%static 'images/archive.svg'%}" />
+            </button>
 
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Conformation</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure, Want to Archive this job ?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                      <input type="hidden" name="archived" value="{{job.job.pk}}">
-                      <button style = "background:#de2c4c" type="submit" class="btn btn-primary">Yes</button>
-                    </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Conformation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure, Want to Archive this job ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <input type="hidden" name="archived" value="{{job.job.pk}}">
+                    <button style="background:#de2c4c" type="submit" class="btn btn-primary">Yes</button>
                   </div>
                 </div>
               </div>
-            </form>
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-  </body>
+            </div>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+
 </html>
