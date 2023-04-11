@@ -106,7 +106,7 @@
     }
 
     .jai{
-      position: absolute;
+      position: relative;
       font-family: "Inter";
       background-color: #de2c4c;
       color: white;
@@ -140,13 +140,13 @@
             All Jobs
           </h1>
         </div>
-        <div>
-          <!-- <button class="jai" type="submit" style="width: 200px">
+        <div class="col-6">
+          <button class="jai" type="submit" style="width: 200px;float:right; margin-top:3rem">
             <a href="{% url 'create_jobs' %}">
               <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
               Job</a
             >
-          </button> -->
+          </button>
         </div>
       </div>
 
@@ -171,10 +171,10 @@
             <p>Active Jobs</p>
           </div>
         </div>
-        <!-- <div style="display: flex; width: 25%">
+        <div style="display: flex; width: 25%">
           <img
             style="width: 56px; height: 56px"
-            src="{%static 'images/01.png'%}"
+            src="{%static 'images/archive_1.svg'%}"
           />
           <div class="nwww" style="display: flex; flex-direction: column">
             <p
@@ -185,11 +185,11 @@
                 color: #666666;
               "
             >
-              50
+            {{Count_jobss}}
             </p>
             <p>Archeived Jobs</p>
           </div>
-        </div> -->
+        </div>
       </div>
       <h3
         style="
@@ -209,7 +209,7 @@
           <th>Candidates</th>
           <th>Assigned</th>
           <th></th>
-          <th>Archeived</th>
+          <th></th>
         </tr>
         <tr>
           {% for job in jobs %}
@@ -227,9 +227,8 @@
             <form action="" method="post">
               {%csrf_token%}
               <input type="hidden" name="archived" value="{{job.job.pk}}">
-              <button style="color:black" type="submit">
-                <!-- <img src="{%static 'images/archive.svg'%}" /> -->
-                archived
+              <button style="color:black; background:white" type="submit">
+                <img src="{%static 'images/archive.svg'%}" />
               </button>
             </form>
           </td>

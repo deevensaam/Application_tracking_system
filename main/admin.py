@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Recruiter
-from .models import Job, Candidate, JobApplication, Notes, FeedbackNotes
+from .models import Job, Candidate, JobApplication, Notes, FeedbackNotes, CandidateApplicationForm
 
 # Register your models here.
 admin.site.register(Recruiter)
@@ -22,3 +22,5 @@ admin.site.register(JobApplication)
 admin.site.register(Notes)
 
 admin.site.register(FeedbackNotes)
+
+admin.site.register(CandidateApplicationForm)

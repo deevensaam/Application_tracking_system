@@ -17,6 +17,14 @@ TEMPLATE_CHOICES=(
     ('04', '04'),
 )
 
+NOTICE_CHOICES=(
+    ('Immediately', 'Immediately'),
+    ('15 days', '15 days'),
+    ('30 days', '30 days'),
+    ('45 days', '45 days'),
+    ('60 days', '60 days'),
+)
+
 MIN_CHOICE=(
     ('0','0'),
     ('1','1'),
@@ -44,6 +52,8 @@ SOURCE_CHOICES=(
     ('Career Page','Career Page'),
 )
 
+
+
 class Candidate(models.Model):
     firstname=models.CharField('First name', max_length=50)
     lastname=models.CharField('Last name', max_length=50, blank=True)
@@ -52,7 +62,7 @@ class Candidate(models.Model):
     designation=models.CharField('Designation', max_length=50, null=True)
     currentctc=models.IntegerField('Current ctc', null=True)
     expectedctc=models.IntegerField('Expected ctc', null=True)
-    skypeid=models.URLField('Skype id', null=True)
+    skypeid=models.CharField('Skype id',max_length=50, null=True)
     linkedin_url=models.URLField('Linkedin_url', null=True)
     Github_url=models.URLField('Github_url', null=True)
     portfolio_url=models.URLField('Portfolio_url', null=True)
@@ -65,6 +75,7 @@ class Candidate(models.Model):
     experience=models.IntegerField('Years Exp', null=True)
     event_time=models.DateTimeField(default=timezone.now)
     skills=models.CharField('Skills', max_length=225, null=True)
+    notice = models.CharField(max_length=15, choices=NOTICE_CHOICES,default='15 days',blank=True)
     source = models.CharField(max_length=15, choices=SOURCE_CHOICES,default='Full time',blank=True)
 
     def __str__(self) -> str:
@@ -88,9 +99,32 @@ class Job(models.Model):
     created_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)
     archived = models.BooleanField(default=False, null=True)
 
-
     def __str__(self) -> str:
         return f"id : {self.pk} role : {self.role} salary : {self.salary}"
+    
+class CandidateApplicationForm(models.Model):
+    firstname=models.BooleanField(default=False, null=True)
+    lastname=models.BooleanField(default=False, null=True)
+    email=models.BooleanField(default=False, null=True)
+    phonenumber=models.BooleanField(default=False, null=True)
+    designation=models.BooleanField(default=False, null=True)
+    currentctc=models.BooleanField(default=False, null=True)
+    expectedctc=models.BooleanField(default=False, null=True)
+    skypeid=models.BooleanField(default=False, null=True)
+    linkedin_url=models.BooleanField(default=False, null=True)
+    Github_url=models.BooleanField(default=False, null=True)
+    portfolio_url=models.BooleanField(default=False, null=True)
+    resume=models.BooleanField(default=False, null=True)
+    street=models.BooleanField(default=False, null=True)
+    landmark=models.BooleanField(default=False, null=True)
+    pincode=models.BooleanField(default=False, null=True)
+    city=models.BooleanField(default=False, null=True)
+    state=models.BooleanField(default=False, null=True)
+    experience=models.BooleanField(default=False, null=True)
+    skills=models.BooleanField(default=False, null=True)
+    notice=models.BooleanField(default=False, null=True)
+    source = models.BooleanField(default=False, null=True)
+    job_ref = models.OneToOneField(to= Job, on_delete=models.CASCADE,default= None, null=True)
 
 class JobApplication(models.Model):
 
@@ -114,6 +148,7 @@ class Notes(models.Model):
     user_note = models.CharField(max_length = 250)
     application_ref = models.ForeignKey(on_delete=models.CASCADE, to=JobApplication)
     added_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)
+    event_time_notes = models.DateTimeField(default=timezone.now)
 
 class FeedbackNotes(models.Model):
     user_feedback = models.CharField(max_length = 250)
@@ -122,3 +157,4 @@ class FeedbackNotes(models.Model):
     techinicalskills_rating = models.IntegerField(max_length = 10)
     application_ref = models.ForeignKey(on_delete=models.CASCADE, to=JobApplication)
     given_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)
+    event_time_feedback = models.DateTimeField(default=timezone.now)

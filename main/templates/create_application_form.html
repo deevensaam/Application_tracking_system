@@ -103,15 +103,15 @@
               padding-top: 1rem;
             "
           >
-            <a href="{% url 'create_jobs' %}"
+            <span 
               ><img src="{%static 'images/Group163.svg'%}"
-            /></a>
-            <a href="{% url 'create_application_form' %}"
+            /></span>
+            <span 
               ><img src="{%static 'images/Group166.svg'%}"
-            /></a>
-            <a href="{% url 'create_publish' %}"
+            /></span>
+            <span 
               ><img src="{%static 'images/Group165.svg'%}"
-            /></a>
+            /></span>
           </div>
           <div
             class="form-box"
@@ -127,10 +127,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="fullname"
+                    value="True"
+                    id="full_name"
+                    name="full_name"
                   />
-                  <label class="form-check-label" for="fullname">
+                  <label class="form-check-label" for="full_name">
                     Full Name
                   </label>
                 </div>
@@ -141,8 +142,9 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
+                    value="True"
                     id="skypeid"
+                    name="skypeid"
                   />
                   <label class="form-check-label" for="skypeid">
                     Skype id
@@ -155,8 +157,9 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
+                    value="True"
                     id="emailid"
+                    name="emailid"
                   />
                   <label class="form-check-label" for="emailid">
                     Email id
@@ -169,10 +172,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="notice"
+                    name="notice"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="notice">
                     Notice Period
                   </label>
                 </div>
@@ -183,10 +187,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="phonenumber"
+                    name="phonenumber"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="phonenumber">
                     Phone Number
                   </label>
                 </div>
@@ -197,10 +202,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="resume"
+                    name="resume"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="resume">
                     Resume/CV
                   </label>
                 </div>
@@ -211,10 +217,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="designation"
+                    name="designation"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="designation">
                     Designation
                   </label>
                 </div>
@@ -225,10 +232,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="linkedin_url"
+                    name="linkedin_url"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="linkedin_url">
                     Linkedin URL
                   </label>
                 </div>
@@ -239,10 +247,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="current_location"
+                    name="current_location"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="current_location">
                     Current Location
                   </label>
                 </div>
@@ -253,10 +262,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="Github_url"
+                    name="Github_url"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="Github_url">
                     Github URL
                   </label>
                 </div>
@@ -267,10 +277,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="currentctc"
+                    name="currentctc"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="currentctc">
                     Current CTC
                   </label>
                 </div>
@@ -281,10 +292,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="portfolio_url"
+                    name="portfolio_url"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="portfolio_url">
                     Portfolio Link
                   </label>
                 </div>
@@ -295,10 +307,11 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    value=""
-                    id="defaultCheck1"
+                    value="True"
+                    id="expectedctc"
+                    name="expectedctc"
                   />
-                  <label class="form-check-label" for="defaultCheck1">
+                  <label class="form-check-label" for="expectedctc">
                     Expected CTC
                   </label>
                 </div>
