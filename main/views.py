@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from .models import Recruiter, Job, Candidate, JobApplication, Notes, FeedbackNotes, CandidateApplicationForm
 from .forms import JobForm
+from django.db import transaction
+import time
+import json
 
 # Create your views here.
 
@@ -109,70 +112,104 @@ def Candidates_list(request):
      Candidates_count = Candidate.objects.values_list('firstname').count()
      return render(request,'candidates_list.html', {'applications':applications,'Candidates_count':Candidates_count})
 
-def Create_Jobs(request):
+
+def create_job_session_generataor(request):
+     session_id = int(time.time())
+     request.session[str(session_id) + 'job_form'] = json.dumps({'job' : "dev"})
+     request.session[str(session_id) + 'check_list'] = json.dumps({'list' : True}) 
+     return redirect('create_jobs', session_id)
+
+# add a random session ID to url so that it's unique through out
+def Create_Jobs(request, sessionId):
+     # job = request.session.get(str(sessionId))['job_form']
+     # print(job)
+     session_item = request.session.get(str(sessionId) + 'job_form') 
+     job_item = session_item if session_item is not None else dict()
      if request.method == 'POST':
-          role = request.POST.get('role')
-          jobtype= request.POST.get('jobtype')
-          salary = request.POST.get('salary')
-          select_template = request.POST.get('select_template')
-          experience_min = request.POST.get('experience_min')
-          experience_max = request.POST.get('experience_max')
-          description = request.POST.get('description')
-          requirements = request.POST.get('requirements')
-          about_company = request.POST.get('about_company')
+          # job creator 
           created_by = request.user
-          job= Job(role=role, jobtype=jobtype, salary=salary, select_template=select_template,experience_min=experience_min,experience_max=experience_max, 
-                      description=description, requirements=requirements, about_company=about_company,created_by=created_by)
-          job.save()
-          return redirect('create_application_form', job.pk) 
-     return render(request,'create_jobs.html')
+          # contents from form 
+          job_item = dict()
+          job_item['role'] = request.POST.get('role')
+          job_item['jobtype']= request.POST.get('jobtype')
+          job_item['salary'] = request.POST.get('salary')
+          job_item['select_template'] = request.POST.get('select_template')
+          job_item['experience_min'] = request.POST.get('experience_min')
+          job_item['experience_max'] = request.POST.get('experience_max')
+          job_item['description'] = request.POST.get('description')
+          job_item['requirements'] = request.POST.get('requirements')
+          job_item['about_company'] = request.POST.get('about_company')
+          request.session[str(sessionId) + 'job_form'] = job_item
+          # job= Job(role=role, jobtype=jobtype, salary=salary, select_template=select_template,experience_min=experience_min,experience_max=experience_max, 
+          #             description=description, requirements=requirements, about_company=about_company,created_by=created_by)
+          # job.save()
+          return redirect('create_application_form', sessionId) 
+     return render(request,'create_jobs.html', { 'session_id': sessionId, 'job' : job_item })
 
 
-def Create_Application_Form(request, jobId):
-     job=Job.objects.get(pk=jobId)
+def Create_Application_Form(request, sessionId):
+     session_item = request.session.get(str(sessionId) + 'check_list') 
+     check_list_item = session_item if session_item is not None else dict()
+     # session_item = request.session.get(str(sessionId))
      if request.method == 'POST':
-          phonenumber = request.POST.get('phonenumber') 
-          designation = request.POST.get('designation')
-          currentctc = request.POST.get('currentctc')
-          expectedctc = request.POST.get('expectedctc')
-          skypeid = request.POST.get('skypeid')
-          Github_url = request.POST.get('Github_url')
-          linkedin_url = request.POST.get('linkedin_url')
-          portfolio_url= request.POST.get('portfolio_url')
-          resume = request.POST.get('resume')
-          experience = request.POST.get('experience')
-          skills = request.POST.get('skills')
-          email = request.POST.get('email')
-          notice = request.POST.get('notice')
-          current_location = request.POST.get('current_location')
-          full_name = request.POST.get('full_name')
-          candidate_application_form = CandidateApplicationForm(phonenumber=bool(phonenumber),
-                                                                     designation=bool(designation),
-                                                                     currentctc=bool(currentctc),
-                                                                     expectedctc=bool(expectedctc), 
-                                                                     skypeid=bool(skypeid),
-                                                                     Github_url=bool(Github_url),
-                                                                     linkedin_url=bool(linkedin_url), 
-                                                                     current_location=bool(current_location), 
-                                                                     firstname=full_name == 'True',
-                                                                     lastname=full_name == 'True', 
-                                                                     state=current_location == 'True', 
-                                                                     city=current_location == 'True',
-                                                                     pincode=current_location == 'True',
-                                                                     street=current_location == 'True', 
-                                                                     portfolio_url=bool(portfolio_url),
-                                                                     resume=bool(resume),
-                                                                     experience=bool(experience),
-                                                                     skills=bool(skills),
-                                                                     email=bool(email),
-                                                                     notice=bool(notice),
-                                                                     job_ref=job)
-               
-          candidate_application_form.save()
-     return render(request,'create_application_form.html')
+          # print(request.session.get(str(sessionId)))
+          # check_list_item = dict()
+          check_list_item['phonenumber'] = request.POST.get('phonenumber')
+          check_list_item['designation'] = request.POST.get('designation')
+          check_list_item['currentctc'] = request.POST.get('currentctc')
+          check_list_item['expectedctc'] = request.POST.get('expectedctc')
+          check_list_item['skypeid'] = request.POST.get('skypeid')
+          check_list_item['Github_url'] = request.POST.get('Github_url')
+          check_list_item['linkedin_url'] = request.POST.get('linkedin_url')
+          check_list_item['portfolio_url'] = request.POST.get('portfolio_url')
+          check_list_item['resume'] = request.POST.get('resume')
+          check_list_item['experience'] = request.POST.get('experience')
+          check_list_item['skills'] = request.POST.get('skills')
+          check_list_item['email'] = request.POST.get('email')
+          check_list_item['notice'] = request.POST.get('notice')
+          check_list_item['current_location'] = request.POST.get('current_location')
+          check_list_item['full_name'] = request.POST.get('full_name')
+          request.session[str(sessionId) + 'check_list' ] = check_list_item
+          # candidate_application_form = CandidateApplicationForm(phonenumber=bool(phonenumber),
+          #                                                            designation=bool(designation),
+          #                                                            currentctc=bool(currentctc),
+          #                                                            expectedctc=bool(expectedctc), 
+          #                                                            skypeid=bool(skypeid),
+          #                                                            Github_url=bool(Github_url),
+          #                                                            linkedin_url=bool(linkedin_url), 
+          #                                                            current_location=bool(current_location), 
+          #                                                            firstname=full_name == 'True',
+          #                                                            lastname=full_name == 'True', 
+          #                                                            state=current_location == 'True', 
+          #                                                            city=current_location == 'True',
+          #                                                            pincode=current_location == 'True',
+          #                                                            street=current_location == 'True', 
+          #                                                            portfolio_url=bool(portfolio_url),
+          #                                                            resume=bool(resume),
+          #                                                            experience=bool(experience),
+          #                                                            skills=bool(skills),
+          #                                                            email=bool(email),
+          #                                                            notice=bool(notice),
+          #                                                            job_ref=job)
+          # candidate_application_form.save()
+          return redirect('create_publish', sessionId)
+     return render(request,'create_application_form.html', {'session_id' : sessionId, 'check_list' : check_list_item})
 
-def Create_Publish(request):
-     return render(request,'create_publish.html')
+def Create_Publish(request, sessionId):
+     job_form = request.session.get(str(sessionId) + "job_form")
+     check_list = request.session.get(str(sessionId) + "check_list")
+     # TODO: write transaction for creating job and checklist 
+     if request.method == 'POST':
+          with transaction.atomic():
+               
+               job = Job(role=job_form["role"], created_by=request.user)
+               job.save()
+
+               candidate_check_list = CandidateApplicationForm(job_ref=job)
+               candidate_check_list.save()
+          
+          return redirect('jobs')
+     return render(request,'create_publish.html', {'session_id' : sessionId})
 
 def Job_Templete(request):
      return render(request, 'job_templete.html')
