@@ -152,9 +152,9 @@ class Notes(models.Model):
 
 class FeedbackNotes(models.Model):
     user_feedback = models.CharField(max_length = 250)
-    communication_rating = models.IntegerField(max_length = 10)
-    logicalskills_rating = models.IntegerField(max_length = 10)
-    techinicalskills_rating = models.IntegerField(max_length = 10)
+    communication_rating = models.CharField(max_length = 10)
+    logicalskills_rating = models.CharField(max_length = 10)
+    techinicalskills_rating = models.CharField(max_length = 10)
     application_ref = models.ForeignKey(on_delete=models.CASCADE, to=JobApplication)
     given_by = models.ForeignKey(on_delete=models.CASCADE, to=Recruiter)
-    event_time_feedback = models.DateTimeField(default=timezone.now)
+    event_time_feedback = models.DateTimeField(auto_now= True)

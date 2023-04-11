@@ -105,7 +105,6 @@ def Candidates_list(request):
 
      # jobs= Candidate.objects.all()
      # job_objects = [{JobApplication.objects.filter(applied_by=job)} for job in jobs] 
-
      applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
      Candidates_count = Candidate.objects.values_list('firstname').count()
      return render(request,'candidates_list.html', {'applications':applications,'Candidates_count':Candidates_count})
@@ -145,7 +144,6 @@ def Create_Application_Form(request, jobId):
                skills = request.POST.get('skills')
                email = request.POST.get('email')
                notice = request.POST.get('notice')
-
                current_location = request.POST.get('current_location')
                full_name = request.POST.get('full_name')
                candidate_application_form = CandidateApplicationForm(phonenumber=bool(phonenumber),
@@ -187,22 +185,26 @@ def JobApplicationStatus(request, id):
      application = JobApplication.objects.filter(pk=id).prefetch_related('applied_by','jobId')
      notes = Notes.objects.filter(application_ref = application.first()).prefetch_related('added_by')
      feedbacks = FeedbackNotes.objects.filter(application_ref = application.first()).prefetch_related('given_by')
+
+     # if request.method == 'POST':
+     #      user_note = request.POST.get('user_note')
+     #      note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
+     #      note.save()
+     #      return redirect('candidate_profile.html')
      
      if request.method == 'POST':
-          user_note = request.POST.get('user_note')
-          note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
-          note.save()
-     
-          # if request.method == 'POST':
-          #      user_feedback = request.POST.get('user_feedback')
-          #      feedback= FeedbackNotes(user_feedback = user_feedback, given_by = request.user, application_ref = application.first())
-          #      feedback.save()
-     return render(request,'candidate_profile.html',{'notes':notes, 'application':application.first()})
+          user_feedback = request.POST.get('user_feedback')
+          communication_rating = request.POST.get('communication_rating')
+          logicalskills_rating = request.POST.get('logicalskills_rating')
+          techinicalskills_rating = request.POST.get('techinicalskills_rating')
+          feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
+          feedback.save()
+     return render(request,'candidate_profile.html',{'notes':notes,'feedbacks':feedbacks, 'application':application.first()})
 
 
 def Candidate_application(request, id):
      job = Job.objects.get(pk=id)
-     candidate_application_form_map = CandidateApplicationForm.objects.get(job_ref=job)
+     # candidate_application_form_map = CandidateApplicationForm.objects.get(job_ref=job)
      
      if request.method == 'POST':
           email = request.POST.get('email')
@@ -240,7 +242,7 @@ def Candidate_application(request, id):
           jobApplication.save()
           print(jobApplication)
           return redirect('jobss') 
-     return render(request, 'candidate_application.html',{'candidate_application_form_map':candidate_application_form_map})
+     return render(request, 'candidate_application.html')
 
 def testing(request):
      submitted = False
@@ -272,9 +274,9 @@ def Jobs_Archive(request):
           job.save()
      Count_jobs = Job.objects.filter(archived=False).count()
      Count_jobss = Job.objects.filter(archived=True).count()
-     jobs= Job.objects.filter(archived=False) 
+     jobs= Job.objects.filter(archived=True) 
      job_objects = [{'count':JobApplication.objects.filter(jobId=job).count(), 'job':job} for job in jobs] 
-     return render(request,'jobs.html', {'jobs':job_objects,'Count_jobs':Count_jobs,'Count_jobss':Count_jobss})
+     return render(request,'jobs_archive.html', {'jobs':job_objects,'Count_jobs':Count_jobs,'Count_jobss':Count_jobss})
 
 # def update_jobs(request, pk):
 #     updatejobs= Job.objects.get(pk=pk)

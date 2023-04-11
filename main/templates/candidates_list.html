@@ -220,63 +220,6 @@
             <p>New</p>
           </div>
         </div>
-        <!-- <div style="display: flex; width: 20%">
-          <img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/reject.svg'%}"
-          />
-          <div class="newww" style="display: flex; flex-direction: column">
-            <p
-              style="
-                font-weight: 500;
-                font-size: 30px;
-                padding-top: 5px;
-                color: #666666;
-              "
-            >
-              25
-            </p>
-            <p>Rejected</p>
-          </div>
-        </div>
-        <div style="display: flex; width: 20%">
-          <img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/01.png'%}"
-          />
-          <div class="newww" style="display: flex; flex-direction: column">
-            <p
-              style="
-                font-weight: 500;
-                font-size: 30px;
-                padding-top: 5px;
-                color: #666666;
-              "
-            >
-              25
-            </p>
-            <p>Favourite</p>
-          </div>
-        </div>
-        <div style="display: flex; width: 20%">
-          <img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/01.png'%}"
-          />
-          <div class="newww" style="display: flex; flex-direction: column">
-            <p
-              style="
-                font-weight: 500;
-                font-size: 30px;
-                padding-top: 5px;
-                color: #666666;
-              "
-            >
-              25
-            </p>
-            <p>Archived</p>
-          </div>
-        </div> -->
       </div>
 
       <h3 class="hh3">All candidates</h3>
@@ -289,11 +232,13 @@
         flex-wrap: wrap;
         padding-top: 2rem;
       ">
+
+      <!-- Search Functionlity -->
       <div style="display: flex; width: 24%">
         <form action="/candidates_list/" method="GET">
           <input style="border: 1px solid black"
-            type="text"
-            name="text"
+            type="search"
+            name="query"
             class="search"
             placeholder="Search by Name, Location ...     "
           />

@@ -20,7 +20,7 @@
       rel="stylesheet"
     />
 
-    <title>Jobs</title>
+    <title>Archived Jobs</title>
   </head>
   <style>
 
@@ -140,30 +140,29 @@
             All Jobs
           </h1>
         </div>
-        <div class="col-6">
+        <!-- <div class="col-6">
           <button class="jai" type="submit" style="width: 200px;float:right; margin-top:3rem">
             <a href="{% url 'create_jobs' %}">
               <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
               Job</a
             >
           </button>
-        </div>
+        </div> -->
       </div>
 
       <div class="outer-div" style="display: flex; flex-wrap: wrap">
         <div style="display: flex; width: 25%">
-          <img
+        <a href="{% url 'jobs' %}"> <img
             style="width: 56px; height: 56px"
             src="{%static 'images/Image_1.png'%}"
-          />
-
+          /></a>
           <div class="nwww" style="display: flex; flex-direction: column">
             <p
               style="
                 font-weight: 500;
                 font-size: 30px;
                 padding-top: 5px;
-                color: black;
+                color: #666666;
               "
             >
             {{Count_jobs}}
@@ -173,18 +172,17 @@
           </div>
         </div>
         <div style="display: flex; width: 25%">
-          <a href="{% url 'jobs_archive' %}"><img
+          <img
             style="width: 56px; height: 56px"
             src="{%static 'images/archive_1.svg'%}"
-          /></a>
-
+          />
           <div class="nwww" style="display: flex; flex-direction: column">
             <p
               style="
                 font-weight: 500;
                 font-size: 30px;
                 padding-top: 5px;
-                color: #666666;
+                color: black;
               "
             >
             {{Count_jobss}}
@@ -226,42 +224,12 @@
           </td>
           <td><a href="{% url 'create_jobs' %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
           <td>
-            <!-- <form action="" method="post">
+            <form action="" method="post">
               {%csrf_token%}
               <input type="hidden" name="archived" value="{{job.job.pk}}">
               <button style="color:black; background:white" type="submit">
                 <img src="{%static 'images/archive.svg'%}" />
               </button>
-            </form> -->
-            <!-- Button trigger modal -->
-            <form action="" method="post">
-              {%csrf_token%}
-              <input type="hidden" name="archived" value="{{job.job.pk}}">
-              <button style="background:white; border:None" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                <img src="{%static 'images/archive.svg'%}" />
-              </button>
-
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Conformation</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure, Want to Archive this job ?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                      <input type="hidden" name="archived" value="{{job.job.pk}}">
-                      <button style = "background:#de2c4c" type="submit" class="btn btn-primary">Yes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </form>
           </td>
         </tr>
