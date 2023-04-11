@@ -131,22 +131,22 @@ def Create_Jobs(request):
 def Create_Application_Form(request, jobId):
      job=Job.objects.get(pk=jobId)
      if request.method == 'POST':
-               phonenumber = request.POST.get('phonenumber') 
-               designation = request.POST.get('designation')
-               currentctc = request.POST.get('currentctc')
-               expectedctc = request.POST.get('expectedctc')
-               skypeid = request.POST.get('skypeid')
-               Github_url = request.POST.get('Github_url')
-               linkedin_url = request.POST.get('linkedin_url')
-               portfolio_url= request.POST.get('portfolio_url')
-               resume = request.POST.get('resume')
-               experience = request.POST.get('experience')
-               skills = request.POST.get('skills')
-               email = request.POST.get('email')
-               notice = request.POST.get('notice')
-               current_location = request.POST.get('current_location')
-               full_name = request.POST.get('full_name')
-               candidate_application_form = CandidateApplicationForm(phonenumber=bool(phonenumber),
+          phonenumber = request.POST.get('phonenumber') 
+          designation = request.POST.get('designation')
+          currentctc = request.POST.get('currentctc')
+          expectedctc = request.POST.get('expectedctc')
+          skypeid = request.POST.get('skypeid')
+          Github_url = request.POST.get('Github_url')
+          linkedin_url = request.POST.get('linkedin_url')
+          portfolio_url= request.POST.get('portfolio_url')
+          resume = request.POST.get('resume')
+          experience = request.POST.get('experience')
+          skills = request.POST.get('skills')
+          email = request.POST.get('email')
+          notice = request.POST.get('notice')
+          current_location = request.POST.get('current_location')
+          full_name = request.POST.get('full_name')
+          candidate_application_form = CandidateApplicationForm(phonenumber=bool(phonenumber),
                                                                      designation=bool(designation),
                                                                      currentctc=bool(currentctc),
                                                                      expectedctc=bool(expectedctc), 
@@ -168,7 +168,7 @@ def Create_Application_Form(request, jobId):
                                                                      notice=bool(notice),
                                                                      job_ref=job)
                
-               candidate_application_form.save()
+          candidate_application_form.save()
      return render(request,'create_application_form.html')
 
 def Create_Publish(request):
@@ -186,19 +186,18 @@ def JobApplicationStatus(request, id):
      notes = Notes.objects.filter(application_ref = application.first()).prefetch_related('added_by')
      feedbacks = FeedbackNotes.objects.filter(application_ref = application.first()).prefetch_related('given_by')
 
-     # if request.method == 'POST':
-     #      user_note = request.POST.get('user_note')
-     #      note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
-     #      note.save()
-     #      return redirect('candidate_profile.html')
-     
      if request.method == 'POST':
-          user_feedback = request.POST.get('user_feedback')
-          communication_rating = request.POST.get('communication_rating')
-          logicalskills_rating = request.POST.get('logicalskills_rating')
-          techinicalskills_rating = request.POST.get('techinicalskills_rating')
-          feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
-          feedback.save()
+          user_note = request.POST.get('user_note')
+          note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
+          note.save()
+
+          if request.method == 'POST':
+               user_feedback = request.POST.get('user_feedback')
+               communication_rating = request.POST.get('communication_rating')
+               logicalskills_rating = request.POST.get('logicalskills_rating')
+               techinicalskills_rating = request.POST.get('techinicalskills_rating')
+               feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
+               feedback.save()
      return render(request,'candidate_profile.html',{'notes':notes,'feedbacks':feedbacks, 'application':application.first()})
 
 
