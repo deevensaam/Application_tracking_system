@@ -75,8 +75,8 @@ class Candidate(models.Model):
     experience=models.IntegerField('Years Exp', null=True)
     event_time=models.DateTimeField(default=timezone.now)
     skills=models.CharField('Skills', max_length=225, null=True)
-    notice = models.CharField(max_length=15, choices=NOTICE_CHOICES,default='15 days',blank=True)
-    source = models.CharField(max_length=15, choices=SOURCE_CHOICES,default='Full time',blank=True)
+    notice = models.CharField(max_length=15, choices=NOTICE_CHOICES, default='15 days', blank=True)
+    source = models.CharField(max_length=15, choices=SOURCE_CHOICES, default='Linkedin', blank=True)
 
     def __str__(self) -> str:
         return f"Candidate - id : {self.pk} email : {self.email}"

@@ -19,6 +19,7 @@
       href="https://unpkg.com/@webpixels/css/dist/index.css"
       rel="stylesheet"
     />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <title>Jobs</title>
   </head>
@@ -179,31 +180,63 @@
           </p>
           </div>
 
-          <div class="col-5 d-flex">
-            <form class="inline">
-              <div class="input-icons" style="border: 1px solid black">
-                <input
-                  style="outline: none"
-                  class="input-field"
-                  type="text"
-                  placeholder="Search by name"
-                />
-                <button>
-                  <i style="font-size: 14px" class="fa fa-search icon"></i>
-                </button>
-              </div>
-            </form>
+          <div style="padding-top:2rem"class="col-4 d-flex">
+            <input style="border: 1px solid black; border-radius:0;" type="search" class="light-table-filter" data-table="order-table" placeholder="Search by name, location, etc .." />
+            <i class="fa fa-key fa-lg">
+            </i>
           </div>
 
-        <table id="custome" , style="width: 100%; margin-top: 2rem">
+          <div style="padding-top:2rem"class="col-4 d-flex">
+            
+              <div style="border: 1px solid black">
+                <button style="background:white;border-right: 1px solid black ">
+                  stage
+                </button>
+                <select type="search" class="select-table-filter" data-table="order-table">
+                  <option value="">All </option>
+                  <option value="Telephonic">Telephonic</option>
+                  <option value="Coding">Coding</option>
+                  <option value="F2F">F2F</option>
+                  <option value="Selected">Selected</option>
+                  <option value="Make offer">Make offer</option>
+                  <option value="accepted">accepted</option>
+                </select>
+              </div>
+          </div>
+
+          <div style="padding-top:2rem"class="col-4 d-flex">
+            
+            <div style="border: 1px solid black">
+
+              <button style="background:white;border-right: 1px solid black ">
+                source
+              </button>
+              <select type="search" class="select-table-filter" data-table="order-table">
+                <option value="">All </option>
+                <option value="Linkedin">Linkedin</option>
+                <option value="Dribble">Dribble</option>
+                <option value="Self">Self</option>
+                <option value="Angellist">Angellist</option>
+                <option value="Selected">Selected</option>
+                <option value="Career Page">Career Page</option>
+              </select>
+
+            </div>
+        </div>
+
+        <table id="custome" class="order-table" style="width: 100%; margin-top: 2rem">
+          <thead>
           <tr>
-            <th>Candidate Name</th>
-            <th>Location</th>
-            <th>Exp(Years)</th>
-            <th>Applied on</th>
-            <th>Stage</th>
-            <th>Assigned</th>
-          </tr>
+              <th>Candidate Name</th>
+              <th>Location</th>
+              <th>Exp(Years)</th>
+              <th>Applied on</th>
+              <th>Stage</th>
+              <th>Source</th>
+              <th>Assigned</th>
+            </tr>
+        </thead>
+        <tbody>
           <tr>
             {% for application in applications %}
             <td>
@@ -214,10 +247,12 @@
             <td>{{application.applied_by.experience}}</td>
             <td>{{application.applied_by.event_time}}</td>
             <td>{{application.status}}</td>
+            <td>{{application.applied_by.source}}</td>
             <td>
               <img src="{%static 'images/image_2.png'%}" width="50px" />
             </td>
           </tr>
+        </tbody>
           {% endfor %}
         </table>
       </div>
@@ -227,6 +262,72 @@
       <i class="fa fa-plus-circle" aria-hidden="true"></i>Add Candidates</button
     ><br /><br />
 
+
+    <script>
+      (function(document) {
+        'use strict';
+      
+        var LightTableFilter = (function(Arr) {
+      
+          var _input;
+          var _select;
+      
+          function _onInputEvent(e) {
+            _input = e.target;
+            var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+            Arr.forEach.call(tables, function(table) {
+              Arr.forEach.call(table.tBodies, function(tbody) {
+                Arr.forEach.call(tbody.rows, _filter);
+              });
+            });
+          }
+          
+          function _onSelectEvent(e) {
+            _select = e.target;
+            var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+            Arr.forEach.call(tables, function(table) {
+              Arr.forEach.call(table.tBodies, function(tbody) {
+                Arr.forEach.call(tbody.rows, _filterSelect);
+              });
+            });
+          }
+      
+          function _filter(row) {
+            
+            var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+            row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+      
+          }
+          
+          function _filterSelect(row) {
+           
+            var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+            row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+      
+          }
+      
+          return {
+            init: function() {
+              var inputs = document.getElementsByClassName('light-table-filter');
+              var selects = document.getElementsByClassName('select-table-filter');
+              Arr.forEach.call(inputs, function(input) {
+                input.oninput = _onInputEvent;
+              });
+              Arr.forEach.call(selects, function(select) {
+               select.onchange  = _onSelectEvent;
+              });
+            }
+          };
+        })(Array.prototype);
+      
+        document.addEventListener('readystatechange', function() {
+          if (document.readyState === 'complete') {
+            LightTableFilter.init();
+          }
+        });
+      
+      })(document);
+    </script>
   </body>
 </html>
 {%endblock%}

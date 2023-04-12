@@ -153,8 +153,9 @@ def Create_Application_Form(request, sessionId):
      # session_item = request.session.get(str(sessionId))
      if request.method == 'POST':
           # print(request.session.get(str(sessionId)))
-          # check_list_item = dict()
-          check_list_item['phonenumber'] = request.POST.get('phonenumber')
+          check_list_item = dict()
+          # print(request.POST.get('phonenumber'))
+          check_list_item['phonenumber'] = bool(request.POST.get('phonenumber'))
           check_list_item['designation'] = request.POST.get('designation')
           check_list_item['currentctc'] = request.POST.get('currentctc')
           check_list_item['expectedctc'] = request.POST.get('expectedctc')
@@ -199,6 +200,7 @@ def Create_Publish(request, sessionId):
      job_form = request.session.get(str(sessionId) + "job_form")
      check_list = request.session.get(str(sessionId) + "check_list")
      # TODO: write transaction for creating job and checklist 
+     print(job_form, check_list)
      if request.method == 'POST':
           with transaction.atomic():
                
@@ -235,8 +237,7 @@ def JobApplicationStatus(request, id):
                techinicalskills_rating = request.POST.get('techinicalskills_rating')
                feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
                feedback.save()
-     return render(request,'candidate_profile.html',{'notes':notes,'feedbacks':feedbacks, 'application':application.first()})
-
+     return render(request,'candidate_profile.html',{'feedbacks':feedbacks, 'notes':notes,'application':application.first()})
 
 def Candidate_application(request, id):
      job = Job.objects.get(pk=id)
@@ -264,11 +265,13 @@ def Candidate_application(request, id):
                state = request.POST.get('state')
                experience = request.POST.get('experience')
                skills = request.POST.get('skills')
+               source= request.POST.get('source')
+               landmark = request.POST.get('landmark')
 
                candidate= Candidate(firstname=firstname,lastname=lastname, email=email, phonenumber=phonenumber,designation=designation,
                                    currentctc=currentctc, expectedctc=expectedctc, skypeid=skypeid, Github_url=Github_url,
                                    linkedin_url=linkedin_url,portfolio_url=portfolio_url, resume=resume, street=street,
-                                        pincode=pincode,city=city, state=state, experience=experience, skills=skills)
+                                        pincode=pincode,city=city, state=state, experience=experience, skills=skills,source=source,landmark=landmark )
                candidate.save()
                print(candidate)
           else:

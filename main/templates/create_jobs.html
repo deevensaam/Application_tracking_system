@@ -106,7 +106,7 @@
                             {% csrf_token %}
                             <div class="col-md-6">
                             <label for="role" class="form-label">Job Name</label>
-                            <input value="{{ job.role }}" type="text" class="form-control" placeholder="Sr. Python Django Developer"  id="role" name="role" style="border-radius:1px;">
+                            <input value="{{job.role}}" type="text" class="form-control" placeholder="Sr. Python Django Developer"  id="role" name="role" style="border-radius:1px;">
                             </div>
 
                             <!-- <fieldset class="col-md-3">
@@ -128,8 +128,9 @@
                             </fieldset> -->
                             <div class="col-md-3">
                                 <label for="jobtype" class="form-label">Select Templete</label>
-                                <select id="jobtype" class="form-select"  name="jobtype" style="border-radius:1px;">
+                                <select value="{{job.jobtype}}"id="jobtype" class="form-select"  name="jobtype" style="border-radius:1px;">
                                 <option Selected >Part time</option>
+
                                 <option>Full time</option>
                                 <option>Intern</option>
                                 <option>Remote</option>
@@ -138,12 +139,16 @@
 
                             <div class="col-md-3">
                                 <label for="salary" class="form-label">Salary(LPA)</label>
-                                <input type="number" name="salary" class="form-control" id="salary" placeholder="Rs. 10,00,000" style="border-radius:1px;">
+                                <input value="{{job.salary}}" type="number" name="salary" class="form-control" id="salary" placeholder="Rs. 10,00,000" style="border-radius:1px;">
                             </div>
                             <div class="col-md-6">
                                 <label for="select_template" class="form-label">Select Templete</label>
                                 <select id="select_template" class="form-select"  name="select_template" style="border-radius:1px;">
-                                <option Selected >Select Templete ...</option>
+                                {% if job.select_template == '00'%}
+                                <option selected >00</option>
+                                {% else %}
+                                <option >00</option>
+                                {% endif %}
                                 <option>01</option>
                                 </select>
                             </div>
@@ -180,21 +185,30 @@
 
                                 <div class="col-md-3">
                                     <label for="experience_min" class="form-label">Minimium Experience</label>
-                                    <select id="experience_min" class="form-select"  name="experience_min" style="border-radius:1px;">
-                                    <option Selected >0</option>
+                                    <select  id="experience_min" class="form-select"  name="experience_min" style="border-radius:1px;">
+                                    {% if job.experience_min == '0' %} 
+                                    <option selected >0</option>
+                                    {% else %}
+                                    <option>0</option>
+                                    {% endif %}
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
                                     <option>6</option>
+                                    
                                     </select>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="experience_max" class="form-label">Maximium Experience</label>
                                     <select id="experience_max" class="form-select"  name="experience_max" style="border-radius:1px;">
-                                    <option Selected >0</option>
+                                    {% if job.experience_max == '0' %} 
+                                    <option selected >0</option>
+                                    {% else %}
+                                    <option >0</option>
+                                    {% endif %}
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -208,15 +222,15 @@
                             <h3> Job Description</h3>
                             <div class="col-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Describe about the job"  style="border-radius:1px;"></textarea>
+                            <textarea value="{{job.description}}" class="form-control" name="description" id="description" rows="3" placeholder="Describe about the job"  style="border-radius:1px;"></textarea>
                             </div>
                             <div class="col-12">
                             <label for="requirements" class="form-label">Requirements</label>
-                            <textarea class="form-control" id="requirements" name="requirements" rows="3" placeholder="Please specify the job requirements"  style="border-radius:1px;"></textarea>
+                            <textarea value="{{job.requirements}}"class="form-control" id="requirements" name="requirements" rows="3" placeholder="Please specify the job requirements"  style="border-radius:1px;"></textarea>
                             </div>
                             <div class="col-12">
                                 <label for="about_company" class="form-label">About the company and benefits/perks of working in this company</label>
-                                <textarea class="form-control" id="about_company" name="about_company" rows="3" placeholder="Describe about the company, work culture, etc"  style="border-radius:1px;"></textarea>
+                                <textarea value= "{{job.about_company}}" class="form-control" id="about_company" name="about_company" rows="3" placeholder="Describe about the company, work culture, etc"  style="border-radius:1px;"></textarea>
                             </div>
                             
                             <div class="row justify-content-end" style="padding-top:3rem;padding-bottom:3rem">

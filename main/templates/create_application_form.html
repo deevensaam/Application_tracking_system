@@ -131,7 +131,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.emailid != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="emailid" name="emailid" />
+                {% else %}
                 <input class="form-check-input" type="checkbox" value="True" id="emailid" name="emailid" />
+                {% endif %}
                 <label class="form-check-label" for="emailid">
                   Email id
                 </label>
@@ -140,16 +144,22 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.notice != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="notice" name="notice" />
+                {% else %}
                 <input class="form-check-input" type="checkbox" value="True" id="notice" name="notice" />
-                <label class="form-check-label" for="notice">
-                  Notice Period
-                </label>
+                {%endif%}
+                <label class="form-check-label" for="notice"> Notice Period</label>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.phonenumber != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="phonenumber" name="phonenumber" />
+                {% else %}
                 <input class="form-check-input" type="checkbox" value="True" id="phonenumber" name="phonenumber" />
+                {% endif %}
                 <label class="form-check-label" for="phonenumber">
                   Phone Number
                 </label>
@@ -158,7 +168,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.resume != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="resume" name="resume" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="resume" name="resume" />
+                {%endif%}
                 <label class="form-check-label" for="resume">
                   Resume/CV
                 </label>
@@ -167,7 +181,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.designation != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="designation" name="designation" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="designation" name="designation" />
+                {%endif%}
                 <label class="form-check-label" for="designation">
                   Designation
                 </label>
@@ -176,7 +194,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.linkedin_url != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="linkedin_url" name="linkedin_url" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="linkedin_url" name="linkedin_url" />
+                {%endif%}
                 <label class="form-check-label" for="linkedin_url">
                   Linkedin URL
                 </label>
@@ -185,8 +207,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="True" id="current_location"
-                  name="current_location" />
+                {% if check_list.current_location != None %}
+                  <input checked class="form-check-input" type="checkbox" value="True" id="current_location" name="current_location" />
+                {%else%}
+                  <input class="form-check-input" type="checkbox" value="True" id="current_location" name="current_location" />
+                {%endif%}
                 <label class="form-check-label" for="current_location">
                   Current Location
                 </label>
@@ -195,7 +220,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.Github_url != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="Github_url" name="Github_url" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="Github_url" name="Github_url" />
+                {%endif%}
                 <label class="form-check-label" for="Github_url">
                   Github URL
                 </label>
@@ -204,7 +233,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.currentctc != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="currentctc" name="currentctc" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="currentctc" name="currentctc" />
+                {%endif%}
                 <label class="form-check-label" for="currentctc">
                   Current CTC
                 </label>
@@ -213,7 +246,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.portfolio_url != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="portfolio_url" name="portfolio_url" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="portfolio_url" name="portfolio_url" />
+                {% endif %}
                 <label class="form-check-label" for="portfolio_url">
                   Portfolio Link
                 </label>
@@ -222,7 +259,11 @@
 
             <div class="col-md-6">
               <div class="form-check">
+                {% if check_list.expectedctc != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="expectedctc" name="expectedctc" />
+                {%else%}
                 <input class="form-check-input" type="checkbox" value="True" id="expectedctc" name="expectedctc" />
+                {%endif%}
                 <label class="form-check-label" for="expectedctc">
                   Expected CTC
                 </label>
@@ -245,7 +286,9 @@
                   Submit
                 </button>
               </div> -->
-              <input type="submit" value="submit">
+              <div class="col-md-5">
+              <input style="background:#DE2C4C;width: 93px;height: 46px;color:#FFFFFF; font-weight:700;font-size: 15px;" type="submit" value="submit">
+              </div>
             </div>
           </form>
         </div>

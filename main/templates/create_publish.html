@@ -125,7 +125,7 @@
             class="form-box"
             style="width: 80%; padding-top: 2rem; padding-left: 3rem"
           >
-            <form
+            <form type="submit" method='POST'
               class="row g-3"
               style="
                 display: block;
@@ -193,7 +193,7 @@
               <img src="{%static 'images/globe.svg'%}" style="width: 4%" />
               <img src="{%static 'images/facebook.svg'%}" style="width: 4%" />
 
-              <div class="col-md-12" style="padding-bottom: 2rem">
+              <div class="col-md-6" style="padding-bottom: 2rem">
                 <button
                   type="submit"
                   class="btn btn-primary"
@@ -209,6 +209,22 @@
                   >
                 </button>
               </div>
+
+              <div class="col-md-6" style="padding-bottom: 2rem">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    color: #de2c4c;
+                    border: 1px solid white;
+                    background-color:#de2c4c;
+                    margin-top: 2rem;
+                  "
+                >
+                  <a href="{% url 'jobs' %}" style="color: white"
+                    >Submit</a
+                  >
+                </button>
             </form>
           </div>
         </div>

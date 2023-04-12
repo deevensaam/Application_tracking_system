@@ -17,6 +17,8 @@
     />
     
     <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
     <title>candidates_list</title>
   </head>
   <style>
@@ -142,7 +144,7 @@
     .box p {
       margin: 0px 0px 0px;
       padding-left: 12px;
-      padding-top: 2px;
+      padding-top: 4px;
       font-weight: 500;
       font-size: 14px;
       font-family: 'Inter';
@@ -152,7 +154,7 @@
     .box1 p {
       margin: 0px 0px 0px;
       padding-left: 8px;
-      padding-top: 2px;
+      padding-top: 4px;
       font-weight: 500;
       font-size: 14px;
       font-family: 'Inter';
@@ -166,6 +168,14 @@
       border-left: none;
     }
 
+    .boxx1{
+      background-color: white;
+      width: 250px;
+
+      font-family: 'Inter';
+
+    }
+
     ::placeholder {
       font-family: "Inter";
       color: black;
@@ -175,6 +185,7 @@
 
   </style>
   <body>
+    <!-- <script src="{% static "js\candidate_search.js" %}"></script> -->
 
     <div class="container">
       <h1 style="font-weight: 700; padding-top: 3rem; padding-bottom: 3rem">
@@ -230,12 +241,12 @@
       style="
         display: flex;
         flex-wrap: wrap;
-        padding-top: 2rem;
+        padding-top: 1rem;
       ">
 
       <!-- Search Functionlity -->
       <div style="display: flex; width: 24%">
-        <form action="/candidates_list/" method="GET">
+        <!-- <form action="/candidates_list/" method="GET">
           <input style="border: 1px solid black"
             type="search"
             name="query"
@@ -243,20 +254,25 @@
             placeholder="Search by Name, Location ...     "
           />
           <i type="submit" style="margin-left: -10%;"class="fa fa-search" aria-hidden="true"></i>
-        </form>
+        </form> -->
+        <!-- <label class="__filter_label">Search Employee</label> -->
+        <div class="boxx1">
+          <input style="border: 1px solid black; border-radius:0;" type="search" class="light-table-filter" data-table="order-table" placeholder="Search by name, location, etc .." />
+        </div>
       </div>
 
       <div style="display: flex; width: 5%">
         <div class="box"><p>Stage</p></div>
       </div>
       <div style="display: flex; width: 18%">
-        <select class='boxx' name="stage" Selected id="stage">
-          <option selected value="All">All</option>
+        <select type="search" class="select-table-filter boxx" data-table="order-table" name="source" Selected id="source">
+          <option selected value="">All</option>
           <option value="Telephonic">Telephonic</option>
           <option value="Coding">Coding</option>
           <option value="F2F">F2F</option>
           <option value="Selected">Selected</option>
           <option value="Make offer">Make offer</option>
+          <option value="accepted">accepted</option>
         </select>
       </div>
 
@@ -265,8 +281,8 @@
           <div class="box1"><p>Source</p></div>
         </div>
         <div style="display: flex; width: 22%">
-          <select class='boxx' name="stage" Selected id="stage">
-            <option selected value="All">All</option>
+          <select type="search" class="select-table-filter boxx" data-table="order-table" name="stage" Selected id="stage">
+            <option selected value="">All</option>
             <option value="Linkedin">Linkedin</option>
             <option value="Angellist">Angellist</option>
             <option value="Globe">Globe</option>
@@ -274,108 +290,32 @@
         </div>
       </div>
 
-      <!-- {% if user.is_superuser == frue %} -->
-      <!-- <table id="candidates" , style="width: 100%">
-        <tr>
-          <th><a href="{% url 'jobs_list' %}">Job Title</a></th>
-          <th>Experience</th>
-          <th>Posted on</th>
-          <th>Candidates</th>
-          <th>Assigned</th>
-        </tr>
-        <tr>
-          {% for CANDIDATES in Candidate_list %}
-          <td>{{CANDIDATES.jobname}}</td>
-          <td>{{CANDIDATES.Min}}-{{CANDIDATES.Max}} Years</td>
-          <td>{{CANDIDATES.Event_time}}</td>
-          <td>40</td>
-          <td>
-            <img src="{%static 'images/image_2.png'%}" width="50px" />
-          </td>
-          <td><img src="{%static 'images/edit.svg'%}" /></td>
-          <td><img src="{%static 'images/archive.svg'%}" /></td>
-        </tr>
-        {% endfor %}
-      </table> -->
-      <!-- {% else %}
-      <table id="candidates" , style="width: 100%;margin-top:2rem;">
-        <tr>
-          <th>Candidate Name</th>
-          <th>Position</th>
-          <th>Exp(Years)</th>
-          <th>Candidates</th>
-          <th>Applied on</th>
-          <th>Assigned</th>
-        </tr>
-      </table>
-      {% endif %} -->
-
-      <!-- <table id="candidates" , style="width: 100%; margin-top:3rem;">
-        <tr>
-          <th style="border-bottom: 1px solid black;">Candidates Name</th>
-          <th style="border-bottom: 1px solid black;">Position</th>
-          <th style="border-bottom: 1px solid black;">Exp(Years)</th>
-          <th style="border-bottom: 1px solid black;">Applied on</th>
-          <th style="border-bottom: 1px solid black;">Source</th>
-          <th style="border-bottom: 1px solid black;">Stage</th>
-          <th style="border-bottom: 1px solid black;">Assigned</th>
-        </tr>
-        <tr>
-          <td>Sagar<br>Mumbai, Maharashtra</td>
-          <td>Sr. Python Django Developer</td>
-          <td>5</td>
-          <td>01st Mar, 2020</td>
-          <td>
-            <img src="{%static 'images/linkedin.svg'%}" width="20px" />
-          </td>
-          <td>
-            <select name="stage" id="stage">
-              <option value="Screening" style="background-color: #fff2c9">
-                Screening
-              </option>
-              <option value="Telephonic" style="background: #cbd4eb">
-                Telephonic
-              </option>
-              <option value="Coding" selected style="background: #efcdfe">
-                Coding
-              </option>
-              <option value="F2F" style="background: #fbd4c3">F2F</option>
-              <option value="Selected" style="background: #cdfed0">
-                Selected
-              </option>
-              <option value="Make offer" style="background: #ffd7e4">
-                Make offer
-              </option>
-            </select>
-          </td>
-          <td>
-            <img src="{%static 'images/image_2.png'%}" width="50px" />
-          </td>
-        </tr>
-        
-      </table> -->
-      <table id="candidates"  style=" margin-top:3rem;">
-        <tr >
-          <th>Candidate Name</th>
-          <th>Position</th>
-          <th>Exp (Years)</th>
-          <th>Applied on</th>
-          <th>Source</th>
-          <th>Stage</th>
-          <th>Assigned</th>
-        </tr>
-        <tr>
-          {% for application in applications %}
-            <td><a href="{% url 'application' id=application.pk %}">{{application.applied_by.firstname}} {{application.applied_by.lastname}}</a><br><small>{{application.applied_by.state}}, {{application.applied_by.city}}</small></td>
-            <td>{{application.jobId.role}}</td>
-            <td>{{application.applied_by.experience}}</td>
-            <td>{{application.applied_by.event_time}}</td>
-            <td>{{application.applied_by.source}}</td>
-            <td>{{application.status}}</td>
-            <td>
-                <img src="{%static 'images/image_2.png'%}" width="50px">
-              </td>
+      <table id="candidates" class="order-table" style=" margin-top:3rem;">
+        <thead>
+          <tr >
+            <th>Candidate Name</th>
+            <th>Position</th>
+            <th>Exp (Years)</th>
+            <th>Applied on</th>
+            <th>Source</th>
+            <th>Stage</th>
+            <th>Assigned</th>
           </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for application in applications %}
+              <td><a href="{% url 'application' id=application.pk %}">{{application.applied_by.firstname}} {{application.applied_by.lastname}}</a><br><small>{{application.applied_by.state}}, {{application.applied_by.city}}</small></td>
+              <td>{{application.jobId.role}}</td>
+              <td>{{application.applied_by.experience}}</td>
+              <td>{{application.applied_by.event_time}}</td>
+              <td>{{application.applied_by.source}}</td>
+              <td>{{application.status}}</td>
+              <td>
+                  <img src="{%static 'images/image_2.png'%}" width="50px">
+              </td>
+            </tr>
+        </tbody>
         {% endfor %}
       </table>
     </div>
@@ -384,6 +324,73 @@
       <a href="{% url 'jobss' %}">
         <i class="fa fa-plus-circle" aria-hidden="true"></i>Add Candidates</a></button>
       <br /><br />
+
+
+      <script>
+      (function(document) {
+        'use strict';
+      
+        var LightTableFilter = (function(Arr) {
+      
+          var _input;
+          var _select;
+      
+          function _onInputEvent(e) {
+            _input = e.target;
+            var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+            Arr.forEach.call(tables, function(table) {
+              Arr.forEach.call(table.tBodies, function(tbody) {
+                Arr.forEach.call(tbody.rows, _filter);
+              });
+            });
+          }
+          
+          function _onSelectEvent(e) {
+            _select = e.target;
+            var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+            Arr.forEach.call(tables, function(table) {
+              Arr.forEach.call(table.tBodies, function(tbody) {
+                Arr.forEach.call(tbody.rows, _filterSelect);
+              });
+            });
+          }
+      
+          function _filter(row) {
+            
+            var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+            row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+      
+          }
+          
+          function _filterSelect(row) {
+           
+            var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+            row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+      
+          }
+      
+          return {
+            init: function() {
+              var inputs = document.getElementsByClassName('light-table-filter');
+              var selects = document.getElementsByClassName('select-table-filter');
+              Arr.forEach.call(inputs, function(input) {
+                input.oninput = _onInputEvent;
+              });
+              Arr.forEach.call(selects, function(select) {
+               select.onchange  = _onSelectEvent;
+              });
+            }
+          };
+        })(Array.prototype);
+      
+        document.addEventListener('readystatechange', function() {
+          if (document.readyState === 'complete') {
+            LightTableFilter.init();
+          }
+        });
+      
+      })(document);
+    </script>
 
   </body>
 </html>

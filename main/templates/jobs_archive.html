@@ -140,14 +140,7 @@
             All Jobs
           </h1>
         </div>
-        <!-- <div class="col-6">
-          <button class="jai" type="submit" style="width: 200px;float:right; margin-top:3rem">
-            <a href="{% url 'create_jobs' %}">
-              <i class="fa fa-plus-circle" aria-hidden="true"></i> Create New
-              Job</a
-            >
-          </button>
-        </div> -->
+
       </div>
 
       <div class="outer-div" style="display: flex; flex-wrap: wrap">
@@ -222,7 +215,7 @@
           <td>
             <img src="{%static 'images/image_2.png'%}" width="50px" />
           </td>
-          <td><a href="{% url 'create_jobs' %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
+          <td><a href="#"><img src="{%static 'images/edit.svg'%}" /></a></td>
           <td>
             <form action="" method="post">
               {%csrf_token%}
