@@ -311,12 +311,7 @@
               <td>{{application.applied_by.experience}}</td>
               <td>{{application.applied_by.event_time}}</td>
               <td>{{application.applied_by.source}}</td>
-              <td>
-                <form id="{{application.pk}}" action="" method="post">
-                  <input type="hidden" name="status" id="status">
-                  <input type="hidden" name="applicationId" id="applicationId" value="{{application.pk}}">
-                </form>
-                <select style="border: 1px solid black" type="search" name="source" id="{{application.pk}}">
+              <td><select style="border: 1px solid black" type="search" name="source" Selected id="source">
                 <option value="Telephonic">Telephonic</option>
                 <option value="Coding">Coding</option>
                 <option value="F2F">F2F</option>
@@ -324,7 +319,7 @@
                 <option value="Make offer">Make offer</option>
                 <option value="accepted">accepted</option>
                 <option selected value="screening">screening</option>
-                </select></td>
+              </select></td>
               <td>
                   <img src="{%static 'images/image_2.png'%}" width="50px">
               </td>
@@ -407,22 +402,6 @@
         });
       
       })(document);
-    </script>
-
-    <script>
-      function changeStatus(status,applicationId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var response = JSON.parse(this.responseText);
-                console.log(response.message);
-                return response.message
-            }
-        };
-        xhttp.open("POST", "/candidates_list", true);
-        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send(`applicationId=${applicationId}&status=${status}`);
-    }
     </script>
 
   </body>

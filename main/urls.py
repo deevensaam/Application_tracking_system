@@ -17,6 +17,7 @@ urlpatterns = [
     path('create_application_form/<int:sessionId>', views.Create_Application_Form, name='create_application_form'),
     path('create_publish/<int:sessionId>', views.Create_Publish, name='create_publish'),
     path('candidates_list/', views.Candidates_list, name='candidates_list'),
+    path('candidates_list_new/', views.Candidates_list, name='candidates_list_new'),
     path('job_templete/', views.Job_Templete, name='job_templete'),
     path('application/<id>/', views.JobApplicationStatus, name='application'),
     path('candidate_profile_edit/', views.Candidate_profile_Edit, name='candidate_profile_edit'),

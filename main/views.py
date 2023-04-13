@@ -111,19 +111,20 @@ def Jobs_List(request, id):
 
 @login_required
 def Candidates_list(request):
-     # Candidate_list = Candidate.objects.all()
-     # # applications = JobApplication.objects.filter(jobId=Candidate_list)
-     # # print(applications)
-     # # job=Candidate.objects.all()
-     # # applications= JobApplication.objects.prefetch_related('applied_by')
-     # Candidates_count = Candidate.objects.values_list('firstname').count()
-
-     # jobs= Candidate.objects.all()
-     # job_objects = [{JobApplication.objects.filter(applied_by=job)} for job in jobs] 
      applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
      print(applications)
      Candidates_count = Candidate.objects.values_list('firstname').count()
      return render(request,'candidates_list.html', {'applications':applications,'Candidates_count':Candidates_count})
+
+
+# @login_required
+# def Candidates_list_new(request):
+#      results = respond.Get["source"]
+
+#      applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
+#      print(applications)
+#      Candidates_count = Candidate.objects.values_list('firstname').count()
+#      return render(request,'candidates_list_new.html', {'applications':applications,'Candidates_count':Candidates_count})
 
 @login_required
 def create_job_session_generataor(request):
