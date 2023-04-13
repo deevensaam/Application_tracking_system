@@ -111,6 +111,13 @@ def Jobs_List(request, id):
 
 @login_required
 def Candidates_list(request):
+     if request.method == 'POST':
+          status = request.POST.get('status')
+          application_id = request.POST.get('applicationId')
+          application = JobApplication.objects.get(pk=application_id)
+          application.status = status
+          application.save()
+          return JsonResponse({'application_id' : application.pk, 'status' : application.status })
      applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
      print(applications)
      Candidates_count = Candidate.objects.values_list('firstname').count()

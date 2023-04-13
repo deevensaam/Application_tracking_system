@@ -1,244 +1,229 @@
-{% load static %} {% block content %}    {% include 'nav-bar.html'%}
+{% load static %} {% block content %} {% include 'nav-bar.html'%}
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Inter"
-    />
-    
-    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
-    <title>candidates_list</title>
-  </head>
-  <style>
-    button {
-      position: absolute;
-      font-family: "Inter";
-      background-color: #de2c4c;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      border: 1px;
-      cursor: pointer;
-      height: 52px;
-      width: 191px;
-      left: 75%;
-      top: 18%;
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
 
-    button a {
-      color: white;
-    }
+  <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
 
-    .hh3 {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      color: 222222;
-      padding-top: 3rem;
-      padding-bottom: 1rem;
-    }
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+  <title>candidates_list</title>
+</head>
+<style>
+  button {
+    position: absolute;
+    font-family: "Inter";
+    background-color: #de2c4c;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border: 1px;
+    cursor: pointer;
+    height: 52px;
+    width: 191px;
+    left: 75%;
+    top: 18%;
+  }
 
-    .new {
-      width: 50px;
-      height: 60px;
-      margin-top: 30px;
-      background-color: black;
-      opacity: 0.8;
-      padding: 2.5px;
-    }
-    #candidates {
-      font-family: "Inter";
-      font-style: "normal";
-      border-collapse: collapse;
-      width: 100%;
-    }
+  button a {
+    color: white;
+  }
 
-    #candidates td {
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      padding: 18px;
-      font-weight: 500;
-      font-size: 16px;
-      color: black;
-    }
+  .hh3 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    color: 222222;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+  }
 
-    #candidates th {
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      padding: 18px;
-    }
+  .new {
+    width: 50px;
+    height: 60px;
+    margin-top: 30px;
+    background-color: black;
+    opacity: 0.8;
+    padding: 2.5px;
+  }
 
-    #candidates th {
-      padding-top: 18px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: white;
-      color: black;
-      border: none;
-      font-weight: 400;
-      font-size: 14px;
-    }
+  #candidates {
+    font-family: "Inter";
+    font-style: "normal";
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-    #candidates tr {
-      border: none;
-    }
-    .newww {
-      height: 17px;
-      right: 50px;
-      top: 15px;
-      font-family: "Inter";
-      font-style: normal;
-      line-height: 17px;
-      /* identical to box height */
-      color: #222222;
-    }
+  #candidates td {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 18px;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+  }
 
-    .newww p {
-      margin-bottom: 10px;
-      font-weight: 400;
-      font-size: 13px;
-      padding-left: 5px;
-      padding-bottom: 10px;
-      color: #666666;
-    }
+  #candidates th {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 18px;
+  }
 
-    .newww h6 {
-      margin-top: 5px;
-      font-weight: 500;
-      font-size: 14px;
-      padding-left: 5px;
-    }
+  #candidates th {
+    padding-top: 18px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+    color: black;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+  }
 
-    .newww img {
-      width: 56px;
-      height: 56px;
-    }
+  #candidates tr {
+    border: none;
+  }
 
-    .box {
-      background-color: white;
-      width: 80px;
-      border: 1px solid black;
-      font-family: 'Inter';
-    }
+  .newww {
+    height: 17px;
+    right: 50px;
+    top: 15px;
+    font-family: "Inter";
+    font-style: normal;
+    line-height: 17px;
+    /* identical to box height */
+    color: #222222;
+  }
 
-    .box1 {
-      background-color: white;
-      width: 100px;
-      border: 1px solid black;
-      font-family: 'Inter';
-    }
+  .newww p {
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 13px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    color: #666666;
+  }
 
-    .box p {
-      margin: 0px 0px 0px;
-      padding-left: 12px;
-      padding-top: 4px;
-      font-weight: 500;
-      font-size: 14px;
-      font-family: 'Inter';
-      color:black;
-    }
+  .newww h6 {
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 5px;
+  }
 
-    .box1 p {
-      margin: 0px 0px 0px;
-      padding-left: 8px;
-      padding-top: 4px;
-      font-weight: 500;
-      font-size: 14px;
-      font-family: 'Inter';
-      color:black;
-    }
-    .boxx{
-      background-color: white;
-      width: 150px;
-      border: 1px solid black;
-      font-family: 'Inter';
-      border-left: none;
-    }
+  .newww img {
+    width: 56px;
+    height: 56px;
+  }
 
-    .boxx1{
-      background-color: white;
-      width: 250px;
+  .box {
+    background-color: white;
+    width: 80px;
+    border: 1px solid black;
+    font-family: 'Inter';
+  }
 
-      font-family: 'Inter';
+  .box1 {
+    background-color: white;
+    width: 100px;
+    border: 1px solid black;
+    font-family: 'Inter';
+  }
 
-    }
+  .box p {
+    margin: 0px 0px 0px;
+    padding-left: 12px;
+    padding-top: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Inter';
+    color: black;
+  }
 
-    ::placeholder {
-      font-family: "Inter";
-      color: black;
-      font-size: 14px;
-    }
+  .box1 p {
+    margin: 0px 0px 0px;
+    padding-left: 8px;
+    padding-top: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Inter';
+    color: black;
+  }
 
+  .boxx {
+    background-color: white;
+    width: 150px;
+    border: 1px solid black;
+    font-family: 'Inter';
+    border-left: none;
+  }
 
-  </style>
-  <body>
-    <!-- <script src="{% static "js\candidate_search.js" %}"></script> -->
+  .boxx1 {
+    background-color: white;
+    width: 250px;
 
-    <div class="container">
-      <h1 style="font-weight: 700; padding-top: 3rem; padding-bottom: 3rem">
-        Candidates List
-      </h1>
+    font-family: 'Inter';
 
-      <div class="outer-div" style="display: flex; flex-wrap: wrap">
-        <div style="display: flex; width: 20%">
-          <img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/usser.svg'%}"
-          />
-          <div class="newww" style="display: flex; flex-direction: column">
-            <p
-              style="
+  }
+
+  ::placeholder {
+    font-family: "Inter";
+    color: black;
+    font-size: 14px;
+  }
+</style>
+
+<body>
+  <!-- <script src="{% static "js\candidate_search.js" %}"></script> -->
+
+  <div class="container">
+    <h1 style="font-weight: 700; padding-top: 3rem; padding-bottom: 3rem">
+      Candidates List
+    </h1>
+
+    <div class="outer-div" style="display: flex; flex-wrap: wrap">
+      <div style="display: flex; width: 20%">
+        <img style="width: 56px; height: 56px" src="{%static 'images/usser.svg'%}" />
+        <div class="newww" style="display: flex; flex-direction: column">
+          <p style="
                 font-weight: 500;
                 font-size: 30px;
                 padding-top: 5px;
                 color: black;
-              "
-            >
-              {{Candidates_count}}
-            </p>
-            <p>All</p>
-          </div>
+              ">
+            {{Candidates_count}}
+          </p>
+          <p>All</p>
         </div>
-        <div style="display: flex; width: 20%">
-          <img
-            style="width: 56px; height: 56px"
-            src="{%static 'images/all.svg'%}"
-          />
-          <div class="newww" style="display: flex; flex-direction: column">
-            <p
-              style="
+      </div>
+      <div style="display: flex; width: 20%">
+        <img style="width: 56px; height: 56px" src="{%static 'images/all.svg'%}" />
+        <div class="newww" style="display: flex; flex-direction: column">
+          <p style="
                 font-weight: 500;
                 font-size: 30px;
                 padding-top: 5px;
                 color: #666666;
-              "
-            >
+              ">
             {{Candidates_count}}
-            </p>
-            <p>New</p>
-          </div>
+          </p>
+          <p>New</p>
         </div>
       </div>
+    </div>
 
-      <h3 class="hh3">All candidates</h3>
+    <h3 class="hh3">All candidates</h3>
 
-      
-      <div
-      class="outer-div"
-      style="
+
+    <div class="outer-div" style="
         display: flex;
         flex-wrap: wrap;
         padding-top: 1rem;
@@ -257,15 +242,19 @@
         </form> -->
         <!-- <label class="__filter_label">Search Employee</label> -->
         <div class="boxx1">
-          <input style="border: 1px solid black; border-radius:0;" type="search" class="light-table-filter" data-table="order-table" placeholder="Search by name, location, etc .." />
+          <input style="border: 1px solid black; border-radius:0;" type="search" class="light-table-filter"
+            data-table="order-table" placeholder="Search by name, location, etc .." />
         </div>
       </div>
 
       <div style="display: flex; width: 5%">
-        <div class="box"><p>Stage</p></div>
+        <div class="box">
+          <p>Stage</p>
+        </div>
       </div>
       <div style="display: flex; width: 18%">
-        <select type="search" class="select-table-filter boxx" data-table="order-table" name="source" Selected id="source">
+        <select type="search" class="select-table-filter boxx" data-table="order-table" name="source" Selected
+          id="source">
           <option selected value="">All</option>
           <option value="Telephonic">Telephonic</option>
           <option value="Coding">Coding</option>
@@ -277,154 +266,220 @@
       </div>
 
       <div class="dropdown"></div>
-        <div style="display: flex; width: 5%">
-          <div class="box1"><p>Source</p></div>
-        </div>
-        <div style="display: flex; width: 22%">
-          <select type="search" class="select-table-filter boxx" data-table="order-table" name="stage" Selected id="stage">
-            <option selected value="">All</option>
-            <option value="Linkedin">Linkedin</option>
-            <option value="Angellist">Angellist</option>
-            <option value="Globe">Globe</option>
-          </select>
+      <div style="display: flex; width: 5%">
+        <div class="box1">
+          <p>Source</p>
         </div>
       </div>
-
-      <table id="candidates" class="order-table" style=" margin-top:3rem;">
-        <thead>
-          <tr >
-            <th>Candidate Name</th>
-            <th>Position</th>
-            <th>Exp (Years)</th>
-            <th>Applied on</th>
-            <th>Source</th>
-            <th>Stage</th>
-            <th>Assigned</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {% for application in applications %}
-              <td><a href="{% url 'application' id=application.pk %}">{{application.applied_by.firstname}} {{application.applied_by.lastname}}</a><br><small>{{application.applied_by.state}}, {{application.applied_by.city}}</small></td>
-              <td>{{application.jobId.role}}</td>
-              <td>{{application.applied_by.experience}}</td>
-              <td>{{application.applied_by.event_time}}</td>
-              <td>{{application.applied_by.source}}</td>
-              <td>
-                <form id="{{application.pk}}" action="" method="post">
-                  <input type="hidden" name="status" id="status">
-                  <input type="hidden" name="applicationId" id="applicationId" value="{{application.pk}}">
-                </form>
-                <select style="border: 1px solid black" type="search" name="source" id="{{application.pk}}">
-                <option value="Telephonic">Telephonic</option>
-                <option value="Coding">Coding</option>
-                <option value="F2F">F2F</option>
-                <option value="Selected">Selected</option>
-                <option value="Make offer">Make offer</option>
-                <option value="accepted">accepted</option>
-                <option selected value="screening">screening</option>
-                </select></td>
-              <td>
-                  <img src="{%static 'images/image_2.png'%}" width="50px">
-              </td>
-              <td>
-                <a href="{% url 'candidate_application' id=application.pk %}"><img src="{%static 'images/more-vertical.svg'%}" width="25px"></a>
-              </td>
-            </tr>
-        </tbody>
-        {% endfor %}
-      </table>
+      <div style="display: flex; width: 22%">
+        <select type="search" class="select-table-filter boxx" data-table="order-table" name="stage" Selected
+          id="stage">
+          <option selected value="">All</option>
+          <option value="Linkedin">Linkedin</option>
+          <option value="Angellist">Angellist</option>
+          <option value="Globe">Globe</option>
+        </select>
+      </div>
     </div>
 
-    <button type="submit">
-      <a href="{% url 'jobss' %}">
-        <i class="fa fa-plus-circle" aria-hidden="true"></i>Add Candidates</a></button>
-      <br /><br />
+    <table id="candidates" class="order-table" style=" margin-top:3rem;">
+      <thead>
+        <tr>
+          <th>Candidate Name</th>
+          <th>Position</th>
+          <th>Exp (Years)</th>
+          <th>Applied on</th>
+          <th>Source</th>
+          <th>Stage</th>
+          <th>Assigned</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for application in applications %}
+          <td><a href="{% url 'application' id=application.pk %}">{{application.applied_by.firstname}}
+              {{application.applied_by.lastname}}</a><br><small>{{application.applied_by.state}},
+              {{application.applied_by.city}}</small></td>
+          <td>{{application.jobId.role}}</td>
+          <td>{{application.applied_by.experience}}</td>
+          <td>{{application.applied_by.event_time}}</td>
+          <td>{{application.applied_by.source}}</td>
+          <td>
+            <form action="" method="POST">
+              {% csrf_token %}
+              <select data-target-id="{{application.pk}}" style="border: 1px solid black" type="search" name="status"
+                id="status">
+                {% if application.status == 'telephonic' %}
+                <option selected value="telephonic">Telephonic</option>
+                {% else %}
+                <option value="telephonic">Telephonic</option>
+                {% endif %}
+                {% if appication.status == "coding" %}
+                <option selected value="coding">Coding</option>
+                {% else %}
+                <option value="coding">Coding</option>
+                {% endif %}
+                {% if application.status == "f2f" %}
+                <option selected value="f2f">F2F</option>
+                {% else %}
+                <option value="f2f">F2F</option>
+                {% endif %}
+                {% if application.status == "selected" %}
+                <option selected value="selected">Selected</option>
+                {% else %}
+                <option value="selected">Selected</option>
+                {% endif %}
+                {% if application.status == "makeoffer" %}
+                <option value="makeoffer">Make offer</option>
+                {% else %}
+                <option value="makeoffer">Make offer</option>
+                {% endif %}
+                {% if application.status == "accepted" %}
+                <option selected value="accepted">accepted</option>
+                {% else %}
+                <option value="accepted">accepted</option>
+                {% endif %}
+                {% if application.status == "screening" %}
+                <option selected value="screening">screening</option>
+                {% else %}
+                <option value="screening">screening</option>
+                {% endif %}
+              </select>
+              <button class="display-none" type="submit"></button>
+            </form>
+          </td>
+          <td>
+            <img src="{%static 'images/image_2.png'%}" width="50px">
+          </td>
+          <td>
+            <a href="{% url 'candidate_application' id=application.pk %}"><img
+                src="{%static 'images/more-vertical.svg'%}" width="25px"></a>
+          </td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
 
+  <button type="submit">
+    <a href="{% url 'jobss' %}">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>Add Candidates</a></button>
+  <br /><br />
 
-      <script>
-      (function(document) {
+  <script>
+
+    function updateStatus(applicationId, status) {
+
+      const csrftoken = document.cookie.match(/csrftoken=([\w-]+)/)[1];
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var response = JSON.parse(this.responseText);
+          return response.status
+        }
+      };
+      xhttp.open("POST", "/candidates_list/", true);
+      xhttp.setRequestHeader('X-CSRFToken', csrftoken);
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhttp.send(`applicationId=${applicationId}&status=${status}`);
+    }
+
+    const selectItems = document.querySelectorAll('select#status');
+
+    selectItems.forEach(selectItem => {
+      selectItem.addEventListener('change', (e) => {
+        const status = e.target.value;
+        const applicationId = e.target.getAttribute('data-target-id');
+        updateStatus(applicationId, status);
+      })
+    })
+
+    // // function changeStatus(e) {
+    // console.log("Working")
+    // console.log(e.target.value, e.target);
+    //   // var xhttp = new XMLHttpRequest();
+    //   // xhttp.onreadystatechange = function () {
+    //   //   if (this.readyState == 4 && this.status == 200) {
+    //   //     var response = JSON.parse(this.responseText);
+    //   //     console.log(response.message);
+    //   //     return response.message
+    //   //   }
+    //   // };
+    //   // xhttp.open("POST", "/candidates_list", true);
+    //   // xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    //   // xhttp.send(`applicationId=${applicationId}&status=${status}`);
+    // }
+  </script>
+
+  <script>
+      (function (document) {
         'use strict';
-      
-        var LightTableFilter = (function(Arr) {
-      
+
+        var LightTableFilter = (function (Arr) {
+
           var _input;
           var _select;
-      
+
           function _onInputEvent(e) {
             _input = e.target;
             var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-            Arr.forEach.call(tables, function(table) {
-              Arr.forEach.call(table.tBodies, function(tbody) {
+            Arr.forEach.call(tables, function (table) {
+              Arr.forEach.call(table.tBodies, function (tbody) {
                 Arr.forEach.call(tbody.rows, _filter);
               });
             });
           }
-          
+
           function _onSelectEvent(e) {
             _select = e.target;
             var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
-            Arr.forEach.call(tables, function(table) {
-              Arr.forEach.call(table.tBodies, function(tbody) {
+            Arr.forEach.call(tables, function (table) {
+              Arr.forEach.call(table.tBodies, function (tbody) {
                 Arr.forEach.call(tbody.rows, _filterSelect);
               });
             });
           }
-      
+
           function _filter(row) {
-            
+
             var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
             row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-      
+
           }
-          
+
           function _filterSelect(row) {
-           
+
             var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
             row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
-      
+
           }
-      
+
           return {
-            init: function() {
+            init: function () {
               var inputs = document.getElementsByClassName('light-table-filter');
               var selects = document.getElementsByClassName('select-table-filter');
-              Arr.forEach.call(inputs, function(input) {
+              Arr.forEach.call(inputs, function (input) {
                 input.oninput = _onInputEvent;
               });
-              Arr.forEach.call(selects, function(select) {
-               select.onchange  = _onSelectEvent;
+              Arr.forEach.call(selects, function (select) {
+                select.onchange = _onSelectEvent;
               });
             }
           };
         })(Array.prototype);
-      
-        document.addEventListener('readystatechange', function() {
+
+        document.addEventListener('readystatechange', function () {
           if (document.readyState === 'complete') {
             LightTableFilter.init();
           }
         });
-      
+
       })(document);
-    </script>
+  </script>
 
-    <script>
-      function changeStatus(status,applicationId) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                var response = JSON.parse(this.responseText);
-                console.log(response.message);
-                return response.message
-            }
-        };
-        xhttp.open("POST", "/candidates_list", true);
-        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send(`applicationId=${applicationId}&status=${status}`);
-    }
-    </script>
+</body>
 
-  </body>
 </html>
 {%endblock%}
