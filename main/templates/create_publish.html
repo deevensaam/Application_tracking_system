@@ -125,7 +125,7 @@
             class="form-box"
             style="width: 80%; padding-top: 2rem; padding-left: 3rem"
           >
-            <form type="submit" method='POST'
+            <div  method='POST'
               class="row g-3"
               style="
                 display: block;
@@ -211,21 +211,23 @@
               </div>
 
               <div class="col-md-6" style="padding-bottom: 2rem">
-                <button
+                
+                <form action="" method="post">
+                  {%csrf_token%}
+                  <button
                   type="submit"
                   class="btn btn-primary"
                   style="
-                    color: #de2c4c;
+                    color: white;
                     border: 1px solid white;
                     background-color:#de2c4c;
                     margin-top: 2rem;
                   "
                 >
-                  <a href="{% url 'jobs' %}" style="color: white"
-                    >Submit</a
-                  >
+                  submit
                 </button>
-            </form>
+                </form>
+              </div>
           </div>
         </div>
       </div>

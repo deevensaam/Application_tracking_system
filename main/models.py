@@ -124,6 +124,7 @@ class CandidateApplicationForm(models.Model):
     skills=models.BooleanField(default=False, null=True)
     notice=models.BooleanField(default=False, null=True)
     source = models.BooleanField(default=False, null=True)
+    current_location = models.BooleanField(default=False, null=True)
     job_ref = models.OneToOneField(to= Job, on_delete=models.CASCADE,default= None, null=True)
 
 class JobApplication(models.Model):
@@ -142,7 +143,7 @@ class JobApplication(models.Model):
     # candidate = models.OneToOneField(on_delete=models.CASCADE, to=Candidate, default=None)
     # feedback_note = models.CharField(max_length=200)
     # user_note = models.CharField(max_length=200)
-    status = models.CharField(max_length=20,choices=ApplicationStatus.choices,default='SELECTED')
+    status = models.CharField(max_length=20,choices=ApplicationStatus.choices,default='screening')
 
 class Notes(models.Model):
     user_note = models.CharField(max_length = 250)

@@ -127,13 +127,31 @@
                                 </div>
                             </fieldset> -->
                             <div class="col-md-3">
-                                <label for="jobtype" class="form-label">Select Templete</label>
-                                <select value="{{job.jobtype}}"id="jobtype" class="form-select"  name="jobtype" style="border-radius:1px;">
+                                <label for="jobtype" class="form-label">Job type</label>
+                                <select id="jobtype" class="form-select"  name="jobtype" style="border-radius:1px;">
+                                {% if job.jobtype == 'Part time'%}
                                 <option Selected >Part time</option>
+                                {%else%}
+                                <option>Part time</option>
+                                {%endif%}
 
+                                {% if job.jobtype == 'Full time'%}
+                                <option Selected >Full time</option>
+                                {%else%}
                                 <option>Full time</option>
+                                {%endif%}
+
+                                {% if job.jobtype == 'Intern'%}
+                                <option Selected >Intern</option>
+                                {%else%}
                                 <option>Intern</option>
+                                {%endif%}
+
+                                {% if job.jobtype == 'Remote'%}
+                                <option Selected >Remote</option>
+                                {%else%}
                                 <option>Remote</option>
+                                {%endif%}
                                 </select>
                             </div>
 
@@ -149,7 +167,13 @@
                                 {% else %}
                                 <option >00</option>
                                 {% endif %}
-                                <option>01</option>
+
+                                {% if job.select_template == '01'%}
+                                <option selected >01</option>
+                                {% else %}
+                                <option >01</option>
+                                {% endif %}
+
                                 </select>
                             </div>
                             <!-- <div class="col-md-3">
@@ -187,17 +211,46 @@
                                     <label for="experience_min" class="form-label">Minimium Experience</label>
                                     <select  id="experience_min" class="form-select"  name="experience_min" style="border-radius:1px;">
                                     {% if job.experience_min == '0' %} 
-                                    <option selected >0</option>
+                                    <option value='0' selected >0</option>
                                     {% else %}
-                                    <option>0</option>
+                                    <option value='0'>0</option>
                                     {% endif %}
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    
+ 
+                                    {% if job.experience_min == '1' %} 
+                                    <option value='1' selected >1</option>
+                                    {% else %}
+                                    <option value='1'>1</option>
+                                    {% endif %}
+
+                                    {% if job.experience_min == '2' %} 
+                                    <option value='2' selected >2</option>
+                                    {% else %}
+                                    <option value='2'>2</option>
+                                    {% endif %}
+
+                                    {% if job.experience_min == '3' %} 
+                                    <option value='3' selected >3</option>
+                                    {% else %}
+                                    <option value='3'>3</option>
+                                    {% endif %}
+
+                                    {% if job.experience_min == '4' %} 
+                                    <option value='4' selected >4</option>
+                                    {% else %}
+                                    <option value='4'>4</option>
+                                    {% endif %}
+
+                                    {% if job.experience_min == '5' %} 
+                                    <option value='5' selected >5</option>
+                                    {% else %}
+                                    <option value='5'>5</option>
+                                    {% endif %}
+
+                                    {% if job.experience_min == '6' %} 
+                                    <option value='6' selected >6</option>
+                                    {% else %}
+                                    <option value='6'>6</option>
+                                    {% endif %}
                                     </select>
                                 </div>
 
@@ -205,32 +258,63 @@
                                     <label for="experience_max" class="form-label">Maximium Experience</label>
                                     <select id="experience_max" class="form-select"  name="experience_max" style="border-radius:1px;">
                                     {% if job.experience_max == '0' %} 
-                                    <option selected >0</option>
+                                    <option value='0' selected >0</option>
                                     {% else %}
-                                    <option >0</option>
+                                    <option value='0' >0</option>
                                     {% endif %}
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
+
+                                    {% if job.experience_max == '1' %} 
+                                    <option value='1' selected >1</option>
+                                    {% else %}
+                                    <option value='1' >1</option>
+                                    {% endif %}
+
+                                    {% if job.experience_max == '2' %} 
+                                    <option value='2' selected >2</option>
+                                    {% else %}
+                                    <option value='2' >2</option>
+                                    {% endif %}
+
+                                    {% if job.experience_max == '3' %} 
+                                    <option value='3' selected >3</option>
+                                    {% else %}
+                                    <option value='3' >3</option>
+                                    {% endif %}
+
+                                    {% if job.experience_max == '4' %} 
+                                    <option value='4' selected >4</option>
+                                    {% else %}
+                                    <option value='4' >4</option>
+                                    {% endif %}
+
+                                    {% if job.experience_max == '5' %} 
+                                    <option value='5' selected >5</option>
+                                    {% else %}
+                                    <option value='5' >5</option>
+                                    {% endif %}
+
+                                    {% if job.experience_max == '6' %} 
+                                    <option value='6' selected >6</option>
+                                    {% else %}
+                                    <option value='6' >6</option>
+                                    {% endif %}
                                     </select>
                                 </div>
+
 
                             <hr>
                             <h3> Job Description</h3>
                             <div class="col-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea value="{{job.description}}" class="form-control" name="description" id="description" rows="3" placeholder="Describe about the job"  style="border-radius:1px;"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Describe about the job"  style="border-radius:1px;">{{job.description}}</textarea>
                             </div>
                             <div class="col-12">
                             <label for="requirements" class="form-label">Requirements</label>
-                            <textarea value="{{job.requirements}}"class="form-control" id="requirements" name="requirements" rows="3" placeholder="Please specify the job requirements"  style="border-radius:1px;"></textarea>
+                            <textarea class="form-control" id="requirements" name="requirements" rows="3" placeholder="Please specify the job requirements"  style="border-radius:1px;">{{job.requirements}}</textarea>
                             </div>
                             <div class="col-12">
                                 <label for="about_company" class="form-label">About the company and benefits/perks of working in this company</label>
-                                <textarea value= "{{job.about_company}}" class="form-control" id="about_company" name="about_company" rows="3" placeholder="Describe about the company, work culture, etc"  style="border-radius:1px;"></textarea>
+                                <textarea class="form-control" id="about_company" name="about_company" rows="3" placeholder="Describe about the company, work culture, etc"  style="border-radius:1px;">{{job.about_company}}</textarea>
                             </div>
                             
                             <div class="row justify-content-end" style="padding-top:3rem;padding-bottom:3rem">

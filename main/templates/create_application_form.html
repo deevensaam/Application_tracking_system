@@ -131,12 +131,12 @@
 
             <div class="col-md-6">
               <div class="form-check">
-                {% if check_list.emailid != None %}
-                <input checked class="form-check-input" type="checkbox" value="True" id="emailid" name="emailid" />
+                {% if check_list.email != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="email" name="email"/>
                 {% else %}
-                <input class="form-check-input" type="checkbox" value="True" id="emailid" name="emailid" />
+                <input class="form-check-input" type="checkbox" value="True" id="email" name="email"/>
                 {% endif %}
-                <label class="form-check-label" for="emailid">
+                <label class="form-check-label" for="email">
                   Email id
                 </label>
               </div>
@@ -266,6 +266,32 @@
                 {%endif%}
                 <label class="form-check-label" for="expectedctc">
                   Expected CTC
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-check">
+                {% if check_list.source != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="source" name="source" />
+                {%else%}
+                <input class="form-check-input" type="checkbox" value="True" id="source" name="source" />
+                {%endif%}
+                <label class="form-check-label" for="source">
+                  Source
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-check">
+                {% if check_list.notice != None %}
+                <input checked class="form-check-input" type="checkbox" value="True" id="notice" name="notice" />
+                {%else%}
+                <input class="form-check-input" type="checkbox" value="True" id="notice" name="notice" />
+                {%endif%}
+                <label class="form-check-label" for="notice">
+                  Notice Period
                 </label>
               </div>
             </div>

@@ -300,6 +300,7 @@
             <th>Source</th>
             <th>Stage</th>
             <th>Assigned</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -310,9 +311,21 @@
               <td>{{application.applied_by.experience}}</td>
               <td>{{application.applied_by.event_time}}</td>
               <td>{{application.applied_by.source}}</td>
-              <td>{{application.status}}</td>
+              <td><select style="border: 1px solid black" type="search" name="source" Selected id="source">
+                {{application.applied_by.stage}}
+                <option value="Telephonic">Telephonic</option>
+                <option value="Coding">Coding</option>
+                <option value="F2F">F2F</option>
+                <option value="Selected">Selected</option>
+                <option value="Make offer">Make offer</option>
+                <option value="accepted">accepted</option>
+                <option selected value="screening">screening</option>
+              </select></td>
               <td>
                   <img src="{%static 'images/image_2.png'%}" width="50px">
+              </td>
+              <td>
+                <a href="{% url 'candidate_application' id=application.pk %}"><img src="{%static 'images/more-vertical.svg'%}" width="25px"></a>
               </td>
             </tr>
         </tbody>

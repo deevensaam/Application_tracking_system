@@ -158,8 +158,7 @@
           <form method="POST" action="" class="row g-3">
             {% csrf_token %}
             <h3>Basic Details</h3>
-            <div class="col-md-12">
-              {%if check_list.firstname %}
+            <div class="col-md-6">
               <label for="firstname" class="form-label">First name</label>
               <input
                 type="text"
@@ -169,21 +168,9 @@
                 placeholder="Enter your first name"
                 style="border-radius: 1px"
               />
-              {%else%}            
-              <input
-              type="hidden"
-              value=" "
-              class="form-control"
-              name="firstname"
-              id="firstname"
-              placeholder="Enter your first name"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.lastname %}
+            <div class="col-md-6">
               <label for="lastname" class="form-label">last name</label>
               <input
                 type="text"
@@ -193,21 +180,9 @@
                 placeholder="Enter your last name"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="lastname"
-              id="lastname"
-              placeholder="Enter your last name"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.email %}
+            <div class="col-md-6">
               <label for="email" class="form-label">Email Id</label>
               <input
                 type="text"
@@ -217,21 +192,9 @@
                 placeholder="Enter your Email"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="email"
-              id="email"
-              placeholder="Enter your Email"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.phonenumber %}
+            <div class="col-md-3">
               <label for="phonenumber" class="form-label">phone number</label>
               <input
                 type="text"
@@ -241,21 +204,9 @@
                 placeholder="phonenumber"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value="1234567890"
-              class="form-control"
-              name="phonenumber"
-              id="phonenumber"
-              placeholder="phonenumber"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.notice %}
+            <div class="col-md-3">
               <label for="notice" class="form-label">Notice Period</label>
               <select id="notice" class="form-select"  name="notice" style="border-radius:1px;">
               <option>Immediately</option>
@@ -264,19 +215,9 @@
               <option>45 days</option>
               <option>60 days</option>
               </select>
-              {%else%}
-              <select type="hidden" value="" id="notice" class="form-select"  name="notice" style="border-radius:1px;">
-                <option>Immediately</option>
-                <option>15 days</option>
-                <option>30 days</option>
-                <option>45 days</option>
-                <option>60 days</option>
-                </select>
-              {% endif %}
           </div>
 
-            <div class="col-md-12">
-              {%if check_list.designation %}
+            <div class="col-md-3">
               <label for="designation" class="form-label">Designation</label>
               <input
                 type="text"
@@ -286,22 +227,9 @@
                 placeholder="Designation"
                 style="border-radius: 1px"
               />
-              {%else%}             
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="designation"
-              id="designation"
-              placeholder="Designation"
-              style="border-radius: 1px"
-            />
-              
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.currentctc %}
+            <div class="col-md-3">
               <label for="currentctc" class="form-label">Current CTC</label>
               <input
                 type="text"
@@ -311,21 +239,9 @@
                 placeholder="CTC- present"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value="00"
-              class="form-control"
-              name="currentctc"
-              id="currentctc"
-              placeholder="CTC- present"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.expectedctc %}
+            <div class="col-md-3">
               <label for="expectedctc" class="form-label">Expected CTC</label>
               <input
                 type="text"
@@ -335,21 +251,9 @@
                 placeholder="ECTC - Expected"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value="00"
-              class="form-control"
-              name="expectedctc"
-              id="expectedctc"
-              placeholder="ECTC - Expected"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.experience %}
+            <div class="col-md-3">
               <label for="experience" class="form-label">Experience Years</label>
               <input
                 type="text"
@@ -359,17 +263,6 @@
                 placeholder="CTC - Expected"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value="00"
-              class="form-control"
-              name="experience"
-              id="experience"
-              placeholder="CTC - Expected"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
             <!-- <div class="col-md-3">
@@ -394,32 +287,19 @@
               </select>
             </div> -->
 
-            <div class="col-md-12">
-              {%if check_list.skypeid %}
-              <label for="skypeid" class="form-label">Skype ID</label>
+            <div class="col-md-6">
+              <label for="skypeid" class="form-label">Skype id</label>
               <input
                 type="text"
                 class="form-control"
                 name="skypeid"
                 id="skypeid"
-                placeholder="Enter your first name"
+                placeholder="id"
                 style="border-radius: 1px"
               />
-              {%else%}              
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="skypeid"
-              id="skypeid"
-              placeholder="Enter your first name"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.linkedin_url %}
+            <div class="col-md-6">
               <label for="linkedin_url" class="form-label">Linkedin URL</label>
               <input
                 type="text"
@@ -429,21 +309,9 @@
                 placeholder="Enter your first name"
                 style="border-radius: 1px"
               />
-              {%else%}              
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="linkedin_url"
-              id="linkedin_url"
-              placeholder="Enter your first name"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.Github_url %}
+            <div class="col-md-6">
               <label for="Github_url" class="form-label">Github URL</label>
               <input
                 type="text"
@@ -453,21 +321,9 @@
                 placeholder="Enter your first name"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="Github_url"
-              id="Github_url"
-              placeholder="Enter your first name"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.portfolio_url %}
+            <div class="col-md-6">
               <label for="portfolio_url" class="form-label"
                 >Portfolio Link</label
               >
@@ -479,21 +335,9 @@
                 placeholder="Enter your first name"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="portfolio_url"
-              id="portfolio_url"
-              placeholder="Enter your first name"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="mb-12">
-              {%if check_list.resume %}
+            <div class="mb-3">
               <label for="resume" class="form-label">Upload Resume / CV </label>
               <input
                 class="form-control"
@@ -501,19 +345,9 @@
                 name="resume"
                 id="resume"
               />
-              {%else%}              
-              <input
-              class="form-control"
-              type="hidden"
-              value=""
-              name="resume"
-              id="resume"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.skills %}
+            <div class="col-md-9">
               <label for="skills" class="form-label">Add your Skills</label>
               <input
                 type="text"
@@ -523,45 +357,23 @@
                 placeholder="Add your respective skils"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="skills"
-              id="skills"
-              placeholder="Add your respective skils"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.source %}
+            <div class="col-md-3">
               <label for="source" class="form-label">Source</label>
-              <select type="text" id="source" class="form-select"  name="source" style="border-radius:1px;">
+              <select id="SOURCE_CHOICES" class="form-select"  name="source" style="border-radius:1px;">
               <option>Linkedin</option>
               <option>Dribble</option>
               <option>Self</option>
               <option>Angellist</option>
               <option>Career Page</option>
               </select>
-              {%else%}
-              <select type="hidden" value=""  id="source" class="form-select"  name="source" style="border-radius:1px;">
-                <option>Linkedin</option>
-                <option>Dribble</option>
-                <option>Self</option>
-                <option>Angellist</option>
-                <option>Career Page</option>
-                </select>
-              {% endif %}
           </div>
 
             <hr />
 
             <h3>Address</h3>
-            <div class="col-md-12">
-              {%if check_list.street %}
+            <div class="col-md-6">
               <label for="street" class="form-label">Street address</label>
               <input
                 type="text"
@@ -571,21 +383,9 @@
                 placeholder="Enter your street address"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="street"
-              id="street"
-              placeholder="Enter your street address"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.landmark %}
+            <div class="col-md-6">
               <label for="landmark" class="form-label">Landmark</label>
               <input
                 type="text"
@@ -595,21 +395,9 @@
                 placeholder="Enter your land mark"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="landmark"
-              id="landmark"
-              placeholder="Enter your land mark"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.pincode %}
+            <div class="col-md-3">
               <label for="pincode" class="form-label">Pin code</label>
               <input
                 type="text"
@@ -619,21 +407,9 @@
                 placeholder="Enter your Pin code"
                 style="border-radius: 1px"
               />
-              {%else%}
-              <input
-              type="hidden"
-              value="123456"
-              class="form-control"
-              name="pincode"
-              id="pincode"
-              placeholder="Enter your Pin code"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.city %}
+            <div class="col-md-3">
               <label for="city" class="form-label">Town/City</label>
               <input
                 type="text"
@@ -643,21 +419,9 @@
                 placeholder="Enter your town"
                 style="border-radius: 1px"
               />
-              {%else%}              
-              <input
-              type="hidden"
-              value=""
-              class="form-control"
-              name="city"
-              id="city"
-              placeholder="Enter your town"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
-            <div class="col-md-12">
-              {%if check_list.state %}
+            <div class="col-md-3">
               <label for="state" class="form-label">State</label>
               <input
                 type="text"
@@ -667,17 +431,6 @@
                 placeholder="Enter your state"
                 style="border-radius: 1px"
               />
-              {% else %}
-              <input
-              value=""
-              type="hidden"
-              class="form-control"
-              name="state"
-              id="state"
-              placeholder="Enter your state"
-              style="border-radius: 1px"
-            />
-              {% endif %}
             </div>
 
             <div class="row" style="display: block; padding-bottom: 2rem">
@@ -712,7 +465,7 @@
                     background-color: #de2c4c;
                     margin-top: 1rem;
                   "
-                ><i class="fa fa-paper-plane" aria-hidden="true"></i>  submit</button>
+                ></button>
               </div>
             </div>
           </form>
