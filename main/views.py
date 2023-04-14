@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.http import HttpRequest, HttpResponseRedirect, JsonResponse
 from django.conf.urls.static import static
 from django.template import loader
@@ -100,7 +100,6 @@ def Jobs(request):
      jobs= Job.objects.filter(archived=False) 
      
      job_objects = [{'count':JobApplication.objects.filter(jobId=job).count(), 'job':job} for job in jobs] 
-     print([job.experience_max for job in jobs ])
      return render(request,'jobs.html', {'jobs':job_objects,'Count_jobs':Count_jobs,'Count_jobss':Count_jobss})
 
 @login_required
@@ -108,6 +107,8 @@ def Jobs_List(request, id):
      job=Job.objects.get(pk=id)
      applications= JobApplication.objects.filter(jobId = job).prefetch_related('applied_by')
      return render(request,'jobs_list.html',{'applications':applications,'job':job})
+
+
 
 @login_required
 def Candidates_list(request):
@@ -122,16 +123,6 @@ def Candidates_list(request):
      print(applications)
      Candidates_count = Candidate.objects.values_list('firstname').count()
      return render(request,'candidates_list.html', {'applications':applications,'Candidates_count':Candidates_count})
-
-
-# @login_required
-# def Candidates_list_new(request):
-#      results = respond.Get["source"]
-
-#      applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
-#      print(applications)
-#      Candidates_count = Candidate.objects.values_list('firstname').count()
-#      return render(request,'candidates_list_new.html', {'applications':applications,'Candidates_count':Candidates_count})
 
 @login_required
 def create_job_session_generataor(request):
@@ -285,19 +276,22 @@ def JobApplicationStatus(request, id):
      notes = Notes.objects.filter(application_ref = application.first()).prefetch_related('added_by')
      feedbacks = FeedbackNotes.objects.filter(application_ref = application.first()).prefetch_related('given_by')
 
-     if request.method == 'POST':
-          user_note = request.POST.get('user_note')
-          note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
-          note.save()
 
-          # if request.method == 'POST':
-          #      user_feedback = request.POST.get('user_feedback')
-          #      communication_rating = request.POST.get('communication_rating')
-          #      logicalskills_rating = request.POST.get('logicalskills_rating')
-          #      techinicalskills_rating = request.POST.get('techinicalskills_rating')
-          #      feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
-          #      feedback.save()
+     if request.method == 'POST':
+          if 'user_note' in request.POST:
+               user_note = request.POST.get('user_note')
+               note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
+               note.save()
+
+          elif 'user_feedback' in request.POST:
+               user_feedback = request.POST.get('user_feedback')
+               communication_rating = request.POST.get('communication_rating')
+               logicalskills_rating = request.POST.get('logicalskills_rating')
+               techinicalskills_rating = request.POST.get('techinicalskills_rating')
+               feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
+               feedback.save()
      return render(request,'candidate_profile.html',{'feedbacks':feedbacks, 'notes':notes,'application':application.first()})
+
 
 @login_required
 def Candidate_application(request, id):
@@ -334,7 +328,7 @@ def Candidate_application(request, id):
                candidate= Candidate(firstname=firstname,lastname=lastname, email=email, phonenumber=phonenumber,designation=designation,
                                    currentctc=currentctc, expectedctc=expectedctc, skypeid=skypeid, Github_url=Github_url,
                                    linkedin_url=linkedin_url,portfolio_url=portfolio_url, resume=resume, street=street,
-                                        pincode=pincode,city=city, state=state, experience=experience, skills=skills,source=source,landmark=landmark, notice=notice )
+                                   pincode=pincode,city=city, state=state, experience=experience, skills=skills,source=source,landmark=landmark, notice=notice )
                candidate.save()
                print(candidate)
           else:
@@ -382,46 +376,5 @@ def Jobs_Archive(request):
      job_objects = [{'count':JobApplication.objects.filter(jobId=job).count(), 'job':job} for job in jobs] 
      return render(request,'jobs_archive.html', {'jobs':job_objects,'Count_jobs':Count_jobs,'Count_jobss':Count_jobss})
 
-# def EditCandidates(request,id):
-#      job = Job.objects.get(pk=id)
-#      # candidate_application_form_map = CandidateApplicationForm.objects.get(job_ref=job)
-     
-#      if request.method == 'POST':
-#           email = request.POST.get('email')
-#           candidate = Candidate.objects.filter(email=email).first()
 
-#           if candidate is None:
-#                firstname = request.POST.get('firstname')
-#                lastname= request.POST.get('lastname')
-#                phonenumber = request.POST.get('phonenumber')
-#                designation = request.POST.get('designation')
-#                currentctc = request.POST.get('currentctc')
-#                expectedctc = request.POST.get('expectedctc')
-#                skypeid = request.POST.get('skypeid')
-#                Github_url = request.POST.get('Github_url')
-#                linkedin_url = request.POST.get('linkedin_url')
-#                portfolio_url= request.POST.get('portfolio_url')
-#                resume = request.POST.get('resume')
-#                street = request.POST.get('street')
-#                pincode = request.POST.get('pincode')
-#                city = request.POST.get('city')
-#                state = request.POST.get('state')
-#                experience = request.POST.get('experience')
-#                skills = request.POST.get('skills')
-#                source= request.POST.get('source')
-#                landmark = request.POST.get('landmark')
 
-#                candidate= Candidate(firstname=firstname,lastname=lastname, email=email, phonenumber=phonenumber,designation=designation,
-#                                    currentctc=currentctc, expectedctc=expectedctc, skypeid=skypeid, Github_url=Github_url,
-#                                    linkedin_url=linkedin_url,portfolio_url=portfolio_url, resume=resume, street=street,
-#                                         pincode=pincode,city=city, state=state, experience=experience, skills=skills,source=source,landmark=landmark )
-#                candidate.save()
-#                print(candidate)
-#           else:
-#                HttpResponse("You have already applied for this job")
-
-#           jobApplication = JobApplication(jobId = job, applied_by = candidate, status = 'accepted')
-#           jobApplication.save()
-#           print(jobApplication)
-#           return redirect('jobss') 
-#      return render(request, 'candidate_application.html')

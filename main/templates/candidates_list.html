@@ -191,7 +191,8 @@
 
     <div class="outer-div" style="display: flex; flex-wrap: wrap">
       <div style="display: flex; width: 20%">
-        <img style="width: 56px; height: 56px" src="{%static 'images/usser.svg'%}" />
+        <a href="{% url 'candidates_list' %}">
+        <img style="width: 56px; height: 56px" src="{%static 'images/usser.svg'%}" /></a>
         <div class="newww" style="display: flex; flex-direction: column">
           <p style="
                 font-weight: 500;
@@ -353,7 +354,8 @@
             <img src="{%static 'images/image_2.png'%}" width="50px">
           </td>
           <td>
-            <a href="{% url 'candidate_application' id=application.pk %}"><img
+            <a href="#">
+            <img
                 src="{%static 'images/more-vertical.svg'%}" width="25px"></a>
           </td>
         </tr>

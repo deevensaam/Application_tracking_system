@@ -143,7 +143,7 @@ class JobApplication(models.Model):
     # candidate = models.OneToOneField(on_delete=models.CASCADE, to=Candidate, default=None)
     # feedback_note = models.CharField(max_length=200)
     # user_note = models.CharField(max_length=200)
-    status = models.CharField(max_length=20,choices=ApplicationStatus.choices,default='screening')
+    status = models.CharField(max_length=20,choices=ApplicationStatus.choices,default='SELECTED')
 
 class Notes(models.Model):
     user_note = models.CharField(max_length = 250)
