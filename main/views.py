@@ -211,6 +211,24 @@ def Create_Application_Form(request, sessionId):
           return redirect('create_publish', sessionId)
      return render(request,'create_application_form.html', {'session_id' : sessionId, 'check_list' : check_list_item})
 
+def Job_edit(request, sessionId):
+    job_form = get_object_or_404(Job, pk=sessionId)
+    if request.method == "POST":
+        job_form.role = request.POST['role']
+        job_form.job_type = request.POST['job_type']
+        job_form.salary = request.POST['salary']
+        job_form.select_template = request.POST['select_template']
+        job_form.experience_min = request.POST['experience_min']
+        job_form.experience_max = request.POST['experience_max']
+        job_form.description = request.POST['description']
+        job_form.requirements= request.POST['requirements']
+        job_form.role = request.POST['about_company']
+
+        job_form.save()
+        return redirect('create_jobs', pk=job_form.pk)
+    else:
+        return render(request, 'job_edit.html', {'job_form': job_form})
+
 @login_required
 def Create_Publish(request, sessionId):
      job_form = request.session.get(str(sessionId) + "job_form")
@@ -341,6 +359,8 @@ def Candidate_application(request, id):
      return render(request, 'candidate_application.html',{'check_list':check_list})
 
 
+
+
 def testing(request):
      submitted = False
      if request.method == "POST":
@@ -353,6 +373,8 @@ def testing(request):
            if 'submitted' in request.GET:
                 submitted = True
      return render(request, 'testing.html',{'form':form, 'submitted':submitted})
+
+
 
 
 def Jobss(request):

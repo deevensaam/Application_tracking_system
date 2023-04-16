@@ -22,6 +22,7 @@ urlpatterns = [
     path('candidate_profile_edit/', views.Candidate_profile_Edit, name='candidate_profile_edit'),
     # path('candidate_application/',views.Candidate_application, name='candidate_application'),
     path('candidate_application/<id>/',views.Candidate_application, name='candidate_application'),
+    path('create_jobs/<int:sessionId>/edit/', views.Job_edit, name='job_edit'),
     path('testing/',views.testing, name='testing'),
     
 ]
