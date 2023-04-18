@@ -168,6 +168,12 @@
             class="mr-2"
             src="{%static 'images/briefcase.svg'%}"
           /> <p>{{job.experience_min}}-{{job.experience_max}} Years</p>
+
+          <img style="padding-left:1rem"
+          style="width: 20px; height: 20px"
+          class="mr-2"
+          src="{%static 'images/briefcase.svg'%}"
+        /> <p>{{job.experience_min}}-{{job.experience_max}} Years</p>
           </div>
 
           <div class="col-9 d-flex">
@@ -235,7 +241,7 @@
               {{application.applied_by.firstname}}
               {{application.applied_by.lastname}}
             </td>
-            <td>{{application.applied_by.city}}</td>
+            <td>{{application.applied_by.city}},{{application.applied_by.state}}</td>
             <td>{{application.applied_by.experience}}</td>
             <td>{{application.applied_by.event_time}}</td>
             <td>{{application.status}}</td>

@@ -200,7 +200,6 @@
           <th>Experience</th>
           <th>Posted on</th>
           <th>Candidates</th>
-          <th>Assigned</th>
           <th></th>
           <th></th>
         </tr>
@@ -212,15 +211,13 @@
           <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
           <td>{{job.job.event_time}}</td>
           <td>{{job.count}}</td>
-          <td>
-            <img src="{%static 'images/image_2.png'%}" width="50px" />
-          </td>
-          <td><a href="#"><img src="{%static 'images/edit.svg'%}" /></a></td>
+          <td><a href="{% url 'update_jobs_redirect' job_id=job.job.pk %}"><img src="{%static 'images/edit.svg'%}" /></a></td>
           <td>
             <form action="" method="post">
               {%csrf_token%}
               <input type="hidden" name="archived" value="{{job.job.pk}}">
               <button style="color:black; background:white" type="submit">
+                <input type="hidden" name="archived" value="{{job.job.pk}}">
                 <img src="{%static 'images/archive.svg'%}" />
               </button>
             </form>

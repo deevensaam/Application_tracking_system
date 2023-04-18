@@ -115,7 +115,6 @@
       height: 40px;
       padding-top: 10px;
     }
-
   </style>
 
   <body>
@@ -127,10 +126,10 @@
             <label for="inputPassword4" class="form-label"
               >Share on social media</label
             >
-              <a href="https://wellfound.com/company/login-begin"><img style="padding-left:10px" src="{%static 'images/Angellist.svg'%}" style="width: 8%" /></a>
-              <a href="https://www.linkedin.com/feed/"><img style="padding-left:10px" src="{%static 'images/linkedin.svg'%}" style="width: 8%" /></a> 
-              <a href=""><img style="padding-left:10px" src="{%static 'images/globe.svg'%}" style="width: 8%" /></a>
-              <a href="https://www.facebook.com/login/"><img style="padding-left:10px" src="{%static 'images/facebook.svg'%}" style="width: 8%" /></a>
+            <img src="{%static 'images/Angellist.svg'%}" style="width: 8%" />
+            <img src="{%static 'images/linkedin.svg'%}" style="width: 8%" />
+            <img src="{%static 'images/globe.svg'%}" style="width: 8%" />
+            <img src="{%static 'images/facebook.svg'%}" style="width: 8%" />
           </div>
         </div>
         <hr />
@@ -164,6 +163,7 @@
               <label for="firstname" class="form-label">First name</label>
               <input
                 type="text"
+                value = "{{candidate.firstname}}"
                 class="form-control"
                 name="firstname"
                 id="firstname"
@@ -173,7 +173,7 @@
               {%else%}            
               <input
               type="hidden"
-              value=" "
+              value="{{candidate.firstname}}"
               class="form-control"
               name="firstname"
               id="firstname"
@@ -673,8 +673,8 @@
                     background-color: #de2c4c;
                     margin-top: 1rem;
                   "
-                ><a href="{% url 'jobss' %}">
-                  <i class="fa fa-close"></i> Cancel </a>
+                >
+                  <i class="fa fa-close"></i> Cancel
                 </button>
               </div>
 
@@ -691,7 +691,7 @@
                     background-color: #de2c4c;
                     margin-top: 1rem;
                   "
-                ><i class="fa fa-paper-plane" aria-hidden="true"></i>submit</button>
+                ><i class="fa fa-paper-plane" aria-hidden="true"></i>  submit</button>
               </div>
             </div>
           </form>

@@ -279,9 +279,6 @@
           <option value="Linkedin">Linkedin</option>
           <option value="Angellist">Angellist</option>
           <option value="Globe">Globe</option>
-          <option value="Dribble">Dribble</option>
-          <option value="Self">Self</option>
-          <option value="Career Page">Career Page</option>
         </select>
       </div>
     </div>
@@ -353,7 +350,7 @@
             </form>
           </td>
           <td>
-            <a href="#">
+            <a href="{% url 'delete_candidate' candidate.id %}">
             <img
                 src="{%static 'images/more-vertical.svg'%}" width="25px"></a>
           </td>
@@ -404,6 +401,7 @@
       // Store the original value of the select element
       selectItem.dataset.originalValue = selectItem.value;
     });
+    
 
 
     // // function changeStatus(e) {

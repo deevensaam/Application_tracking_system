@@ -339,7 +339,7 @@
                   <small
                     style="font-weight: 700; font-size: 12px; color: #666666"
                   >
-                    {{note.added_by}} <a href="{% url 'note_edit' pk=note.pk %}"><button type="submit">update</button></a> </small
+                    {{note.added_by.username}} -</small
                   >
                   <small
                     style="font-weight: 400; font-size: 12px; color: #666666"
@@ -500,7 +500,7 @@
                 <small
                   style="font-weight: 700; font-size: 12px; color: #666666"
                 >
-                  {{feedback.given_by}}</small
+                  {{feedback.given_by.username}} - </small
                 >
                 <small
                   style="font-weight: 400; font-size: 12px; color: #666666"
@@ -542,7 +542,9 @@
                 <div class="card-text" style="display: block">
                   <p>
                     <small class="text-muted"
-                      >{% for feedback in feedbacks%}{{feedback.event_time_feedback}}{%endfor%}</small
+                      >{% for feedback in feedbacks%}
+                      <small>{{feedback.given_by.username}}
+                      {{feedback.event_time_feedback}}{%endfor%}</small
                     >
                   </p>
                 </div>

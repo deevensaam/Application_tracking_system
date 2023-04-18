@@ -9,19 +9,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Inter"
-  />
-
-  <link
-    href="https://unpkg.com/@webpixels/css/dist/index.css"
-    rel="stylesheet"
-  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
+  
+    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet" />
   
     <title>Dashboard</title> 
   </head>
@@ -187,7 +178,7 @@
           <th>Experience</th>
           <th>Posted on</th>
           <th>Candidates</th>
-          <th>Assigned</th>
+
         </tr>
         <tr>
           {% for job in jobs  %}
@@ -195,9 +186,7 @@
           <td>{{job.job.experience_min}}-{{job.job.experience_max}} Years</td>
           <td>{{job.job.event_time}}</td>
           <td>{{job.count}}</td>
-          <td>
-              <img src="{%static 'images/image_2.png'%}" width="50px">
-            </td>
+
           <td><img src="{%static 'images/edit.svg'%}"></td>
           <td><img src="{%static 'images/archive.svg'%}"></td>
         </tr>

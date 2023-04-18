@@ -53,7 +53,6 @@ SOURCE_CHOICES=(
 )
 
 
-
 class Candidate(models.Model):
     firstname=models.CharField('First name', max_length=50)
     lastname=models.CharField('Last name', max_length=50, blank=True)

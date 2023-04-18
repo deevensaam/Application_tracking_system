@@ -23,18 +23,6 @@
     <title>Jobs</title>
   </head>
   <style>
-    button {
-      position: absolute;
-      font-family: "Inter";
-      background-color: #de2c4c;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      border: 1px;
-      cursor: pointer;
-      width: 161px;
-      height: 46px;
-    }
 
     button a {
       color: white;
@@ -115,6 +103,17 @@
       width: 56px;
       height: 56px;
     }
+
+    .card-title i:hover{
+      transform: scale(1.25) rotate(100deg); 
+      color:#18d4ca;
+      
+    }
+    .card:hover{
+      transform: scale(1.05);
+      box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    }
+
   </style>
   <body>
     <div class="container">
@@ -178,20 +177,18 @@
       {% for job in jobs %}
         <div class="col-sm-4">
           <div class="card">
-            <div style="background: #EFCDFE;" class="card-header">
-              <strong>{{job.job.role}}</strong>-
-              <a href="{% url 'candidate_application' id=job.job.pk %}"
-                >Apply here</a
-              ><br /><small
-                >{{job.count}}
+            <div style="background:#EFCDFE;" class="card-header">
+              <strong >{{job.job.role}}</strong><br>
+              <small
+              >{{job.count}}
                 <i class="fa fa-user-o" aria-hidden="true"></i></small
               >,
               <small
-                ><i class="fa fa-tasks" aria-hidden="true"></i>
+              ><i class="fa fa-tasks" aria-hidden="true"></i>
                 {{job.job.jobtype}} </small
               >,
-              <small
-                >{{job.job.experience_min}}-{{job.job.experience_max}}
+              <small 
+               >{{job.job.experience_min}}-{{job.job.experience_max}}
                 Years</small
               >
             </div>
@@ -205,8 +202,10 @@
               <p class="card-text">
                 About Company: <small>{{job.job.about_company}}</small>
               </p>
-              <br />
+              <br /><hr>
               <small class="card-text">Posted on: {{job.job.event_time}}</small>
+              <a href="{% url 'candidate_application' id=job.job.pk %}"
+              ><button style="margin-left:5rem ;color:white; background:#de2c4c" type="submit"> Apply </button></a>
             </div>
           </div>
 
