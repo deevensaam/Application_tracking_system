@@ -160,7 +160,7 @@
             {% csrf_token %}
             <h3>Basic Details</h3>
             <div class="col-md-12">
-              {%if check_list.firstname %}
+              {%if check_list.full_name %}
               <label for="firstname" class="form-label">First name</label>
               <input
                 type="text"
@@ -184,7 +184,7 @@
             </div>
 
             <div class="col-md-12">
-              {%if check_list.lastname %}
+              {%if check_list.full_name %}
               <label for="lastname" class="form-label">last name</label>
               <input
                 type="text"
@@ -540,7 +540,7 @@
 
             <h3>Address</h3>
             <div class="col-md-12">
-              {%if check_list.street %}
+              {%if check_list.current_location %}
               <label for="street" class="form-label">Street address</label>
               <input
                 type="text"
@@ -588,7 +588,7 @@
             </div>
 
             <div class="col-md-12">
-              {%if check_list.pincode %}
+              {%if check_list.current_location %}
               <label for="pincode" class="form-label">Pin code</label>
               <input
                 type="text"
@@ -612,7 +612,7 @@
             </div>
 
             <div class="col-md-12">
-              {%if check_list.city %}
+              {%if check_list.current_location %}
               <label for="city" class="form-label">Town/City</label>
               <input
                 type="text"
@@ -636,7 +636,7 @@
             </div>
 
             <div class="col-md-12">
-              {%if check_list.state %}
+              {%if check_list.current_location %}
               <label for="state" class="form-label">State</label>
               <input
                 type="text"

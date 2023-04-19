@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
-from .models import Recruiter, Job, Candidate, JobApplication, Notes, FeedbackNotes, CandidateApplicationForm
+from .models import Recruiter, Job, Candidate, JobApplication, Notes, FeedbackNotes
 from .forms import JobForm
 from django.db import transaction
 import time
@@ -141,7 +141,7 @@ def Candidates_list_test(request):
           application.save()
           return JsonResponse({'application_id' : application.pk, 'status' : application.status })
      applications = JobApplication.objects.all().prefetch_related('jobId','applied_by')
-     Candidates_count = Candidate.objects.values_list('firstname').count()
+     Candidates_count = Candidate.objects.values_list('email').count()
      return render(request,'candidates_list_test.html', {'applications':applications,'Candidates_count':Candidates_count})
 
 def create_job_session_generataor(request):
@@ -154,9 +154,10 @@ def update_job_session_generataor(request, job_id):
      session_id = int(time.time())
      if Job.objects.filter(pk=job_id).exists():
           job = Job.objects.get(pk=job_id)
-          check_list = CandidateApplicationForm.objects.get(job_ref = job)
+          # check_list = CandidateApplicationForm.objects.get(job_ref = job)
+          check_list = json.loads(job.check_list)
           request.session[str(session_id) + 'job_id'] = job.pk
-          request.session[str(session_id) + 'check_list_id'] = check_list.pk
+          # request.session[str(session_id) + 'check_list_id'] = check_list.pk
           request.session[str(session_id) + 'job_form'] = ({'role' : job.role, 
                                                                       'jobtype':job.jobtype, 
                                                                       'salary': job.salary,
@@ -168,23 +169,24 @@ def update_job_session_generataor(request, job_id):
                                                                       'select_template':job.select_template,
                                                                       'id':job.pk,})
 
-          request.session[str(session_id) + 'check_list'] =({'phonenumber' : check_list.phonenumber,
-                                                                        'designation':check_list.designation,
-                                                                        'currentctc':check_list.currentctc,
-                                                                        'expectedctc':check_list.expectedctc,
-                                                                        'skypeid':check_list.skypeid,
-                                                                        'Github_url':check_list.Github_url,
-                                                                        'linkedin_url':check_list.linkedin_url,
-                                                                        'portfolio_url':check_list.portfolio_url,
-                                                                        'resume':check_list.resume,
-                                                                        'experience':check_list.experience,
-                                                                        'skills':check_list.skills,
-                                                                        'email':check_list.email,
-                                                                        'notice':check_list.notice,
-                                                                        'source':check_list.source,
-                                                                        'current_location':check_list.current_location,
-                                                                        'full_name':bool(check_list.firstname and check_list.lastname),
-                                                                        'id':check_list.pk}) 
+          request.session[str(session_id) + 'check_list'] = check_list
+          #({'phonenumber' : check_list.phonenumber,
+          # 'designation':check_list.designation,
+          # 'currentctc':check_list.currentctc,
+          # 'expectedctc':check_list.expectedctc,
+          # 'skypeid':check_list.skypeid,
+          # 'Github_url':check_list.Github_url,
+          # 'linkedin_url':check_list.linkedin_url,
+          # 'portfolio_url':check_list.portfolio_url,
+          # 'resume':check_list.resume,
+          # 'experience':check_list.experience,
+          # 'skills':check_list.skills,
+          # 'email':check_list.email,
+          # 'notice':check_list.notice,
+          # 'source':check_list.source,
+          # 'current_location':check_list.current_location,
+          # 'full_name':bool(check_list.firstname and check_list.lastname),
+          # 'id':check_list.pk}) 
           request.session[str(session_id) + 'update'] = True
      return redirect('create_jobs', session_id)
 # add a random session ID to url so that it's unique through out
@@ -250,84 +252,84 @@ def Create_Publish(request, sessionId):
      if request.method == 'POST':
           if update_flag:
                job_id = request.session.get(str(sessionId) + 'job_id')
-               check_list_id = request.session.get(str(sessionId) + 'check_list_id')
-               with transaction.atomic():
-                    job = Job.objects.get(pk=job_id)
-                    job.role = job_form['role']
-                    job.created_by=request.user
-                    job.jobtype=job_form['jobtype']
-                    job.salary=job_form['salary']
-                    job.select_template=job_form['select_template']
-                    job.experience_min=job_form['experience_min']
-                    job.experience_max=job_form['experience_max'] 
-                    job.description=job_form['description']
-                    job.requirements=job_form['requirements']
-                    job.about_company=job_form['about_company']
-                    job.save()
+               # check_list_id = request.session.get(str(sessionId) + 'check_list_id')
+               # with transaction.atomic():
+               job = Job.objects.get(pk=job_id)
+               job.role = job_form['role']
+               job.created_by=request.user
+               job.jobtype=job_form['jobtype']
+               job.salary=job_form['salary']
+               job.select_template=job_form['select_template']
+               job.experience_min=job_form['experience_min']
+               job.experience_max=job_form['experience_max'] 
+               job.description=job_form['description']
+               job.requirements=job_form['requirements']
+               job.about_company=job_form['about_company']
+               job.check_list=json.dumps(check_list)
+               job.save()
 
-                    candidate_check_list = CandidateApplicationForm.objects.get(pk=check_list_id)
-                    candidate_check_list.phonenumber=check_list['phonenumber']
-                    candidate_check_list.designation=check_list['designation']
-                    candidate_check_list.currentctc=check_list['currentctc']
-                    candidate_check_list.expectedctc=check_list['expectedctc'] 
-                    candidate_check_list.skypeid=check_list['skypeid']
-                    candidate_check_list.Github_url=check_list['Github_url']
-                    candidate_check_list.linkedin_url=check_list['linkedin_url'] 
-                    candidate_check_list.current_location=check_list['current_location'] 
-                    candidate_check_list.portfolio_url=check_list['portfolio_url']
-                    candidate_check_list.resume=check_list['resume']
-                    candidate_check_list.experience=check_list['experience']
-                    candidate_check_list.skills=check_list['skills']
-                    candidate_check_list.email=check_list['email']
-                    candidate_check_list.notice=check_list['notice']
-                    candidate_check_list.source=check_list['source']
-                    candidate_check_list.firstname=check_list['full_name']
-                    candidate_check_list.lastname=check_list['full_name'] 
-                    candidate_check_list.state=check_list['current_location'] 
-                    candidate_check_list.city=check_list['current_location']
-                    candidate_check_list.pincode=check_list['current_location']
-                    candidate_check_list.street=check_list['current_location'] 
-                    candidate_check_list.save()
-
+                    # candidate_check_list = CandidateApplicationForm.objects.get(pk=check_list_id)
+                    # candidate_check_list.phonenumber=check_list['phonenumber']
+                    # candidate_check_list.designation=check_list['designation']
+                    # candidate_check_list.currentctc=check_list['currentctc']
+                    # candidate_check_list.expectedctc=check_list['expectedctc'] 
+                    # candidate_check_list.skypeid=check_list['skypeid']
+                    # candidate_check_list.Github_url=check_list['Github_url']
+                    # candidate_check_list.linkedin_url=check_list['linkedin_url'] 
+                    # candidate_check_list.current_location=check_list['current_location'] 
+                    # candidate_check_list.portfolio_url=check_list['portfolio_url']
+                    # candidate_check_list.resume=check_list['resume']
+                    # candidate_check_list.experience=check_list['experience']
+                    # candidate_check_list.skills=check_list['skills']
+                    # candidate_check_list.email=check_list['email']
+                    # candidate_check_list.notice=check_list['notice']
+                    # candidate_check_list.source=check_list['source']
+                    # candidate_check_list.firstname=check_list['full_name']
+                    # candidate_check_list.lastname=check_list['full_name'] 
+                    # candidate_check_list.state=check_list['current_location'] 
+                    # candidate_check_list.city=check_list['current_location']
+                    # candidate_check_list.pincode=check_list['current_location']
+                    # candidate_check_list.street=check_list['current_location'] 
+                    # candidate_check_list.save()
 
           else:          
-               with transaction.atomic():
-                    job = Job(role=job_form['role'],
-                              created_by=request.user,
-                              jobtype=job_form['jobtype'],
-                              salary=job_form['salary'],
-                              select_template=job_form['select_template'],
-                              experience_min=job_form['experience_min'],
-                              experience_max=job_form['experience_max'], 
-                              description=job_form['description'], 
-                              requirements=job_form['requirements'],
-                              about_company=job_form['about_company'])
-                    job.save()
+               # with transaction.atomic():
+               job = Job(role=job_form['role'],
+                    created_by=request.user,
+                    jobtype=job_form['jobtype'],
+                    salary=job_form['salary'],
+                    select_template=job_form['select_template'],
+                    experience_min=job_form['experience_min'],
+                    experience_max=job_form['experience_max'], 
+                    description=job_form['description'], 
+                    requirements=job_form['requirements'],
+                    about_company=job_form['about_company'],
+                    check_list=json.dumps(check_list))
+               job.save()
 
-                    candidate_check_list = CandidateApplicationForm(phonenumber=check_list['phonenumber'],
-                                                                 designation=check_list['designation'],
-                                                                 currentctc=check_list['currentctc'],
-                                                                 expectedctc=check_list['expectedctc'], 
-                                                                 skypeid=check_list['skypeid'],
-                                                                 Github_url=check_list['Github_url'],
-                                                                 linkedin_url=check_list['linkedin_url'], 
-                                                                 current_location=check_list['current_location'], 
-                                                                 portfolio_url=check_list['portfolio_url'],
-                                                                 resume=check_list['resume'],
-                                                                 experience=check_list['experience'],
-                                                                 skills=check_list['skills'],
-                                                                 email=check_list['email'],
-                                                                 notice=check_list['notice'],
-                                                                 source=check_list['source'],
-                                                                 firstname=check_list['full_name'] == 'True',
-                                                                 lastname=check_list['full_name'] == 'True', 
-                                                                 state=check_list['current_location'] == 'True', 
-                                                                 city=check_list['current_location'] == 'True',
-                                                                 pincode=check_list['current_location'] == 'True',
-                                                                 street=check_list['current_location'] == 'True', 
-                                                                 job_ref=job)
-                    candidate_check_list.save()
-               
+                    # candidate_check_list = CandidateApplicationForm(phonenumber=check_list['phonenumber'],
+                    #                                              designation=check_list['designation'],
+                    #                                              currentctc=check_list['currentctc'],
+                    #                                              expectedctc=check_list['expectedctc'], 
+                    #                                              skypeid=check_list['skypeid'],
+                    #                                              Github_url=check_list['Github_url'],
+                    #                                              linkedin_url=check_list['linkedin_url'], 
+                    #                                              current_location=check_list['current_location'], 
+                    #                                              portfolio_url=check_list['portfolio_url'],
+                    #                                              resume=check_list['resume'],
+                    #                                              experience=check_list['experience'],
+                    #                                              skills=check_list['skills'],
+                    #                                              email=check_list['email'],
+                    #                                              notice=check_list['notice'],
+                    #                                              source=check_list['source'],
+                    #                                              firstname=check_list['full_name'] == 'True',
+                    #                                              lastname=check_list['full_name'] == 'True', 
+                    #                                              state=check_list['current_location'] == 'True', 
+                    #                                              city=check_list['current_location'] == 'True',
+                    #                                              pincode=check_list['current_location'] == 'True',
+                    #                                              street=check_list['current_location'] == 'True', 
+                    #                                              job_ref=job)
+                    # candidate_check_list.save()
           return redirect('jobs')
      return render(request,'create_publish.html', {'session_id' : sessionId})
 
@@ -340,14 +342,14 @@ def Candidate_profile_Edit(request):
      return render(request,'candidate_profile_edit.html')
 
 def JobApplicationStatus(request, id):
-     application = JobApplication.objects.filter(pk=id).prefetch_related('applied_by','jobId')
-     notes = Notes.objects.filter(application_ref = application.first()).prefetch_related('added_by')
-     feedbacks = FeedbackNotes.objects.filter(application_ref = application.first()).prefetch_related('given_by')
+     application = JobApplication.objects.filter(pk=id).prefetch_related('applied_by','jobId').first()
+     notes = Notes.objects.filter(application_ref = application).prefetch_related('added_by')
+     feedbacks = FeedbackNotes.objects.filter(candidate_ref = application.applied_by).prefetch_related('given_by')
 
      if request.method == 'POST':
           if 'user_note' in request.POST:
                user_note = request.POST.get('user_note')
-               note= Notes(user_note = user_note, added_by = request.user, application_ref = application.first())
+               note= Notes(user_note = user_note, added_by = request.user, application_ref = application)
                note.save()
 
           elif 'user_feedback' in request.POST:
@@ -355,13 +357,17 @@ def JobApplicationStatus(request, id):
                communication_rating = request.POST.get('communication_rating')
                logicalskills_rating = request.POST.get('logicalskills_rating')
                techinicalskills_rating = request.POST.get('techinicalskills_rating')
-               feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, application_ref = application.first())
+               feedback= FeedbackNotes(user_feedback = user_feedback,communication_rating=communication_rating, logicalskills_rating=logicalskills_rating, techinicalskills_rating=techinicalskills_rating,  given_by = request.user, candidate_ref = application.applied_by, application_ref=application)
                feedback.save()
-     return render(request,'candidate_profile.html',{'feedbacks':feedbacks, 'notes':notes,'application':application.first()})
+     return render(request,'candidate_profile.html',{'feedbacks':feedbacks, 'notes':notes,'application':application})
      
 def Candidate_application(request, id):
      job = Job.objects.get(pk=id)
-     check_list= CandidateApplicationForm.objects.get(job_ref = job)
+     # check_list= CandidateApplicationForm.objects.get(job_ref = job)
+     try:
+          check_list = json.loads(job.check_list)
+     except json.decoder.JSONDecodeError:
+          check_list = {}
      # candidate_application_form_map = CandidateApplicationForm.objects.get(job_ref=job)
      
      if request.method == 'POST':
@@ -396,7 +402,9 @@ def Candidate_application(request, id):
                                    pincode=pincode,city=city, state=state, experience=experience, skills=skills,source=source,landmark=landmark, notice=notice )
                candidate.save()
           else:
-               return HttpResponse("you've already applied for this job")
+               prev_applications = JobApplication.objects.filter(jobId=job, applied_by=candidate)
+               if prev_applications.exists():
+                    return HttpResponse("you've already applied for this job")
 
           jobApplication = JobApplication(jobId = job, applied_by = candidate, status = 'screening')
           jobApplication.save()
